@@ -1403,11 +1403,22 @@ xsFNBF5Qk0kBEAC5JhZROT1Pq2v7z1xQ3Qe5tQJfY7X9XhJ8W5kZ2Y7Qx3Xv
         }
         
         // Profile image click to WhatsApp
-        function setupProfileImageClick() {
-            const profileImage = document.getElementById('profileImage');
-            profileImage.addEventListener('click', () => {
-                window.open('https://wa.me/201500461923', '_blank');
-            });
+        
+// Profile image click to play/pause music
+function setupProfileImageClick() {
+    const profileImage = document.getElementById('profileImage');
+    const audio = document.getElementById('mySong');
+
+    profileImage.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    });
+}
+);
         }
         
         // Initialize everything when page loads
