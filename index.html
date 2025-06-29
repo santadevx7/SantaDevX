@@ -998,7 +998,7 @@
     <div class="matrix-rain" id="matrixRain"></div>
     
     <!-- Watermark image -->
-    <img src="https://i.postimg.cc/fTPLBY6L/santa.png" alt="SantaDevX" class="watermark" id="whatsappWatermark">
+    <img src="https://i.postimg.cc/fTPLBY6L/santa.png" class="watermark" id="whatsappWatermark">
     
     <div class="terminal-container">
         <div class="terminal">
@@ -1019,7 +1019,7 @@
             <div class="terminal-body">
                 <div class="profile-container">
                     <div class="profile-img-container" id="profileImage">
-                        <img src="https://i.postimg.cc/fTPLBY6L/santa.png" alt="SantaDevX Profile" class="profile-img">
+                        <img src="https://i.postimg.cc/fTPLBY6L/santa.png Profile" class="profile-img">
                         <button class="music-player-btn" id="musicPlayerBtn">
                             <i class="fas fa-music"></i>
                         </button>
@@ -1367,4 +1367,286 @@
     
     <!-- Contact Footer -->
     <div class="contact-footer">
-        <a href="https://wa.me/20150046
+        <a href="https://wa.me/201500461923" target="_blank" class="contact-item">
+            <i class="fab fa-whatsapp contact-icon"></i>
+            <span class="contact-label">WhatsApp</span>
+        </a>
+        <a href="mailto:saiffikry2008@gmail.com" target="_blank" class="contact-item">
+            <i class="fas fa-envelope contact-icon"></i>
+            <span class="contact-label">Email</span>
+        </a>
+        <a href="https://discord.gg/4jeKEmyw" target="_blank" class="contact-item">
+            <i class="fab fa-discord contact-icon"></i>
+            <span class="contact-label">Discord</span>
+        </a>
+        <a href="https://santadevx7.github.io/SantaDevX/" target="_blank" class="contact-item">
+            <i class="fab fa-github contact-icon"></i>
+            <span class="contact-label">GitHub</span>
+        </a>
+        <a href="t.me/SantaDevX" target="_blank" class="contact-item">
+            <i class="fab fa-telegram contact-icon"></i>
+            <span class="contact-label">Telegram</span>
+        </a>
+        <a href="#" id="pgpBtn" class="contact-item">
+            <i class="fas fa-key contact-icon"></i>
+            <span class="contact-label">PGP Key</span>
+        </a>
+    </div>
+
+    <!-- PGP Key Modal -->
+    <div id="pgpModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; padding: 2rem; color: white; overflow: auto;">
+        <div style="max-width: 800px; margin: 5rem auto; background: rgba(0,10,20,0.95); padding: 3rem; border: 1px solid var(--primary); border-radius: 8px; position: relative;">
+            <button id="closePgpModal" style="position: absolute; top: 1.5rem; right: 1.5rem; background: var(--primary); color: black; border: none; padding: 0.8rem 1.5rem; border-radius: 4px; cursor: pointer; font-family: var(--font-heading);">X</button>
+            <h3 style="color: var(--primary); margin-bottom: 2rem; font-family: var(--font-heading);">PGP PUBLIC KEY</h3>
+            <pre style="font-family: var(--font-main); white-space: pre-wrap; word-wrap: break-word; background: rgba(0,0,0,0.5); padding: 2rem; border-radius: 4px; overflow-x: auto; line-height: 1.6;">
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: OpenPGP v2.0.8
+Comment: https://santadevx.tech/pgp
+
+xsFNBF5Qk0kBEAC5JhZROT1Pq2v7z1xQ3Qe5tQJfY7X9XhJ8W5kZ2Y7Qx3Xv
+[... truncated for brevity ...]
+=2kQw
+-----END PGP PUBLIC KEY BLOCK-----
+            </pre>
+            <p style="margin-top: 1.5rem; color: var(--text-dark);">Fingerprint: AB39 8D2E 1F7C 3A9D 4E2F  7B1C 2A5D E3F4 5C67 89A2</p>
+            <div style="margin-top: 2rem;">
+                <p><span style="color: var(--primary);">></span> <span style="color: var(--accent);">pgp --verify --trust-level ultimate --owner "SantaDevX"</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Element for Music -->
+    <audio id="backgroundMusic" loop>
+        <!-- Replace with your actual music file -->
+        <source src="https://santadevx7.github.io/music-host/banga.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Matrix Rain Effect
+        function createMatrixRain() {
+            const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+            const matrixRain = document.getElementById('matrixRain');
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const fontSize = 16;
+            const columns = Math.floor(width / fontSize);
+            
+            // Clear existing matrix rain
+            matrixRain.innerHTML = '';
+            
+            for (let i = 0; i < columns; i++) {
+                const column = document.createElement('div');
+                column.style.position = 'absolute';
+                column.style.top = '0';
+                column.style.left = (i * fontSize) + 'px';
+                column.style.width = fontSize + 'px';
+                column.style.height = height + 'px';
+                matrixRain.appendChild(column);
+                
+                // Create initial codes
+                const codeCount = Math.floor(Math.random() * 20) + 10;
+                for (let j = 0; j < codeCount; j++) {
+                    const code = document.createElement('span');
+                    code.className = 'matrix-code';
+                    code.textContent = chars.charAt(Math.floor(Math.random() * chars.length));
+                    code.style.top = (-fontSize * j) + 'px';
+                    code.style.left = '0';
+                    code.style.animationDuration = (Math.random() * 5 + 3) + 's';
+                    code.style.animationDelay = (Math.random() * 3) + 's';
+                    column.appendChild(code);
+                }
+                
+                // Keep adding new codes
+                setInterval(() => {
+                    const code = document.createElement('span');
+                    code.className = 'matrix-code';
+                    code.textContent = chars.charAt(Math.floor(Math.random() * chars.length));
+                    code.style.top = (-fontSize) + 'px';
+                    code.style.left = '0';
+                    code.style.animationDuration = (Math.random() * 5 + 3) + 's';
+                    column.appendChild(code);
+                    
+                    // Remove old codes
+                    if (column.children.length > 25) {
+                        column.removeChild(column.children[0]);
+                    }
+                }, 200 + Math.random() * 400);
+            }
+        }
+        
+        // PGP Modal
+        document.getElementById('pgpBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('pgpModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        document.getElementById('closePgpModal').addEventListener('click', function() {
+            document.getElementById('pgpModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Terminal typing effect
+        function simulateTyping() {
+            const commands = [
+                'Who Am I? ',
+                'uname -a',
+                'ls -la /projects',
+                'cd /skills',
+                './start.sh --dev',
+                'sudo make me_a_sandwich',
+                'exit'
+            ];
+            
+            const footerCursor = document.querySelector('.footer-cursor');
+            let currentCommand = 0;
+            let currentChar = 0;
+            let isDeleting = false;
+            let isWaiting = false;
+            
+            function type() {
+                const footer = document.querySelector('.terminal-footer p:last-child');
+                const text = commands[currentCommand];
+                
+                if (isWaiting) {
+                    isWaiting = false;
+                    setTimeout(type, 1000);
+                    return;
+                }
+                
+                if (isDeleting) {
+                    footer.textContent = 'santadevx@terminal:~$ ' + text.substring(0, currentChar - 1);
+                    currentChar--;
+                    
+                    if (currentChar === 0) {
+                        isDeleting = false;
+                        currentCommand = (currentCommand + 1) % commands.length;
+                        isWaiting = true;
+                    }
+                    
+                    setTimeout(type, 50);
+                } else {
+                    footer.textContent = 'santadevx@terminal:~$ ' + text.substring(0, currentChar + 1);
+                    currentChar++;
+                    
+                    if (currentChar === text.length) {
+                        isDeleting = true;
+                        isWaiting = true;
+                    }
+                    
+                    setTimeout(type, 100);
+                }
+            }
+            
+            setTimeout(type, 1500);
+        }
+        
+        // Animate skill bars on scroll
+        function animateSkills() {
+            const skillLevels = document.querySelectorAll('.skill-level');
+            skillLevels.forEach(level => {
+                const width = level.style.width;
+                level.style.width = '0';
+                setTimeout(() => {
+                    level.style.width = width;
+                }, 200);
+            });
+        }
+        
+        // Theme toggle functionality
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const themeIcon = document.querySelector('#themeToggle i');
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+            createMatrixRain(); // Recreate matrix rain with new colors
+        }
+        
+        // Terminal control buttons functionality
+        document.getElementById('closeBtn').addEventListener('click', function() {
+            if (confirm('Are you sure you want to close this terminal?')) {
+                window.close();
+            }
+        });
+        
+        document.getElementById('minimizeBtn').addEventListener('click', function() {
+            alert('Terminal minimized (simulated)');
+        });
+        
+        document.getElementById('maximizeBtn').addEventListener('click', function() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    alert(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        });
+        
+        // Music player functionality
+        const musicPlayerBtn = document.getElementById('musicPlayerBtn');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        
+        musicPlayerBtn.addEventListener('click', function() {
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+                musicPlayerBtn.classList.add('playing');
+                musicPlayerBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                backgroundMusic.pause();
+                musicPlayerBtn.classList.remove('playing');
+                musicPlayerBtn.innerHTML = '<i class="fas fa-music"></i>';
+            }
+        });
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            createMatrixRain();
+            simulateTyping();
+            animateSkills();
+            
+            // Theme toggle event listener
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+            
+            // Watermark click event
+            document.getElementById('whatsappWatermark').addEventListener('click', function() {
+                window.open('https://wa.me/201500461923', '_blank');
+            });
+            
+            // Profile image click event
+            document.getElementById('profileImage').addEventListener('click', function() {
+                window.open('https://postimg.cc/SJWkKYQF', '_blank');
+            });
+            
+            // Auto-play music (disabled by default due to browser restrictions)
+            // backgroundMusic.play().catch(e => {
+            //     console.log('Auto-play prevented:', e);
+            // });
+            
+            // Animate elements when they come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.skill-item, .project-card, .timeline-item').forEach(el => {
+                observer.observe(el);
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            createMatrixRain();
+        });
+    </script>
+</body>
+</html>
