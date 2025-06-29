@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𝑆𝑎𝑛𝑡𝑎𝐷𝑒𝑣𝑋</title>
+    <title>SantaDevX Information</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ===== EDEX-UI THEME ===== */
@@ -319,6 +319,42 @@
             animation: pulse 4s infinite alternate;
         }
 
+        /* Music player button */
+        .music-player-btn {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: var(--secondary);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.7);
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+
+        .music-player-btn:hover {
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 0 25px rgba(0, 255, 157, 0.9);
+        }
+
+        .music-player-btn.playing {
+            background: var(--accent);
+            box-shadow: 0 0 15px rgba(0, 162, 255, 0.7);
+        }
+
+        .music-player-btn.playing:hover {
+            box-shadow: 0 0 25px rgba(0, 162, 255, 0.9);
+        }
+
         .profile-info {
             flex-grow: 1;
         }
@@ -591,6 +627,82 @@
             font-size: 0.9rem;
         }
 
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials-container {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
+            margin-top: 1.5rem;
+        }
+
+        .testimonial-card {
+            min-width: 300px;
+            background: rgba(0, 162, 255, 0.05);
+            border: 1px solid rgba(0, 162, 255, 0.2);
+            border-radius: 3px;
+            padding: 1.5rem;
+            scroll-snap-align: start;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        body.light-mode .testimonial-card {
+            background: rgba(255, 102, 0, 0.05);
+            border: 1px solid rgba(255, 102, 0, 0.2);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 162, 255, 0.2);
+        }
+
+        body.light-mode .testimonial-card:hover {
+            box-shadow: 0 10px 25px rgba(255, 102, 0, 0.2);
+        }
+
+        .testimonial-content {
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 1px solid var(--primary);
+        }
+
+        .testimonial-author-info {
+            flex-grow: 1;
+        }
+
+        .testimonial-author-name {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-author-title {
+            color: var(--text-darker);
+            font-size: 0.8rem;
+        }
+
+        .testimonial-rating {
+            color: var(--warning);
+            font-size: 0.9rem;
+        }
+
         /* ===== CONTACT SECTION ===== */
         .contact-footer {
             position: fixed;
@@ -736,7 +848,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.05;
+            opacity: 0.1;
             pointer-events: none;
         }
 
@@ -744,9 +856,10 @@
             color: var(--primary);
             position: absolute;
             font-family: var(--font-heading);
-            font-size: 14px;
+            font-size: 16px;
             opacity: 0;
             animation: fall linear forwards;
+            text-shadow: 0 0 5px var(--primary);
         }
 
         @keyframes fall {
@@ -834,6 +947,15 @@
                 right: 10px;
                 top: 10px;
             }
+            
+            .testimonials-container {
+                flex-direction: column;
+                overflow-x: visible;
+            }
+            
+            .testimonial-card {
+                min-width: 100%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -862,6 +984,12 @@
             .contact-label {
                 font-size: 0.7rem;
             }
+            
+            .music-player-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -870,13 +998,13 @@
     <div class="matrix-rain" id="matrixRain"></div>
     
     <!-- Watermark image -->
-    <img src="https://i.postimg.cc/PC83qrrW/image.jpg" alt="𝑆𝑎𝑛𝑡𝑎𝐷𝑒𝑣𝑋" class="watermark" id="whatsappWatermark">
+    <img src="https://i.postimg.cc/fTPLBY6L/santa.png" alt="SantaDevX" class="watermark" id="whatsappWatermark">
     
     <div class="terminal-container">
         <div class="terminal">
             <div class="terminal-header">
                 <div class="terminal-title">
-                    𝑆𝑎𝑛𝑡𝑎𝐷𝑒𝑣𝑋 <i class="fas fa-check-circle verified-badge"></i>
+                    SantaDevX <i class="fas fa-check-circle verified-badge"></i>
                 </div>
                 <div class="terminal-controls">
                     <div class="control-btn close" id="closeBtn"></div>
@@ -891,18 +1019,21 @@
             <div class="terminal-body">
                 <div class="profile-container">
                     <div class="profile-img-container" id="profileImage">
-                        <img src="https://i.postimg.cc/PC83qrrW/image.jpg" alt="SantaDevX Profile" class="profile-img">
+                        <img src="https://i.postimg.cc/fTPLBY6L/santa.png" alt="SantaDevX Profile" class="profile-img">
+                        <button class="music-player-btn" id="musicPlayerBtn">
+                            <i class="fas fa-music"></i>
+                        </button>
                     </div>
                     <div class="profile-info">
-                        <h1 class="profile-name">𝑆𝑎𝑛𝑡𝑎𝐷𝑒𝑣𝑋 <i class="fas fa-check-circle verified-badge"></i></h1>
+                        <h1 class="profile-name">SantaDevX <i class="fas fa-check-circle verified-badge"></i></h1>
                         <h2 class="profile-title">FULL-STACK DEVELOPER | CYBER SECURITY SPECIALIST</h2>
                         <p class="profile-description">
                             <span class="prompt">></span> <span class="command">Who Am I?</span><br>
-                            I am 𝑆𝑎𝑛𝑡𝑎𝐷𝑒𝑣𝑋, a Professional Hacker For More Than 4 Years And Security Enthusiast With Expertise In Multiple Programming Languages And Frameworks. I Specialize In Building Secure, High-Performance Applications.
+                            I am SantaDevX, a Professional Hacker For More Than 4 Years And Security Enthusiast With Expertise In Multiple Programming Languages And Frameworks. I Specialize In Building Secure, High-Performance Applications.
                         </p>
                         <div class="output" style="margin-top: 1rem;">
                             <p><span class="prompt">></span> <span class="command">uname -a</span></p>
-                            <p>Linux 𝑆𝑎𝑛𝑡𝑎𝐷𝑒𝑣𝑋 5.15.0-76-generic #83-Ubuntu SMP Thu Jun 15 19:16:32 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux</p>
+                            <p>Linux SantaDevX 5.15.0-76-generic #83-Ubuntu SMP Thu Jun 15 19:16:32 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux</p>
                         </div>
                     </div>
                 </div>
@@ -1159,6 +1290,73 @@
                     </div>
                 </div>
                 
+                <!-- Testimonials Section -->
+                <div class="output">
+                    <div class="section-header">
+                        <i class="fas fa-comments section-icon"></i>
+                        <h2><span class="prompt">></span> <span class="command">grep "feedback" /var/log/clients.log</span></h2>
+                    </div>
+                    <div class="testimonials-container">
+                        <div class="testimonial-card">
+                            <p class="testimonial-content">
+                                "SantaDevX transformed our security infrastructure completely. His work is nothing short of magical - we've had zero breaches since he implemented his systems."
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Smith" class="testimonial-author-img">
+                                <div class="testimonial-author-info">
+                                    <div class="testimonial-author-name">John Smith</div>
+                                    <div class="testimonial-author-title">CTO, SecureCorp</div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <p class="testimonial-content">
+                                "The application SantaDevX built for us outperforms all our expectations. His attention to detail and security mindset are unparalleled in the industry."
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson" class="testimonial-author-img">
+                                <div class="testimonial-author-info">
+                                    <div class="testimonial-author-name">Sarah Johnson</div>
+                                    <div class="testimonial-author-title">CEO, TechNova</div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <p class="testimonial-content">
+                                "Working with SantaDevX was a game-changer for our company. His ability to find and fix security vulnerabilities saved us from potential disasters."
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Michael Chen" class="testimonial-author-img">
+                                <div class="testimonial-author-info">
+                                    <div class="testimonial-author-name">Michael Chen</div>
+                                    <div class="testimonial-author-title">Director of Security, GlobalBank</div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="terminal-footer">
                     <p class="footer-text"><span class="status-indicator status-online"></span> System ready. All services operational.</p>
                     <p class="footer-text">SantaDevX Information:~$ <span class="footer-cursor"></span></p>
@@ -1169,182 +1367,4 @@
     
     <!-- Contact Footer -->
     <div class="contact-footer">
-        <a href="https://wa.me/201500461923" target="_blank" class="contact-item">
-            <i class="fab fa-whatsapp contact-icon"></i>
-            <span class="contact-label">WhatsApp</span>
-        </a>
-        <a href="mailto:saiffikry2008@gmail.com" target="_blank" class="contact-item">
-            <i class="fas fa-envelope contact-icon"></i>
-            <span class="contact-label">Email</span>
-        </a>
-        <a href="https://discord.gg/YdgenTvN" target="_blank" class="contact-item">
-            <i class="fab fa-discord contact-icon"></i>
-            <span class="contact-label">Discord</span>
-        </a>
-        <a href="https://santadevx7.github.io/SantaDevX/" target="_blank" class="contact-item">
-            <i class="fab fa-github contact-icon"></i>
-            <span class="contact-label">GitHub</span>
-        </a>
-        <a href="t.me/SantaDevX" target="_blank" class="contact-item">
-            <i class="fab fa-telegram contact-icon"></i>
-            <span class="contact-label">Telegram</span>
-        </a>
-        <a href="#" id="pgpBtn" class="contact-item">
-            <i class="fas fa-key contact-icon"></i>
-            <span class="contact-label">PGP Key</span>
-        </a>
-    </div>
-
-    <!-- PGP Key Modal -->
-    <div id="pgpModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; padding: 2rem; color: white; overflow: auto;">
-        <div style="max-width: 800px; margin: 5rem auto; background: rgba(0,10,20,0.95); padding: 3rem; border: 1px solid var(--primary); border-radius: 8px; position: relative;">
-            <button id="closePgpModal" style="position: absolute; top: 1.5rem; right: 1.5rem; background: var(--primary); color: black; border: none; padding: 0.8rem 1.5rem; border-radius: 4px; cursor: pointer; font-family: var(--font-heading);">X</button>
-            <h3 style="color: var(--primary); margin-bottom: 2rem; font-family: var(--font-heading);">PGP PUBLIC KEY</h3>
-            <pre style="font-family: var(--font-main); white-space: pre-wrap; word-wrap: break-word; background: rgba(0,0,0,0.5); padding: 2rem; border-radius: 4px; overflow-x: auto; line-height: 1.6;">
------BEGIN PGP PUBLIC KEY BLOCK-----
-Version: OpenPGP v2.0.8
-Comment: https://santadevx.tech/pgp
-
-xsFNBF5Qk0kBEAC5JhZROT1Pq2v7z1xQ3Qe5tQJfY7X9XhJ8W5kZ2Y7Qx3Xv
-[... truncated for brevity ...]
-=2kQw
------END PGP PUBLIC KEY BLOCK-----
-            </pre>
-            <p style="margin-top: 1.5rem; color: var(--text-dark);">Fingerprint: AB39 8D2E 1F7C 3A9D 4E2F  7B1C 2A5D E3F4 5C67 89A2</p>
-            <div style="margin-top: 2rem;">
-                <p><span style="color: var(--primary);">></span> <span style="color: var(--accent);">pgp --verify --trust-level ultimate --owner "SantaDevX"</span></p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Matrix Rain Effect
-        function createMatrixRain() {
-            const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
-            const matrixRain = document.getElementById('matrixRain');
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            const fontSize = 14;
-            const columns = Math.floor(width / fontSize);
-            
-            for (let i = 0; i < columns; i++) {
-                const column = document.createElement('div');
-                column.style.position = 'absolute';
-                column.style.top = '0';
-                column.style.left = (i * fontSize) + 'px';
-                column.style.width = fontSize + 'px';
-                column.style.height = height + 'px';
-                matrixRain.appendChild(column);
-                
-                // Create initial codes
-                const codeCount = Math.floor(Math.random() * 20) + 10;
-                for (let j = 0; j < codeCount; j++) {
-                    const code = document.createElement('span');
-                    code.className = 'matrix-code';
-                    code.textContent = chars.charAt(Math.floor(Math.random() * chars.length));
-                    code.style.top = (-fontSize * j) + 'px';
-                    code.style.left = '0';
-                    code.style.animationDuration = (Math.random() * 5 + 3) + 's';
-                    code.style.animationDelay = (Math.random() * 3) + 's';
-                    column.appendChild(code);
-                }
-                
-                // Keep adding new codes
-                setInterval(() => {
-                    const code = document.createElement('span');
-                    code.className = 'matrix-code';
-                    code.textContent = chars.charAt(Math.floor(Math.random() * chars.length));
-                    code.style.top = (-fontSize) + 'px';
-                    code.style.left = '0';
-                    code.style.animationDuration = (Math.random() * 5 + 3) + 's';
-                    column.appendChild(code);
-                    
-                    // Remove old codes
-                    if (column.children.length > 25) {
-                        column.removeChild(column.children[0]);
-                    }
-                }, 200 + Math.random() * 400);
-            }
-        }
-        
-        // PGP Modal
-        document.getElementById('pgpBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('pgpModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        });
-        
-        document.getElementById('closePgpModal').addEventListener('click', function() {
-            document.getElementById('pgpModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-        
-        // Terminal typing effect
-        function simulateTyping() {
-            const commands = [
-                'Who Am I? ',
-                'uname -a',
-                'ls -la /projects',
-                'cd /skills',
-                './start.sh --dev',
-                'sudo make me_a_sandwich',
-                'exit'
-            ];
-            
-            const footerCursor = document.querySelector('.footer-cursor');
-            let currentCommand = 0;
-            let currentChar = 0;
-            let isDeleting = false;
-            let isWaiting = false;
-            
-            function type() {
-                const footer = document.querySelector('.terminal-footer p:last-child');
-                const text = commands[currentCommand];
-                
-                if (isWaiting) {
-                    isWaiting = false;
-                    setTimeout(type, 1000);
-                    return;
-                }
-                
-                if (isDeleting) {
-                    footer.textContent = 'santadevx@terminal:~$ ' + text.substring(0, currentChar - 1);
-                    currentChar--;
-                    
-                    if (currentChar === 0) {
-                        isDeleting = false;
-                        currentCommand = (currentCommand + 1) % commands.length;
-                        isWaiting = true;
-                    }
-                    
-                    setTimeout(type, 50);
-                } else {
-                    footer.textContent = 'santadevx@terminal:~$ ' + text.substring(0, currentChar + 1);
-                    currentChar++;
-                    
-                    if (currentChar === text.length) {
-                        isDeleting = true;
-                        isWaiting = true;
-                    }
-                    
-                    setTimeout(type, 100);
-                }
-            }
-            
-            setTimeout(type, 1500);
-        }
-        
-        // Animate skill bars on scroll
-        function animateSkills() {
-            const skillLevels = document.querySelectorAll('.skill-level');
-            skillLevels.forEach(level => {
-                const width = level.style.width;
-                level.style.width = '0';
-                setTimeout(() => {
-                    level.style.width = width;
-                }, 200);
-            });
-        }
-        
-        // Theme toggle functionality
-        function toggleTheme() {
+        <a href="https://wa.me/20150046
