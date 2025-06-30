@@ -1236,18 +1236,20 @@
         let isPlaying = false;
         function toggleMusic() {
             const musicIcon = document.getElementById('musicIcon');
-            const musicBtn = document.querySelector('.music-player-btn');
-            
+            const musicBtn = document.querySelector(".music-player-btn");
+            const backgroundMusic = document.getElementById("backgroundMusic"); // أضف هذا السطر
+
             if (!isPlaying) {
-                musicIcon.className = 'fas fa-pause';
-                musicBtn.classList.add('playing');
+                musicIcon.className = "fas fa-pause";
+                musicBtn.classList.add("playing");
+                backgroundMusic.play(); // أضف هذا السطر لتشغيل الموسيقى
                 isPlaying = true;
-                // Here you would add actual music playing logic
                 console.log('Music started');
             } else {
                 musicIcon.className = 'fas fa-play';
-                musicBtn.classList.remove('playing');
-                isPlaying = false;
+                musicBtn.classList.remove("playing");
+            backgroundMusic.pause(); // أضف هذا السطر لإيقاف الموسيقى
+            isPlaying = false;
                 // Here you would add actual music stopping logic
                 console.log('Music stopped');
             }
@@ -1336,3 +1338,8 @@
 </body>
 </html>
 
+
+
+    <audio id="backgroundMusic" src="song.mp3" loop></audio>
+</body>
+</html>
