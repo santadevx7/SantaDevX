@@ -3,965 +3,520 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SantaDevX Enhanced Pro</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta name="description" content="SantaDevX - Senior Full Stack Developer & AI Specialist. High-performance web applications and innovative technical solutions.">
+    <meta name="keywords" content="web developer, full stack, AI specialist, React, Node.js, Python">
+    <meta name="author" content="SantaDevX">
+    <title>SantaDevX - Ultra Performance Portfolio</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="santa.png" as="image" type="image/png">
+    
+    <!-- Critical CSS inlined for fastest rendering -->
     <style>
-        /* ===== ENHANCED LUXURY TERMINAL THEME ===== */
+        /* CSS Reset - Minimal */
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{line-height:1.15;-webkit-text-size-adjust:100%}
+        body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif}
+        img{max-width:100%;height:auto;display:block}
+        button{font-family:inherit;font-size:100%;line-height:1.15;margin:0;overflow:visible;text-transform:none;background:none;border:none;cursor:pointer}
+        
+        /* CSS Custom Properties */
         :root {
-            --primary: #00ff9d;
-            --primary-dark: #00cc7d;
-            --primary-light: #33ffb3;
-            --secondary: #000000;
-            --accent: #0080ff;
-            --accent-dark: #0066cc;
-            --luxury-gold: #ffd700;
-            --luxury-purple: #6a0dad;
-            --luxury-platinum: #e5e4e2;
-            --error: #ff5555;
-            --warning: #ffaa00;
-            --success: #00ff33;
-            --info: #0099ff;
-            --terminal-bg: rgba(0, 5, 15, 0.98);
-            --terminal-border: rgba(0, 255, 157, 0.4);
-            --text: #00ff9d;
-            --text-dark: #00cc7d;
-            --text-darker: #009966;
-            --text-light: #33ffb3;
-            --glow: 0 0 15px rgba(0, 255, 157, 0.6);
-            --glow-intense: 0 0 30px rgba(0, 255, 157, 0.8);
-            --glow-blue: 0 0 15px rgba(0, 128, 255, 0.6);
-            --glow-gold: 0 0 15px rgba(255, 215, 0, 0.6);
-            --font-main: 'Fira Code', 'Courier New', monospace;
-            --font-heading: 'Inter', 'Fira Code', sans-serif;
-            --section-divider: rgba(0, 255, 157, 0.3);
-            --grid-color: rgba(0, 255, 157, 0.1);
-            --scan-line: rgba(0, 255, 157, 0.05);
-            --glass-bg: rgba(0, 255, 157, 0.08);
-            --glass-border: rgba(0, 255, 157, 0.2);
+            --color-white: #FFFFFF;
+            --color-black: #1A1A1A;
+            --color-gray-600: #666666;
+            --color-gray-100: #F5F5F5;
+            --color-blue: #0066FF;
+            --color-green: #00CC66;
+            --color-orange: #FF6600;
+            --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            --spacing-3xl: 4rem;
+            --container-mobile: calc(100% - 2rem);
+            --container-tablet: min(90%, 768px);
+            --container-desktop: min(80%, 1200px);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.3s ease;
         }
-
-        /* Light mode variables */
-        :root.light-mode {
-            --primary: #2c5aa0;
-            --primary-dark: #1e3f73;
-            --primary-light: #4a7bc8;
-            --secondary: #f8f9fa;
-            --accent: #ff6b35;
-            --accent-dark: #e55a2b;
-            --luxury-gold: #8b4513;
-            --luxury-purple: #4b0082;
-            --luxury-platinum: #2c3e50;
-            --error: #dc3545;
-            --warning: #ffc107;
-            --success: #28a745;
-            --info: #17a2b8;
-            --terminal-bg: rgba(248, 249, 250, 0.98);
-            --terminal-border: rgba(44, 90, 160, 0.4);
-            --text: #2c3e50;
-            --text-dark: #34495e;
-            --text-darker: #7f8c8d;
-            --text-light: #3498db;
-            --section-divider: rgba(44, 90, 160, 0.3);
-            --grid-color: rgba(44, 90, 160, 0.1);
-            --scan-line: rgba(44, 90, 160, 0.05);
-            --glass-bg: rgba(44, 90, 160, 0.08);
-            --glass-border: rgba(44, 90, 160, 0.2);
+        
+        /* Dark mode variables */
+        :root.dark {
+            --color-white: #0A0A0A;
+            --color-black: #E5E5E5;
+            --color-gray-600: #999999;
+            --color-gray-100: #1A1A1A;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: var(--font-main);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
+        
+        /* Base Styles */
         html {
             scroll-behavior: smooth;
+            font-size: clamp(16px, 2.5vw, 18px);
         }
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow-x: hidden;
-            transition: all 0.5s ease;
-        }
-
+        
         body {
-            background-color: var(--secondary);
-            color: var(--text);
-            background-image: 
-                /* Enhanced grid pattern */
-                linear-gradient(rgba(0, 255, 157, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 157, 0.03) 1px, transparent 1px),
-                /* Luxury gradients */
-                radial-gradient(circle at 15% 25%, rgba(0, 255, 157, 0.08) 0%, transparent 30%),
-                radial-gradient(circle at 85% 75%, rgba(255, 215, 0, 0.06) 0%, transparent 30%),
-                radial-gradient(circle at 50% 50%, rgba(106, 13, 173, 0.04) 0%, transparent 50%),
-                /* Base gradient */
-                linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 5, 15, 0.98));
-            background-size: 
-                50px 50px,
-                50px 50px,
-                100% 100%,
-                100% 100%,
-                100% 100%,
-                100% 100%;
-            min-height: 100vh;
-            position: relative;
+            background-color: var(--color-white);
+            color: var(--color-black);
+            font-family: var(--font-system);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color var(--transition-normal), color var(--transition-normal);
         }
-
-        body.light-mode {
-            background-image: 
-                linear-gradient(rgba(44, 90, 160, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(44, 90, 160, 0.03) 1px, transparent 1px),
-                radial-gradient(circle at 15% 25%, rgba(44, 90, 160, 0.08) 0%, transparent 30%),
-                radial-gradient(circle at 85% 75%, rgba(255, 107, 53, 0.06) 0%, transparent 30%),
-                radial-gradient(circle at 50% 50%, rgba(75, 0, 130, 0.04) 0%, transparent 50%),
-                linear-gradient(135deg, rgba(248, 249, 250, 0.95), rgba(240, 245, 250, 0.98));
+        
+        /* Layout Components */
+        .container {
+            width: var(--container-mobile);
+            max-width: var(--container-desktop);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
         }
-
-        /* Enhanced scan line effect */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), var(--luxury-gold), transparent);
-            animation: scanLine 4s linear infinite;
-            z-index: 1000;
-            pointer-events: none;
+        
+        @media (min-width: 768px) {
+            .container {
+                width: var(--container-tablet);
+            }
         }
-
-        /* Subtle CRT effect */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                var(--scan-line) 2px,
-                var(--scan-line) 4px
-            );
-            pointer-events: none;
-            z-index: 999;
-            animation: flicker 0.15s infinite linear alternate;
-            opacity: 0.3;
+        
+        @media (min-width: 1200px) {
+            .container {
+                width: var(--container-desktop);
+            }
         }
-
-        /* ===== ENHANCED TERMINAL WINDOW ===== */
-        .terminal-container {
+        
+        /* Header */
+        .header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            padding: 8px;
-            display: flex;
-            flex-direction: column;
-            z-index: 10;
-        }
-
-        .terminal {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background: var(--terminal-bg);
-            border: 2px solid var(--terminal-border);
-            border-radius: 8px;
-            box-shadow: 
-                0 0 50px rgba(0, 255, 157, 0.4),
-                inset 0 0 30px rgba(0, 255, 157, 0.1),
-                0 0 100px rgba(0, 255, 157, 0.2);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.5s ease;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-gray-100);
+            z-index: 1000;
+            transition: all var(--transition-normal);
         }
-
-        body.light-mode .terminal {
-            box-shadow: 
-                0 0 50px rgba(44, 90, 160, 0.4),
-                inset 0 0 30px rgba(44, 90, 160, 0.1),
-                0 0 100px rgba(44, 90, 160, 0.2);
+        
+        :root.dark .header {
+            background: rgba(10, 10, 10, 0.95);
         }
-
-        .terminal::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 30% 20%, rgba(0, 255, 157, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .terminal-header {
+        
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 1.5rem;
-            background: rgba(0, 10, 20, 0.9);
-            border-bottom: 2px solid rgba(0, 255, 157, 0.3);
-            font-family: var(--font-heading);
-            font-size: 0.9rem;
-            position: relative;
-            z-index: 2;
-            backdrop-filter: blur(10px);
+            padding: var(--spacing-md) 0;
         }
-
-        body.light-mode .terminal-header {
-            background: rgba(240, 245, 250, 0.9);
-            border-bottom: 2px solid rgba(44, 90, 160, 0.3);
-        }
-
-        .terminal-header::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary), var(--luxury-gold), transparent);
-            animation: pulse 2s ease-in-out infinite alternate;
-        }
-
-        .terminal-title {
-            color: var(--primary);
-            font-family: var(--font-heading);
-            font-size: 1.1rem;
+        
+        .logo {
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
             font-weight: 700;
-            letter-spacing: 1px;
+            color: var(--color-blue);
+            text-decoration: none;
+            font-family: var(--font-mono);
+        }
+        
+        .header-controls {
             display: flex;
-            align-items: center;
-            text-shadow: var(--glow);
-        }
-
-        .terminal-title::before {
-            content: '>';
-            margin-right: 10px;
-            color: var(--accent);
-            font-size: 1.3rem;
-            animation: blink 1.5s infinite;
-        }
-
-        .verified-badge {
-            color: var(--luxury-gold);
-            margin-left: 12px;
-            font-size: 0.8rem;
-            text-shadow: var(--glow-gold);
-        }
-
-        .terminal-controls {
-            display: flex;
-            gap: 15px;
+            gap: var(--spacing-sm);
             align-items: center;
         }
-
-        .control-btn {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .control-btn:hover {
-            transform: scale(1.2);
-        }
-
-        .control-btn::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 50%;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .control-btn:hover::before {
-            opacity: 1;
-        }
-
-        .close { 
-            background: #ff0033; 
-            box-shadow: 0 0 10px #ff0033, inset 0 0 5px rgba(255, 255, 255, 0.2);
-        }
-        .close::before { background: radial-gradient(circle, #ff0033, transparent); }
-
-        .minimize { 
-            background: #ff6600; 
-            box-shadow: 0 0 10px #ff6600, inset 0 0 5px rgba(255, 255, 255, 0.2);
-        }
-        .minimize::before { background: radial-gradient(circle, #ff6600, transparent); }
-
-        .maximize { 
-            background: #00ff33; 
-            box-shadow: 0 0 10px #00ff33, inset 0 0 5px rgba(255, 255, 255, 0.2);
-        }
-        .maximize::before { background: radial-gradient(circle, #00ff33, transparent); }
-
-        /* Enhanced language toggle button */
-        .language-toggle {
-            background: var(--glass-bg);
-            border: 2px solid var(--glass-border);
-            color: var(--text);
-            font-size: 1rem;
-            cursor: pointer;
-            margin-left: 20px;
-            padding: 8px 16px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            font-weight: 600;
-            display: flex;
+        
+        .btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            border: 1px solid transparent;
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: var(--spacing-xs);
         }
-
-        .language-toggle:hover {
-            color: var(--luxury-gold);
-            border-color: var(--luxury-gold);
-            box-shadow: var(--glow-gold);
-            transform: scale(1.05);
+        
+        .btn-secondary {
+            background: var(--color-gray-100);
+            color: var(--color-black);
+            border-color: var(--color-gray-100);
         }
-
-        .language-toggle::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
-            transition: left 0.5s ease;
+        
+        .btn-secondary:hover {
+            background: var(--color-gray-600);
+            color: var(--color-white);
+            transform: translateY(-1px);
         }
-
-        .language-toggle:hover::before {
-            left: 100%;
+        
+        /* Main Content */
+        .main {
+            padding-top: 80px;
         }
-
-        /* Theme toggle button */
-        .theme-toggle {
-            background: var(--glass-bg);
-            border: 2px solid var(--glass-border);
-            color: var(--text);
-            font-size: 1.1rem;
-            cursor: pointer;
-            margin-left: 15px;
-            padding: 8px 12px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
+        
+        .section {
+            padding: var(--spacing-3xl) 0;
         }
-
-        .theme-toggle:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-            box-shadow: var(--glow-blue);
-            transform: scale(1.05);
+        
+        .section:first-child {
+            padding-top: var(--spacing-2xl);
         }
-
-        .theme-toggle::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 128, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .theme-toggle:hover::before {
-            left: 100%;
-        }
-
-        .terminal-body {
-            padding: 2rem;
-            height: 100%;
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary) var(--secondary);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            z-index: 2;
-        }
-
-        .terminal-body::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .terminal-body::-webkit-scrollbar-track {
-            background: var(--secondary);
-            border-radius: 4px;
-        }
-
-        .terminal-body::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--primary), var(--luxury-gold));
-            border-radius: 4px;
-            box-shadow: inset 0 0 5px rgba(0, 255, 157, 0.5);
-        }
-
-        .terminal-body::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, var(--primary-light), var(--luxury-gold));
-        }
-
-        /* ===== ENHANCED TERMINAL ELEMENTS ===== */
-        .prompt {
-            color: var(--accent);
-            margin-right: 10px;
-            font-weight: 700;
-            text-shadow: var(--glow-blue);
-        }
-
-        .command {
-            color: var(--primary);
-            font-weight: 600;
-            text-shadow: var(--glow);
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 18px;
-            background: var(--primary);
-            animation: blink 1s infinite;
-            vertical-align: middle;
-            margin-left: 5px;
-            box-shadow: var(--glow);
-        }
-
-        .output {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-            border-left: 2px solid var(--glass-border);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            position: relative;
-        }
-
-        .output::before {
-            content: '';
-            position: absolute;
-            left: -2px;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--primary), var(--luxury-gold));
-            animation: pulse 3s ease-in-out infinite alternate;
-        }
-
-        .error { 
-            color: var(--error); 
-            text-shadow: 0 0 10px rgba(255, 85, 85, 0.5);
-        }
-        .warning { 
-            color: var(--warning); 
-            text-shadow: 0 0 10px rgba(255, 170, 0, 0.5);
-        }
-        .success { 
-            color: var(--success); 
-            text-shadow: 0 0 10px rgba(0, 255, 51, 0.5);
-        }
-        .info { 
-            color: var(--info); 
-            text-shadow: 0 0 10px rgba(0, 153, 255, 0.5);
-        }
-
-        /* Enhanced section headers */
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin: 3rem 0 2rem;
-            padding: 1.5rem 0;
-            border-bottom: 2px solid var(--section-divider);
-            position: relative;
-            background: var(--glass-bg);
-            border-radius: 8px;
-            padding-left: 1.5rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .section-header::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -2px;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--luxury-gold));
-            animation: expandLine 2s ease-out forwards;
-        }
-
-        .section-icon {
-            margin-right: 15px;
-            color: var(--luxury-gold);
-            font-size: 1.5rem;
-            text-shadow: var(--glow-gold);
-            animation: iconPulse 2s ease-in-out infinite alternate;
-        }
-
-        .section-header h2 {
-            color: var(--primary);
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            font-weight: 700;
-            text-shadow: var(--glow);
-        }
-
-        /* ===== ENHANCED PROFILE SECTION ===== */
-        .profile-container {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            position: relative;
-            padding: 3rem;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            backdrop-filter: blur(15px);
-        }
-
-        .profile-img-container {
-            position: relative;
-            flex-shrink: 0;
-            cursor: pointer;
-            transition: all 0.4s ease;
-        }
-
-        .profile-img-container:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary);
-            box-shadow: 
-                0 0 30px rgba(0, 255, 157, 0.6),
-                inset 0 0 20px rgba(0, 255, 157, 0.3),
-                0 0 60px rgba(0, 255, 157, 0.4);
-            transition: all 0.4s ease;
-        }
-
-        .profile-img-container::before {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--luxury-gold), transparent 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0.2;
-            z-index: -1;
-            animation: pulse 4s infinite alternate;
-        }
-
-        .profile-img-container::after {
-            content: '';
-            position: absolute;
-            width: 190px;
-            height: 190px;
-            border: 2px dashed var(--luxury-gold);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0.3;
-            animation: rotate 20s linear infinite;
-        }
-
-        /* Enhanced music player button */
-        .music-player-btn {
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--primary), var(--luxury-gold));
-            color: var(--secondary);
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 1.5rem;
-            cursor: pointer;
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            min-height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 
-                0 0 20px rgba(0, 255, 157, 0.8),
-                inset 0 0 10px rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            z-index: 5;
         }
-
-        .music-player-btn:hover {
-            transform: translateX(-50%) scale(1.2);
-            box-shadow: 
-                0 0 30px rgba(255, 215, 0, 1),
-                inset 0 0 15px rgba(255, 255, 255, 0.3);
+        
+        .hero-content {
+            max-width: 800px;
         }
-
-        .music-player-btn.playing {
-            background: linear-gradient(135deg, var(--luxury-gold), var(--primary));
-            animation: musicPulse 1s ease-in-out infinite alternate;
-        }
-
-        .profile-info {
-            flex-grow: 1;
-        }
-
-        .profile-name {
-            color: var(--primary);
-            font-family: var(--font-heading);
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            text-shadow: var(--glow);
-        }
-
-        .profile-title {
-            color: var(--luxury-gold);
-            font-family: var(--font-heading);
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-shadow: var(--glow-gold);
-        }
-
-        .profile-description {
-            color: var(--text);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            max-width: 900px;
-            text-shadow: 0 0 5px rgba(0, 255, 157, 0.3);
-            font-family: var(--font-heading);
-        }
-
-        /* Enhanced watermark */
-        .watermark {
-            position: absolute;
-            right: 30px;
-            top: 30px;
-            width: 120px;
-            height: 120px;
-            opacity: 0.6;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            z-index: 10;
+        
+        .hero-image {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            margin: 0 auto var(--spacing-xl);
+            object-fit: cover;
+            border: 3px solid var(--color-blue);
+            box-shadow: var(--shadow-lg);
+            transition: transform var(--transition-normal);
         }
-
-        .watermark:hover {
-            opacity: 1;
-            transform: rotate(360deg) scale(1.2);
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+        
+        .hero-image:hover {
+            transform: scale(1.05);
         }
-
-        /* ===== GLASSMORPHISM CARDS ===== */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-black);
+            line-height: 1.1;
         }
-
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-            transition: left 0.6s ease;
+        
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: var(--color-blue);
+            margin-bottom: var(--spacing-lg);
+            font-weight: 600;
         }
-
-        .glass-card:hover::before {
-            left: 100%;
+        
+        .hero-description {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--color-gray-600);
+            margin-bottom: var(--spacing-xl);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
-        .glass-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 
-                0 20px 40px rgba(0, 255, 157, 0.2),
-                inset 0 0 30px rgba(255, 215, 0, 0.1);
-            border-color: var(--luxury-gold);
+        
+        .hero-cta {
+            display: inline-flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            justify-content: center;
         }
-
-        /* ===== ENHANCED SKILLS SECTION ===== */
+        
+        .btn-primary {
+            background: var(--color-blue);
+            color: var(--color-white);
+            padding: var(--spacing-md) var(--spacing-xl);
+            font-size: 1.125rem;
+            font-weight: 600;
+            border-radius: var(--radius-lg);
+        }
+        
+        .btn-primary:hover {
+            background: #0052CC;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--color-black);
+            border: 2px solid var(--color-black);
+            padding: calc(var(--spacing-md) - 2px) calc(var(--spacing-xl) - 2px);
+            font-size: 1.125rem;
+            font-weight: 600;
+            border-radius: var(--radius-lg);
+        }
+        
+        .btn-outline:hover {
+            background: var(--color-black);
+            color: var(--color-white);
+            transform: translateY(-2px);
+        }
+        
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-3xl);
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-black);
+        }
+        
+        .section-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--color-gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
         }
-
-        .skill-item {
-            background: var(--glass-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(15px);
+        
+        .skill-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-100);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
         }
-
-        .skill-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.1), transparent);
-            transition: left 0.6s ease;
+        
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-blue);
         }
-
-        .skill-item:hover::before {
-            left: 100%;
+        
+        :root.dark .skill-card {
+            background: var(--color-gray-100);
+            border-color: #333;
         }
-
-        .skill-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 
-                0 15px 35px rgba(0, 255, 157, 0.3),
-                inset 0 0 25px rgba(255, 215, 0, 0.1);
-            border-color: var(--primary);
-        }
-
+        
         .skill-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-black);
+        }
+        
+        .skill-level {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .skill-percentage {
             font-weight: 600;
-            color: var(--text-light);
-            font-family: var(--font-heading);
+            color: var(--color-blue);
         }
-
-        .skill-level-container {
-            height: 10px;
-            background: rgba(0, 255, 157, 0.2);
-            border-radius: 5px;
+        
+        .skill-bar {
+            height: 8px;
+            background: var(--color-gray-100);
+            border-radius: var(--radius-sm);
             overflow: hidden;
-            margin-top: 10px;
-            position: relative;
         }
-
-        .skill-level {
+        
+        .skill-progress {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--luxury-gold));
-            border-radius: 5px;
-            position: relative;
-            transition: width 2s ease;
-            box-shadow: 0 0 15px rgba(0, 255, 157, 0.5);
+            background: linear-gradient(90deg, var(--color-blue), var(--color-green));
+            border-radius: var(--radius-sm);
+            transition: width 1s ease-out;
+            transform-origin: left;
         }
-
-        .skill-level::after {
-            content: attr(data-level);
-            position: absolute;
-            right: 10px;
-            top: -30px;
-            font-size: 0.9rem;
-            color: var(--luxury-gold);
-            font-weight: 700;
-            text-shadow: var(--glow-gold);
-        }
-
-        /* ===== ENHANCED PROJECTS SECTION ===== */
+        
+        /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
         }
-
+        
         .project-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 2.5rem;
-            transition: all 0.4s ease;
-            position: relative;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-100);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
         }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 255, 157, 0.1) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
+        
         .project-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 
-                0 20px 45px rgba(0, 128, 255, 0.3),
-                inset 0 0 30px rgba(255, 215, 0, 0.1);
-            border-color: var(--accent);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
         }
-
+        
+        :root.dark .project-card {
+            background: var(--color-gray-100);
+            border-color: #333;
+        }
+        
+        .project-content {
+            padding: var(--spacing-xl);
+        }
+        
         .project-title {
-            color: var(--accent);
             font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-family: var(--font-heading);
             font-weight: 700;
-            text-shadow: var(--glow-blue);
+            margin-bottom: var(--spacing-md);
+            color: var(--color-black);
         }
-
+        
         .project-description {
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            font-size: 1rem;
-            font-family: var(--font-heading);
+            color: var(--color-gray-600);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.7;
         }
-
+        
         .project-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
         }
-
+        
         .tech-tag {
-            background: rgba(0, 128, 255, 0.15);
-            color: var(--text);
-            padding: 0.6rem 1.2rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            border: 1px solid var(--accent);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
+            background: var(--color-gray-100);
+            color: var(--color-black);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
             font-weight: 500;
         }
-
-        .tech-tag::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 128, 255, 0.3), transparent);
-            transition: left 0.5s ease;
+        
+        :root.dark .tech-tag {
+            background: #333;
+            color: var(--color-white);
         }
-
-        .tech-tag:hover::before {
-            left: 100%;
+        
+        .project-links {
+            display: flex;
+            gap: var(--spacing-md);
         }
-
-        .tech-tag:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 128, 255, 0.4);
-            border-color: var(--luxury-gold);
-            color: var(--luxury-gold);
+        
+        .link-btn {
+            color: var(--color-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--color-blue);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
         }
-
-        /* ===== ENHANCED ANIMATIONS ===== */
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
+        
+        .link-btn:hover {
+            background: var(--color-blue);
+            color: var(--color-white);
         }
-
-        @keyframes pulse {
-            0% { opacity: 0.3; transform: scale(1); }
-            100% { opacity: 0.7; transform: scale(1.05); }
+        
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
         }
-
-        @keyframes scanLine {
-            0% { top: 0; }
-            100% { top: 100%; }
+        
+        .contact-card {
+            text-align: center;
+            padding: var(--spacing-xl);
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-100);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
         }
-
-        @keyframes flicker {
-            0% { opacity: 1; }
-            100% { opacity: 0.98; }
+        
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-blue);
         }
-
-        @keyframes expandLine {
-            0% { width: 0; }
-            100% { width: 100%; }
+        
+        :root.dark .contact-card {
+            background: var(--color-gray-100);
+            border-color: #333;
         }
-
-        @keyframes iconPulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+        
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto var(--spacing-md);
+            background: var(--color-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-size: 1.5rem;
         }
-
-        @keyframes rotate {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        
+        .contact-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-black);
         }
-
-        @keyframes musicPulse {
-            0% { transform: translateX(-50%) scale(1); }
-            100% { transform: translateX(-50%) scale(1.1); }
+        
+        .contact-info {
+            color: var(--color-gray-600);
         }
-
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
+        
+        .contact-link {
+            color: var(--color-blue);
+            text-decoration: none;
+            font-weight: 500;
         }
-
+        
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--color-gray-100);
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+            color: var(--color-gray-600);
+            border-top: 1px solid var(--color-gray-100);
+        }
+        
+        :root.dark .footer {
+            background: #0F0F0F;
+            border-color: #333;
+        }
+        
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-blue { color: var(--color-blue); }
+        .text-green { color: var(--color-green); }
+        .text-orange { color: var(--color-orange); }
+        .font-mono { font-family: var(--font-mono); }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .mb-0 { margin-bottom: 0; }
+        .mb-sm { margin-bottom: var(--spacing-sm); }
+        .mb-md { margin-bottom: var(--spacing-md); }
+        .mb-lg { margin-bottom: var(--spacing-lg); }
+        .mb-xl { margin-bottom: var(--spacing-xl); }
+        
+        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -972,41 +527,27 @@
                 transform: translateY(0);
             }
         }
-
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
+        
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
         }
-
-        /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 768px) {
-            .terminal-container {
-                padding: 5px;
-            }
-            
-            .terminal-header {
-                padding: 0.8rem 1rem;
-                font-size: 0.8rem;
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-            
-            .terminal-body {
-                padding: 1.5rem;
-            }
-            
-            .profile-container {
+        
+        .animate-delay-1 { animation-delay: 0.1s; }
+        .animate-delay-2 { animation-delay: 0.2s; }
+        .animate-delay-3 { animation-delay: 0.3s; }
+        
+        /* Responsive Design */
+        @media (max-width: 767px) {
+            .hero-cta {
                 flex-direction: column;
-                text-align: center;
-                gap: 2rem;
-                padding: 2rem;
+                align-items: center;
             }
             
-            .profile-name {
-                font-size: 2.5rem;
-            }
-            
-            .profile-title {
-                font-size: 1.4rem;
+            .btn-primary,
+            .btn-outline {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
             }
             
             .skills-grid {
@@ -1017,328 +558,232 @@
                 grid-template-columns: 1fr;
             }
             
-            .watermark {
-                width: 80px;
-                height: 80px;
-                right: 15px;
-                top: 15px;
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
-
-            .language-toggle,
-            .theme-toggle {
-                padding: 6px 10px;
-                font-size: 0.9rem;
-                margin-left: 10px;
+            
+            .header-content {
+                padding: var(--spacing-sm) 0;
             }
-
-            .section-header h2 {
-                font-size: 1.5rem;
-            }
-
-            .profile-img {
-                width: 150px;
-                height: 150px;
-            }
-
-            .profile-img-container::before {
-                width: 170px;
-                height: 170px;
-            }
-
-            .profile-img-container::after {
-                width: 160px;
-                height: 160px;
+            
+            .hero-image {
+                width: 120px;
+                height: 120px;
             }
         }
-
-        /* ===== LANGUAGE SPECIFIC STYLES ===== */
-        [dir="rtl"] {
-            text-align: right;
+        
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            html {
+                scroll-behavior: auto;
+            }
         }
-
-        [dir="rtl"] .terminal-title::before {
-            content: '<';
-            margin-left: 10px;
-            margin-right: 0;
+        
+        /* High Contrast Mode */
+        @media (prefers-contrast: high) {
+            .btn-secondary {
+                border-color: var(--color-black);
+            }
+            
+            .skill-card,
+            .project-card,
+            .contact-card {
+                border-width: 2px;
+            }
         }
-
-        [dir="rtl"] .section-icon {
-            margin-left: 15px;
-            margin-right: 0;
-        }
-
-        [dir="rtl"] .output {
-            padding-right: 1.5rem;
-            padding-left: 0;
-            border-right: 2px solid var(--glass-border);
-            border-left: none;
-        }
-
-        [dir="rtl"] .output::before {
-            right: -2px;
-            left: auto;
-        }
-
-        [dir="rtl"] .prompt {
-            margin-left: 10px;
-            margin-right: 0;
-        }
-
-        /* ===== HIDDEN CONTENT FOR LANGUAGE SWITCHING ===== */
-        .lang-content {
-            display: block;
-        }
-
-        .lang-content.hidden {
-            display: none;
-        }
-
-        /* ===== LOADING ANIMATION ===== */
-        .loading {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-
-        .loading.loaded {
-            opacity: 1;
-            transform: translateY(0);
+        
+        /* Print Styles */
+        @media print {
+            .header,
+            .btn,
+            .hero-cta {
+                display: none;
+            }
+            
+            .main {
+                padding-top: 0;
+            }
+            
+            .section {
+                padding: var(--spacing-lg) 0;
+                break-inside: avoid;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="terminal-container">
-        <div class="terminal">
-            <div class="terminal-header">
-                <div class="terminal-title">
-                    <span class="lang-content" data-en="SantaDevX v3.0.0 Pro" data-ar="SantaDevX v3.0.0 Pro">SantaDevX v3.0.0 Pro</span>
-                    <span class="verified-badge">
-                        <i class="fas fa-crown"></i> 
-                        <span class="lang-content" data-en="Verified Pro" data-ar="محترف معتمد">Verified Pro</span>
-                    </span>
-                </div>
-                <div class="terminal-controls">
-                    <div class="control-btn close"></div>
-                    <div class="control-btn minimize"></div>
-                    <div class="control-btn maximize"></div>
-                    <button class="language-toggle" onclick="toggleLanguage()">
-                        <i class="fas fa-globe"></i>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">SantaDevX</a>
+                <div class="header-controls">
+                    <button class="btn btn-secondary" id="langToggle" aria-label="Toggle Language">
                         <span id="langText">العربية</span>
                     </button>
-                    <button class="theme-toggle" onclick="toggleTheme()">
-                        <i class="fas fa-adjust"></i>
+                    <button class="btn btn-secondary" id="themeToggle" aria-label="Toggle Theme">
+                        <span id="themeIcon">🌙</span>
                     </button>
                 </div>
             </div>
-            
-            <div class="terminal-body">
-                <!-- Command prompt -->
-                <div>
-                    <span class="prompt">$</span>
-                    <span class="command lang-content" data-en="cat profile.info --extended" data-ar="cat profile.info --extended">cat profile.info --extended</span>
-                    <span class="cursor"></span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero section" id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <img src="santa.png" alt="SantaDevX Profile" class="hero-image" loading="eager">
+                    <h1 class="hero-title">
+                        <span class="lang-content" data-en="SantaDevX" data-ar="SantaDevX">SantaDevX</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        <span class="lang-content" 
+                              data-en="Senior Full Stack Developer & AI Specialist" 
+                              data-ar="مطور ويب متقدم ومتخصص في الذكاء الاصطناعي">
+                            Senior Full Stack Developer & AI Specialist
+                        </span>
+                    </p>
+                    <p class="hero-description">
+                        <span class="lang-content" 
+                              data-en="Passionate about creating high-performance web applications and innovative AI solutions that drive business growth and exceptional user experiences."
+                              data-ar="شغوف بإنشاء تطبيقات ويب عالية الأداء وحلول ذكاء اصطناعي مبتكرة تدفع نمو الأعمال وتجارب المستخدم الاستثنائية.">
+                            Passionate about creating high-performance web applications and innovative AI solutions that drive business growth and exceptional user experiences.
+                        </span>
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn btn-primary">
+                            <span class="lang-content" data-en="Get In Touch" data-ar="تواصل معي">Get In Touch</span>
+                        </a>
+                        <a href="#projects" class="btn btn-outline">
+                            <span class="lang-content" data-en="View Projects" data-ar="عرض المشاريع">View Projects</span>
+                        </a>
+                    </div>
                 </div>
-                
-                <!-- Profile Section -->
-                <div class="output">
-                    <div class="profile-container glass-card loading">
-                        <div class="profile-img-container">
-                            <img src="santa.png" alt="SantaDevX Profile" class="profile-img">
-                            <button class="music-player-btn" onclick="toggleMusic()">
-                                <i class="fas fa-play" id="musicIcon"></i>
-                            </button>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section" id="skills">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="lang-content" data-en="Technical Skills" data-ar="المهارات التقنية">Technical Skills</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        <span class="lang-content" 
+                              data-en="Expertise in modern technologies and frameworks for building scalable applications"
+                              data-ar="خبرة في التقنيات والأطر الحديثة لبناء تطبيقات قابلة للتوسع">
+                            Expertise in modern technologies and frameworks for building scalable applications
+                        </span>
+                    </p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-name">JavaScript/TypeScript</div>
+                        <div class="skill-level">
+                            <span>Advanced</span>
+                            <span class="skill-percentage">95%</span>
                         </div>
-                        <div class="profile-info">
-                            <h1 class="profile-name">
-                                SantaDevX
-                                <span class="verified-badge">
-                                    <i class="fas fa-crown"></i>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-name">React/Next.js</div>
+                        <div class="skill-level">
+                            <span>Expert</span>
+                            <span class="skill-percentage">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-name">Node.js/Express</div>
+                        <div class="skill-level">
+                            <span>Advanced</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-name">Python/AI/ML</div>
+                        <div class="skill-level">
+                            <span>Advanced</span>
+                            <span class="skill-percentage">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-name">UI/UX Design</div>
+                        <div class="skill-level">
+                            <span>Proficient</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-name">Cloud/DevOps</div>
+                        <div class="skill-level">
+                            <span>Intermediate</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="lang-content" data-en="Featured Projects" data-ar="المشاريع المميزة">Featured Projects</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        <span class="lang-content" 
+                              data-en="A showcase of recent work demonstrating technical expertise and innovation"
+                              data-ar="عرض للأعمال الحديثة التي تُظهر الخبرة التقنية والابتكار">
+                            A showcase of recent work demonstrating technical expertise and innovation
+                        </span>
+                    </p>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">
+                                <span class="lang-content" 
+                                      data-en="AI-Powered E-Commerce Platform" 
+                                      data-ar="منصة تجارة إلكترونية مدعومة بالذكاء الاصطناعي">
+                                    AI-Powered E-Commerce Platform
                                 </span>
-                            </h1>
-                            <h2 class="profile-title lang-content" 
-                                data-en="Senior Full Stack Developer & AI Specialist" 
-                                data-ar="مطور ويب متقدم ومتخصص في الذكاء الاصطناعي">
-                                Senior Full Stack Developer & AI Specialist
-                            </h2>
-                            <p class="profile-description lang-content" 
-                               data-en="Passionate web developer specializing in cutting-edge applications using the latest technologies and artificial intelligence. I focus on creating exceptional user experiences and innovative technical solutions that blend attractive design with high performance. Extensive experience in frontend and backend development, UI/UX design, and AI applications. Expert in modern web technologies like React, Vue.js, Node.js, Python, and artificial intelligence technologies."
-                               data-ar="مطور ويب متخصص في تطوير التطبيقات الحديثة باستخدام أحدث التقنيات والذكاء الاصطناعي. أركز على إنشاء تجارب مستخدم استثنائية وحلول تقنية مبتكرة تدمج بين التصميم الجذاب والأداء العالي. خبرة واسعة في تطوير الواجهات الأمامية والخلفية، وتصميم واجهات المستخدم، وتطبيقات الذكاء الاصطناعي. متخصص في تقنيات الويب الحديثة مثل React، Vue.js، Node.js، Python، وتقنيات الذكاء الاصطناعي.">
-                                Passionate web developer specializing in cutting-edge applications using the latest technologies and artificial intelligence. I focus on creating exceptional user experiences and innovative technical solutions that blend attractive design with high performance. Extensive experience in frontend and backend development, UI/UX design, and AI applications. Expert in modern web technologies like React, Vue.js, Node.js, Python, and artificial intelligence technologies.
-                            </p>
-                        </div>
-                        <img src="santa.png" alt="Watermark" class="watermark">
-                    </div>
-                </div>
-
-                <!-- Statistics Section -->
-                <div class="section-header loading">
-                    <i class="fas fa-chart-bar section-icon"></i>
-                    <h2 class="lang-content" data-en="Professional Statistics" data-ar="الإحصائيات المهنية">Professional Statistics</h2>
-                </div>
-                <div class="output">
-                    <div class="stats-grid">
-                        <div class="glass-card loading">
-                            <div class="stat-number">150+</div>
-                            <div class="stat-label lang-content" data-en="Completed Projects" data-ar="مشروع مكتمل">Completed Projects</div>
-                        </div>
-                        <div class="glass-card loading">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label lang-content" data-en="Satisfied Clients" data-ar="عميل راضي">Satisfied Clients</div>
-                        </div>
-                        <div class="glass-card loading">
-                            <div class="stat-number">4+</div>
-                            <div class="stat-label lang-content" data-en="Years Experience" data-ar="سنوات خبرة">Years Experience</div>
-                        </div>
-                        <div class="glass-card loading">
-                            <div class="stat-number">25+</div>
-                            <div class="stat-label lang-content" data-en="Technologies Mastered" data-ar="تقنية متقنة">Technologies Mastered</div>
-                        </div>
-                        <div class="glass-card loading">
-                            <div class="stat-number">99%</div>
-                            <div class="stat-label lang-content" data-en="Success Rate" data-ar="معدل النجاح">Success Rate</div>
-                        </div>
-                        <div class="glass-card loading">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label lang-content" data-en="Technical Support" data-ar="دعم فني">Technical Support</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Skills Section -->
-                <div class="section-header loading">
-                    <i class="fas fa-code section-icon"></i>
-                    <h2 class="lang-content" data-en="Technical Skills & Expertise" data-ar="المهارات التقنية والخبرات">Technical Skills & Expertise</h2>
-                </div>
-                <div class="output">
-                    <div class="skills-grid">
-                        <div class="skill-item loading">
-                            <div class="skill-name">
-                                <span>JavaScript/TypeScript</span>
-                                <span>98%</span>
-                            </div>
-                            <div class="skill-level-container">
-                                <div class="skill-level" data-level="98%" style="width: 98%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item loading">
-                            <div class="skill-name">
-                                <span>React.js/Next.js</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="skill-level-container">
-                                <div class="skill-level" data-level="95%" style="width: 95%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item loading">
-                            <div class="skill-name">
-                                <span>Vue.js/Nuxt.js</span>
-                                <span>92%</span>
-                            </div>
-                            <div class="skill-level-container">
-                                <div class="skill-level" data-level="92%" style="width: 92%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item loading">
-                            <div class="skill-name">
-                                <span>Node.js/Express</span>
-                                <span>94%</span>
-                            </div>
-                            <div class="skill-level-container">
-                                <div class="skill-level" data-level="94%" style="width: 94%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item loading">
-                            <div class="skill-name">
-                                <span>Python/Django/FastAPI</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-level-container">
-                                <div class="skill-level" data-level="90%" style="width: 90%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item loading">
-                            <div class="skill-name">
-                                <span>AI/Machine Learning</span>
-                                <span>88%</span>
-                            </div>
-                            <div class="skill-level-container">
-                                <div class="skill-level" data-level="88%" style="width: 88%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item loading">
-                            <div class="skill-name">
-                                <span>UI/UX Design</span>
-                                <span>93%</span>
-                            </div>
-                            <div class="skill-level-container">
-                                <div class="skill-level" data-level="93%" style="width: 93%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item loading">
-                            <div class="skill-name">
-                                <span>Database Management</span>
-                                <span>87%</span>
-                            </div>
-                            <div class="skill-level-container">
-                                <div class="skill-level" data-level="87%" style="width: 87%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item loading">
-                            <div class="skill-name">
-                                <span>DevOps/Cloud Computing</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-level-container">
-                                <div class="skill-level" data-level="85%" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item loading">
-                            <div class="skill-name">
-                                <span>Mobile Development</span>
-                                <span>82%</span>
-                            </div>
-                            <div class="skill-level-container">
-                                <div class="skill-level" data-level="82%" style="width: 82%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item loading">
-                            <div class="skill-name">
-                                <span>Blockchain Development</span>
-                                <span>78%</span>
-                            </div>
-                            <div class="skill-level-container">
-                                <div class="skill-level" data-level="78%" style="width: 78%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item loading">
-                            <div class="skill-name">
-                                <span>Cybersecurity</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="skill-level-container">
-                                <div class="skill-level" data-level="80%" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projects Section -->
-                <div class="section-header loading">
-                    <i class="fas fa-project-diagram section-icon"></i>
-                    <h2 class="lang-content" data-en="Featured Projects & Portfolio" data-ar="المشاريع المميزة والمعرض">Featured Projects & Portfolio</h2>
-                </div>
-                <div class="output">
-                    <div class="projects-grid">
-                        <div class="project-card loading">
-                            <h3 class="project-title lang-content" 
-                                data-en="AI-Powered E-Commerce Platform" 
-                                data-ar="منصة تجارة إلكترونية مدعومة بالذكاء الاصطناعي">
-                                AI-Powered E-Commerce Platform
                             </h3>
-                            <p class="project-description lang-content" 
-                               data-en="Advanced e-commerce platform using artificial intelligence to personalize shopping experience. Features intelligent recommendation system, user behavior analysis, and automatic inventory management. Supports multiple payment methods and integrates with global shipping systems."
-                               data-ar="منصة تجارة إلكترونية متطورة تستخدم الذكاء الاصطناعي لتخصيص تجربة التسوق. تتضمن نظام توصيات ذكي، تحليل سلوك المستخدمين، ونظام إدارة مخزون تلقائي. دعم للدفع الإلكتروني المتعدد والتكامل مع أنظمة الشحن العالمية.">
-                                Advanced e-commerce platform using artificial intelligence to personalize shopping experience. Features intelligent recommendation system, user behavior analysis, and automatic inventory management. Supports multiple payment methods and integrates with global shipping systems.
+                            <p class="project-description">
+                                <span class="lang-content" 
+                                      data-en="Advanced e-commerce platform with AI-driven product recommendations, intelligent inventory management, and personalized shopping experiences."
+                                      data-ar="منصة تجارة إلكترونية متطورة مع توصيات منتجات مدعومة بالذكاء الاصطناعي وإدارة مخزون ذكية وتجارب تسوق مخصصة.">
+                                    Advanced e-commerce platform with AI-driven product recommendations, intelligent inventory management, and personalized shopping experiences.
+                                </span>
                             </p>
                             <div class="project-tech">
                                 <span class="tech-tag">React</span>
@@ -1346,20 +791,32 @@
                                 <span class="tech-tag">Python</span>
                                 <span class="tech-tag">TensorFlow</span>
                                 <span class="tech-tag">MongoDB</span>
-                                <span class="tech-tag">Stripe</span>
-                                <span class="tech-tag">AWS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="link-btn">
+                                    <span class="lang-content" data-en="Live Demo" data-ar="عرض مباشر">Live Demo</span>
+                                </a>
+                                <a href="#" class="link-btn">
+                                    <span class="lang-content" data-en="Source Code" data-ar="الكود المصدري">Source Code</span>
+                                </a>
                             </div>
                         </div>
-                        <div class="project-card loading">
-                            <h3 class="project-title lang-content" 
-                                data-en="Smart Task Management System" 
-                                data-ar="نظام إدارة المهام الذكي">
-                                Smart Task Management System
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">
+                                <span class="lang-content" 
+                                      data-en="Smart Task Management System" 
+                                      data-ar="نظام إدارة المهام الذكي">
+                                    Smart Task Management System
+                                </span>
                             </h3>
-                            <p class="project-description lang-content" 
-                               data-en="Intelligent task management system with team collaboration and advanced tracking features. Uses machine learning algorithms to optimize task distribution and estimate completion times. Advanced user interface with real-time notifications and interactive dashboards."
-                               data-ar="نظام إدارة مهام ذكي مع ميزات التعاون الجماعي والتتبع المتقدم. يستخدم خوارزميات التعلم الآلي لتحسين توزيع المهام وتقدير أوقات الإنجاز. واجهة مستخدم متقدمة مع إشعارات فورية ولوحات تحكم تفاعلية.">
-                                Intelligent task management system with team collaboration and advanced tracking features. Uses machine learning algorithms to optimize task distribution and estimate completion times. Advanced user interface with real-time notifications and interactive dashboards.
+                            <p class="project-description">
+                                <span class="lang-content" 
+                                      data-en="Intelligent task management with team collaboration, automated scheduling, and performance analytics using machine learning algorithms."
+                                      data-ar="إدارة مهام ذكية مع التعاون الجماعي والجدولة التلقائية وتحليلات الأداء باستخدام خوارزميات التعلم الآلي.">
+                                    Intelligent task management with team collaboration, automated scheduling, and performance analytics using machine learning algorithms.
+                                </span>
                             </p>
                             <div class="project-tech">
                                 <span class="tech-tag">Vue.js</span>
@@ -1367,931 +824,293 @@
                                 <span class="tech-tag">Socket.io</span>
                                 <span class="tech-tag">PostgreSQL</span>
                                 <span class="tech-tag">Redis</span>
-                                <span class="tech-tag">Docker</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="link-btn">
+                                    <span class="lang-content" data-en="Live Demo" data-ar="عرض مباشر">Live Demo</span>
+                                </a>
+                                <a href="#" class="link-btn">
+                                    <span class="lang-content" data-en="Source Code" data-ar="الكود المصدري">Source Code</span>
+                                </a>
                             </div>
                         </div>
-                        <div class="project-card loading">
-                            <h3 class="project-title lang-content" 
-                                data-en="Advanced AI Analytics Dashboard" 
-                                data-ar="لوحة تحليلات الذكاء الاصطناعي المتقدمة">
-                                Advanced AI Analytics Dashboard
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">
+                                <span class="lang-content" 
+                                      data-en="Real-time Analytics Dashboard" 
+                                      data-ar="لوحة تحليلات في الوقت الفعلي">
+                                    Real-time Analytics Dashboard
+                                </span>
                             </h3>
-                            <p class="project-description lang-content" 
-                               data-en="Sophisticated AI-powered dashboard for big data analysis. Provides deep analytical insights with interactive data visualizations and automated reports. Supports future predictions and trend analysis using advanced algorithms."
-                               data-ar="لوحة تحكم ذكية متطورة تستخدم الذكاء الاصطناعي لتحليل البيانات الضخمة. تقدم رؤى تحليلية عميقة مع تصورات بيانات تفاعلية وتقارير آلية. دعم للتنبؤات المستقبلية وتحليل الاتجاهات باستخدام خوارزميات متقدمة.">
-                                Sophisticated AI-powered dashboard for big data analysis. Provides deep analytical insights with interactive data visualizations and automated reports. Supports future predictions and trend analysis using advanced algorithms.
+                            <p class="project-description">
+                                <span class="lang-content" 
+                                      data-en="Comprehensive analytics platform with real-time data visualization, predictive insights, and customizable reporting features."
+                                      data-ar="منصة تحليلات شاملة مع تصور البيانات في الوقت الفعلي ورؤى تنبؤية وميزات تقارير قابلة للتخصيص.">
+                                    Comprehensive analytics platform with real-time data visualization, predictive insights, and customizable reporting features.
+                                </span>
                             </p>
                             <div class="project-tech">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">TensorFlow</span>
                                 <span class="tech-tag">React</span>
                                 <span class="tech-tag">D3.js</span>
                                 <span class="tech-tag">FastAPI</span>
                                 <span class="tech-tag">Elasticsearch</span>
+                                <span class="tech-tag">Docker</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="link-btn">
+                                    <span class="lang-content" data-en="Live Demo" data-ar="عرض مباشر">Live Demo</span>
+                                </a>
+                                <a href="#" class="link-btn">
+                                    <span class="lang-content" data-en="Source Code" data-ar="الكود المصدري">Source Code</span>
+                                </a>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Contact Section -->
-                <div class="section-header loading">
-                    <i class="fas fa-envelope section-icon"></i>
-                    <h2 class="lang-content" data-en="Contact Information & Social Links" data-ar="معلومات التواصل والروابط الاجتماعية">Contact Information & Social Links</h2>
-                </div>
-                <div class="output">
-                    <div class="contact-grid">
-                        <div class="glass-card loading">
-                            <i class="fas fa-envelope contact-icon"></i>
-                            <div class="contact-title lang-content" data-en="Email" data-ar="البريد الإلكتروني">Email</div>
-                            <div class="contact-info">
-                                <a href="mailto:saiffikry2008@gmail.com" class="contact-link">
-                                    saiffikry2008@gmail.com
-                                </a>
-                            </div>
-                        </div>
-                        <div class="glass-card loading">
-                            <i class="fab fa-github contact-icon"></i>
-                            <div class="contact-title">GitHub</div>
-                            <div class="contact-info">
-                                <a href="https://github.com/santadevx7" class="contact-link">
-                                    github.com/santadevx7
-                                </a>
-                            </div>
-                        </div>
-                        <div class="glass-card loading">
-                            <i class="fab fa-linkedin contact-icon"></i>
-                            <div class="contact-title">LinkedIn</div>
-                            <div class="contact-info">
-                                <a href="https://linkedin.com/in/santadevx7" class="contact-link">
-                                    linkedin.com/in/santadevx7
-                                </a>
-                            </div>
-                        </div>
-                        <div class="glass-card loading">
-                            <i class="fas fa-globe contact-icon"></i>
-                            <div class="contact-title lang-content" data-en="Portfolio" data-ar="المعرض">Portfolio</div>
-                            <div class="contact-info">
-                                <a href="https://santadevx.dev" class="contact-link">
-                                    santadevx.dev
-                                </a>
-                            </div>
-                        </div>
-                        <div class="glass-card loading">
-                            <i class="fab fa-discord contact-icon"></i>
-                            <div class="contact-title">Discord</div>
-                            <div class="contact-info">
-                                <span class="contact-link">https://discord.gg/RjpyFdkG</span>
-                            </div>
-                        </div>
-                        <div class="glass-card loading">
-                            <i class="fas fa-phone contact-icon"></i>
-                            <div class="contact-title lang-content" data-en="Phone" data-ar="الهاتف">Phone</div>
-                            <div class="contact-info">
-                                <span class="contact-link">+201500461923</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Terminal prompt at bottom -->
-                <div style="margin-top: 3rem;">
-                    <span class="prompt">$</span>
-                    <span class="command lang-content" data-en="system --status" data-ar="system --status">system --status</span>
-                </div>
-                <div class="output success">
-                    <div class="lang-content" data-en="✓ All systems operational" data-ar="✓ جميع الأنظمة تعمل بشكل طبيعي">✓ All systems operational</div>
-                    <div class="lang-content" data-en="✓ Profile loaded successfully" data-ar="✓ تم تحميل الملف الشخصي بنجاح">✓ Profile loaded successfully</div>
-                    <div class="lang-content" data-en="✓ Enhanced features activated" data-ar="✓ تم تفعيل الميزات المحسنة">✓ Enhanced features activated</div>
-                    <div class="lang-content" data-en="✓ Ready for new connections" data-ar="✓ جاهز لاتصالات جديدة">✓ Ready for new connections</div>
-                </div>
-                <div style="margin-top: 1rem;">
-                    <span class="prompt">$</span>
-                    <span class="cursor"></span>
                 </div>
             </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="lang-content" data-en="Get In Touch" data-ar="تواصل معي">Get In Touch</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        <span class="lang-content" 
+                              data-en="Ready to collaborate on your next project? Let's discuss how we can work together."
+                              data-ar="مستعد للتعاون في مشروعك القادم؟ دعنا نناقش كيف يمكننا العمل معاً.">
+                            Ready to collaborate on your next project? Let's discuss how we can work together.
+                        </span>
+                    </p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3 class="contact-title">
+                            <span class="lang-content" data-en="Email" data-ar="البريد الإلكتروني">Email</span>
+                        </h3>
+                        <div class="contact-info">
+                            <a href="mailto:saiffikry2008@gmail.com" class="contact-link">
+                                saiffikry2008@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">💼</div>
+                        <h3 class="contact-title">LinkedIn</h3>
+                        <div class="contact-info">
+                            <a href="https://linkedin.com/in/santadevx7" class="contact-link">
+                                linkedin.com/in/santadevx7
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🐙</div>
+                        <h3 class="contact-title">GitHub</h3>
+                        <div class="contact-info">
+                            <a href="https://github.com/santadevx7" class="contact-link">
+                                github.com/santadevx7
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🌐</div>
+                        <h3 class="contact-title">
+                            <span class="lang-content" data-en="Portfolio" data-ar="المعرض">Portfolio</span>
+                        </h3>
+                        <div class="contact-info">
+                            <a href="https://santadevx.dev" class="contact-link">
+                                santadevx.dev
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">💬</div>
+                        <h3 class="contact-title">Discord</h3>
+                        <div class="contact-info">
+                            <a href="https://discord.gg/RjpyFdkG" class="contact-link">
+                                discord.gg/RjpyFdkG
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📱</div>
+                        <h3 class="contact-title">
+                            <span class="lang-content" data-en="Phone" data-ar="الهاتف">Phone</span>
+                        </h3>
+                        <div class="contact-info">
+                            <span class="contact-link">+201500461923</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                <span class="lang-content" 
+                      data-en="© 2024 SantaDevX. Built with performance and accessibility in mind."
+                      data-ar="© 2024 SantaDevX. مبني مع التركيز على الأداء وإمكانية الوصول.">
+                    © 2024 SantaDevX. Built with performance and accessibility in mind.
+                </span>
+            </p>
         </div>
-    </div>
+    </footer>
 
-    <!-- Audio element for background music - PRESERVED AS REQUESTED -->
-    <audio id="backgroundMusic" src="song.mp3" loop></audio>
-
+    <!-- Minimal JavaScript for functionality -->
     <script>
-        // Language management
-        let currentLanguage = 'en';
-
-        function toggleLanguage() {
-            const html = document.documentElement;
+        // Performance-optimized JavaScript
+        (function() {
+            'use strict';
+            
+            // Language management
+            let currentLanguage = 'en';
+            const langToggle = document.getElementById('langToggle');
             const langText = document.getElementById('langText');
-            const langContents = document.querySelectorAll('.lang-content');
+            const html = document.documentElement;
             
-            if (currentLanguage === 'en') {
-                currentLanguage = 'ar';
-                html.setAttribute('lang', 'ar');
-                html.setAttribute('dir', 'rtl');
-                langText.textContent = 'English';
+            // Theme management
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            
+            // Initialize from localStorage
+            function initializePreferences() {
+                // Load saved language
+                const savedLang = localStorage.getItem('language');
+                if (savedLang && savedLang !== currentLanguage) {
+                    toggleLanguage();
+                }
                 
-                langContents.forEach(element => {
-                    const arabicText = element.getAttribute('data-ar');
-                    if (arabicText) {
-                        element.textContent = arabicText;
-                    }
-                });
-            } else {
-                currentLanguage = 'en';
-                html.setAttribute('lang', 'en');
-                html.setAttribute('dir', 'ltr');
-                langText.textContent = 'العربية';
-                
-                langContents.forEach(element => {
-                    const englishText = element.getAttribute('data-en');
-                    if (englishText) {
-                        element.textContent = englishText;
-                    }
-                });
-            }
-            
-            // Save language preference
-            localStorage.setItem('language', currentLanguage);
-        }
-
-        // Theme toggle functionality
-        function toggleTheme() {
-            document.body.classList.toggle('light-mode');
-            document.documentElement.classList.toggle('light-mode');
-            
-            // Save theme preference
-            const isLightMode = document.body.classList.contains('light-mode');
-            localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
-        }
-
-        // Load saved preferences
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load saved theme
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light') {
-                document.body.classList.add('light-mode');
-                document.documentElement.classList.add('light-mode');
-            }
-
-            // Load saved language
-            const savedLanguage = localStorage.getItem('language');
-            if (savedLanguage && savedLanguage !== currentLanguage) {
-                toggleLanguage();
-            }
-
-            // Initialize loading animations
-            setTimeout(() => {
-                const loadingElements = document.querySelectorAll('.loading');
-                loadingElements.forEach((element, index) => {
-                    setTimeout(() => {
-                        element.classList.add('loaded');
-                    }, index * 100);
-                });
-            }, 500);
-        });
-
-        // Music player functionality - PRESERVED EXACTLY AS REQUESTED
-        let isPlaying = false;
-        function toggleMusic() {
-            const musicIcon = document.getElementById('musicIcon');
-            const musicBtn = document.querySelector(".music-player-btn");
-            const backgroundMusic = document.getElementById("backgroundMusic");
-
-            if (!isPlaying) {
-                musicIcon.className = "fas fa-pause";
-                musicBtn.classList.add("playing");
-                backgroundMusic.play().catch(e => console.log('Audio play failed:', e));
-                isPlaying = true;
-                console.log('Music started');
-            } else {
-                musicIcon.className = 'fas fa-play';
-                musicBtn.classList.remove("playing");
-                backgroundMusic.pause();
-                isPlaying = false;
-                console.log('Music stopped');
-            }
-        }
-
-        // Enhanced typing effect for terminal
-        function typeWriter(element, text, speed = 50) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
+                // Load saved theme
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    toggleTheme();
                 }
             }
-            type();
-        }
-
-        // Animate skill bars on scroll
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-level');
             
-            skillBars.forEach(bar => {
-                const rect = bar.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            // Language toggle function
+            function toggleLanguage() {
+                const langContents = document.querySelectorAll('.lang-content');
                 
-                if (isVisible && !bar.classList.contains('animated')) {
-                    const width = bar.getAttribute('data-level') || bar.style.width;
+                if (currentLanguage === 'en') {
+                    currentLanguage = 'ar';
+                    html.setAttribute('lang', 'ar');
+                    html.setAttribute('dir', 'rtl');
+                    langText.textContent = 'English';
+                    
+                    langContents.forEach(element => {
+                        const arabicText = element.getAttribute('data-ar');
+                        if (arabicText) {
+                            element.textContent = arabicText;
+                        }
+                    });
+                } else {
+                    currentLanguage = 'en';
+                    html.setAttribute('lang', 'en');
+                    html.setAttribute('dir', 'ltr');
+                    langText.textContent = 'العربية';
+                    
+                    langContents.forEach(element => {
+                        const englishText = element.getAttribute('data-en');
+                        if (englishText) {
+                            element.textContent = englishText;
+                        }
+                    });
+                }
+                
+                localStorage.setItem('language', currentLanguage);
+            }
+            
+            // Theme toggle function
+            function toggleTheme() {
+                html.classList.toggle('dark');
+                const isDark = html.classList.contains('dark');
+                themeIcon.textContent = isDark ? '☀️' : '🌙';
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            }
+            
+            // Skill bar animation
+            function animateSkillBars() {
+                const skillBars = document.querySelectorAll('.skill-progress');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const width = entry.target.getAttribute('data-width');
+                            entry.target.style.width = width;
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                skillBars.forEach(bar => {
                     bar.style.width = '0%';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 100);
-                    bar.classList.add('animated');
-                }
-            });
-        }
-
-        // Smooth scroll behavior
-        function smoothScrollTo(target) {
-            const element = document.querySelector(target);
-            if (element) {
-                element.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                    observer.observe(bar);
                 });
             }
-        }
-
-        // Initialize animations and interactions
-        document.addEventListener('DOMContentLoaded', function() {
-            // Reset skill bars
-            document.querySelectorAll('.skill-level').forEach(bar => {
-                bar.style.width = '0%';
+            
+            // Smooth scroll for anchor links
+            function initializeSmoothScroll() {
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            const headerHeight = document.querySelector('.header').offsetHeight;
+                            const targetPosition = target.offsetTop - headerHeight - 20;
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+            }
+            
+            // Event listeners
+            langToggle.addEventListener('click', toggleLanguage);
+            themeToggle.addEventListener('click', toggleTheme);
+            
+            // Initialize everything when DOM is ready
+            document.addEventListener('DOMContentLoaded', function() {
+                initializePreferences();
+                animateSkillBars();
+                initializeSmoothScroll();
+                
+                // Add fade-in animation to sections
+                const sections = document.querySelectorAll('.section');
+                const fadeObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate-fade-in');
+                            fadeObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                sections.forEach(section => {
+                    fadeObserver.observe(section);
+                });
             });
             
-            // Animate on scroll
-            window.addEventListener('scroll', animateSkillBars);
+            // Preload critical resources
+            function preloadResources() {
+                const criticalImages = ['santa.png'];
+                criticalImages.forEach(src => {
+                    const img = new Image();
+                    img.src = src;
+                });
+            }
             
-            // Initial animation
-            setTimeout(animateSkillBars, 1000);
-
-            // Add click effects to cards
-            const cards = document.querySelectorAll('.glass-card, .project-card, .skill-item');
-            cards.forEach(card => {
-                card.addEventListener('click', function() {
-                    this.style.transform = 'scale(0.98)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                });
-            });
-
-            // Add hover sound effect simulation
-            const interactiveElements = document.querySelectorAll('.skill-item, .glass-card, .project-card');
-            interactiveElements.forEach(element => {
-                element.addEventListener('mouseenter', function() {
-                    // Simulate terminal beep
-                    console.log('*beep*');
-                });
-            });
-
-            // Enhanced scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in-up');
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all cards and sections
-            document.querySelectorAll('.glass-card, .project-card, .skill-item, .section-header').forEach(el => {
-                observer.observe(el);
-            });
-        });
-
-        // Add glitch effect on hover for terminal title
-        document.addEventListener('DOMContentLoaded', function() {
-            const terminalTitle = document.querySelector('.terminal-title');
-            if (terminalTitle) {
-                terminalTitle.addEventListener('mouseenter', function() {
-                    this.style.animation = 'glitch 0.3s ease-in-out';
-                    setTimeout(() => {
-                        this.style.animation = '';
-                    }, 300);
-                });
-            }
-        });
-
-        // Enhanced performance optimizations
-        let ticking = false;
-
-        function updateAnimations() {
-            animateSkillBars();
-            ticking = false;
-        }
-
-        function requestTick() {
-            if (!ticking) {
-                requestAnimationFrame(updateAnimations);
-                ticking = true;
-            }
-        }
-
-        window.addEventListener('scroll', requestTick);
-
-        // Preload critical resources
-        function preloadResources() {
-            const criticalImages = ['santa.png'];
-            criticalImages.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
-        }
-
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', preloadResources);
+            preloadResources();
+        })();
     </script>
 </body>
 </html>
-
-
-                <!-- Experience Section -->
-                <div class="section-header loading">
-                    <i class="fas fa-briefcase section-icon"></i>
-                    <h2 class="lang-content" data-en="Professional Experience" data-ar="الخبرة المهنية">Professional Experience</h2>
-                </div>
-                <div class="output">
-                    <div class="experience-timeline">
-                        <div class="experience-item glass-card loading">
-                            <div class="experience-date lang-content" data-en="2023 - Present" data-ar="2023 - الحاضر">2023 - Present</div>
-                            <div class="experience-title lang-content" data-en="Senior Full Stack Developer & AI Specialist" data-ar="مطور ويب متقدم ومتخصص في الذكاء الاصطناعي">Senior Full Stack Developer & AI Specialist</div>
-                            <div class="experience-company">TechInnovate Solutions</div>
-                            <div class="experience-description lang-content" 
-                                 data-en="Leading a specialized development team in building advanced web applications that integrate artificial intelligence technologies. Developing innovative solutions for large corporations using React, Node.js, Python, and machine learning technologies. Managing complex projects and mentoring new developers in technical best practices."
-                                 data-ar="قيادة فريق تطوير متخصص في بناء تطبيقات ويب متقدمة تدمج تقنيات الذكاء الاصطناعي. تطوير حلول مبتكرة للشركات الكبرى باستخدام React، Node.js، Python، وتقنيات التعلم الآلي. إدارة مشاريع معقدة وتوجيه المطورين الجدد في أفضل الممارسات التقنية.">
-                                Leading a specialized development team in building advanced web applications that integrate artificial intelligence technologies. Developing innovative solutions for large corporations using React, Node.js, Python, and machine learning technologies. Managing complex projects and mentoring new developers in technical best practices.
-                            </div>
-                        </div>
-                        <div class="experience-item glass-card loading">
-                            <div class="experience-date lang-content" data-en="2021 - 2023" data-ar="2021 - 2023">2021 - 2023</div>
-                            <div class="experience-title lang-content" data-en="Full Stack Developer" data-ar="مطور ويب شامل">Full Stack Developer</div>
-                            <div class="experience-company">Digital Dynamics Corp</div>
-                            <div class="experience-description lang-content" 
-                                 data-en="Developing comprehensive web applications for clients across various sectors. Working with multidisciplinary teams to deliver advanced technical solutions. Specializing in developing interactive user interfaces and robust backend systems."
-                                 data-ar="تطوير تطبيقات ويب شاملة للعملاء في مختلف القطاعات. العمل مع فرق متعددة التخصصات لتقديم حلول تقنية متطورة. تخصص في تطوير واجهات المستخدم التفاعلية وأنظمة الخلفية القوية.">
-                                Developing comprehensive web applications for clients across various sectors. Working with multidisciplinary teams to deliver advanced technical solutions. Specializing in developing interactive user interfaces and robust backend systems.
-                            </div>
-                        </div>
-                        <div class="experience-item glass-card loading">
-                            <div class="experience-date lang-content" data-en="2020 - 2021" data-ar="2020 - 2021">2020 - 2021</div>
-                            <div class="experience-title lang-content" data-en="Frontend Developer" data-ar="مطور واجهات أمامية">Frontend Developer</div>
-                            <div class="experience-company">WebCraft Studio</div>
-                            <div class="experience-description lang-content" 
-                                 data-en="Focusing on developing modern user interfaces using React and Vue.js. Optimizing application performance and ensuring compatibility across all browsers and devices. Collaborating with UX/UI designers to transform designs into efficient code."
-                                 data-ar="التركيز على تطوير واجهات المستخدم الحديثة باستخدام React و Vue.js. تحسين أداء التطبيقات وضمان التوافق مع جميع المتصفحات والأجهزة. التعاون مع مصممي UX/UI لتحويل التصاميم إلى كود فعال.">
-                                Focusing on developing modern user interfaces using React and Vue.js. Optimizing application performance and ensuring compatibility across all browsers and devices. Collaborating with UX/UI designers to transform designs into efficient code.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Services Section -->
-                <div class="section-header loading">
-                    <i class="fas fa-cogs section-icon"></i>
-                    <h2 class="lang-content" data-en="Professional Services" data-ar="الخدمات المهنية">Professional Services</h2>
-                </div>
-                <div class="output">
-                    <div class="services-grid">
-                        <div class="service-card glass-card loading">
-                            <i class="fas fa-laptop-code service-icon"></i>
-                            <h3 class="service-title lang-content" data-en="Web Application Development" data-ar="تطوير تطبيقات الويب">Web Application Development</h3>
-                            <p class="service-description lang-content" 
-                               data-en="Developing advanced and responsive web applications using the latest technologies. From simple websites to complex multi-user applications."
-                               data-ar="تطوير تطبيقات ويب متطورة وسريعة الاستجابة باستخدام أحدث التقنيات. من المواقع البسيطة إلى التطبيقات المعقدة متعددة المستخدمين.">
-                                Developing advanced and responsive web applications using the latest technologies. From simple websites to complex multi-user applications.
-                            </p>
-                        </div>
-                        <div class="service-card glass-card loading">
-                            <i class="fas fa-mobile-alt service-icon"></i>
-                            <h3 class="service-title lang-content" data-en="Mobile App Development" data-ar="تطوير تطبيقات الهاتف">Mobile App Development</h3>
-                            <p class="service-description lang-content" 
-                               data-en="Creating native and cross-platform mobile applications with modern design and high performance for iOS and Android systems."
-                               data-ar="إنشاء تطبيقات هاتف ذكي أصلية ومتعددة المنصات بتصميم عصري وأداء عالي لنظامي iOS و Android.">
-                                Creating native and cross-platform mobile applications with modern design and high performance for iOS and Android systems.
-                            </p>
-                        </div>
-                        <div class="service-card glass-card loading">
-                            <i class="fas fa-brain service-icon"></i>
-                            <h3 class="service-title lang-content" data-en="AI Solutions" data-ar="حلول الذكاء الاصطناعي">AI Solutions</h3>
-                            <p class="service-description lang-content" 
-                               data-en="Developing and implementing artificial intelligence and machine learning solutions to improve business processes and automate complex tasks."
-                               data-ar="تطوير وتطبيق حلول الذكاء الاصطناعي والتعلم الآلي لتحسين العمليات التجارية وأتمتة المهام المعقدة.">
-                                Developing and implementing artificial intelligence and machine learning solutions to improve business processes and automate complex tasks.
-                            </p>
-                        </div>
-                        <div class="service-card glass-card loading">
-                            <i class="fas fa-paint-brush service-icon"></i>
-                            <h3 class="service-title lang-content" data-en="UI/UX Design" data-ar="تصميم واجهات المستخدم">UI/UX Design</h3>
-                            <p class="service-description lang-content" 
-                               data-en="Designing attractive and user-friendly interfaces that focus on user experience and efficiently achieve business goals."
-                               data-ar="تصميم واجهات مستخدم جذابة وسهلة الاستخدام تركز على تجربة المستخدم وتحقق أهداف العمل بكفاءة.">
-                                Designing attractive and user-friendly interfaces that focus on user experience and efficiently achieve business goals.
-                            </p>
-                        </div>
-                        <div class="service-card glass-card loading">
-                            <i class="fas fa-database service-icon"></i>
-                            <h3 class="service-title lang-content" data-en="Database Management" data-ar="إدارة قواعد البيانات">Database Management</h3>
-                            <p class="service-description lang-content" 
-                               data-en="Designing and managing robust and secure databases with performance optimization and ensuring data integrity and business continuity."
-                               data-ar="تصميم وإدارة قواعد بيانات قوية وآمنة مع تحسين الأداء وضمان سلامة البيانات واستمرارية العمل.">
-                                Designing and managing robust and secure databases with performance optimization and ensuring data integrity and business continuity.
-                            </p>
-                        </div>
-                        <div class="service-card glass-card loading">
-                            <i class="fas fa-cloud service-icon"></i>
-                            <h3 class="service-title lang-content" data-en="Cloud Computing" data-ar="الحوسبة السحابية">Cloud Computing</h3>
-                            <p class="service-description lang-content" 
-                               data-en="Deploying and managing applications on cloud platforms ensuring scalability, high performance, and continuous availability."
-                               data-ar="نشر وإدارة التطبيقات على المنصات السحابية مع ضمان القابلية للتوسع والأداء العالي والتوفر المستمر.">
-                                Deploying and managing applications on cloud platforms ensuring scalability, high performance, and continuous availability.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonials Section -->
-                <div class="section-header loading">
-                    <i class="fas fa-quote-left section-icon"></i>
-                    <h2 class="lang-content" data-en="Client Testimonials" data-ar="آراء العملاء">Client Testimonials</h2>
-                </div>
-                <div class="output">
-                    <div class="testimonials-grid">
-                        <div class="testimonial-card glass-card loading">
-                            <div class="testimonial-content lang-content" 
-                                 data-en="SantaDevX delivered advanced technical solutions that exceeded our expectations. The quality and professionalism in work were exceptional."
-                                 data-ar="SantaDevX قدم لنا حلولاً تقنية متطورة فاقت توقعاتنا. الجودة والاحترافية في العمل كانت استثنائية.">
-                                "SantaDevX delivered advanced technical solutions that exceeded our expectations. The quality and professionalism in work were exceptional."
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-name lang-content" data-en="Ahmed Mohammed" data-ar="أحمد محمد">Ahmed Mohammed</div>
-                                <div class="author-title lang-content" data-en="Technical Manager - Advanced Technologies Company" data-ar="مدير تقني - شركة التقنيات المتقدمة">Technical Manager - Advanced Technologies Company</div>
-                                <div class="testimonial-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-card glass-card loading">
-                            <div class="testimonial-content lang-content" 
-                                 data-en="The AI application he developed for us completely changed our way of working. The results were amazing and the technical support was excellent."
-                                 data-ar="تطبيق الذكاء الاصطناعي الذي طوره لنا غير طريقة عملنا بالكامل. النتائج كانت مذهلة والدعم الفني ممتاز.">
-                                "The AI application he developed for us completely changed our way of working. The results were amazing and the technical support was excellent."
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-name lang-content" data-en="Sarah Ahmed" data-ar="سارة أحمد">Sarah Ahmed</div>
-                                <div class="author-title lang-content" data-en="Project Manager - FAQ-SILU Foundation" data-ar="مديرة المشاريع - مؤسسة FAQ-SILU">Project Manager - FAQ-SILU Foundation</div>
-                                <div class="testimonial-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-card glass-card loading">
-                            <div class="testimonial-content lang-content" 
-                                 data-en="Our website became faster and more interactive thanks to SantaDevX's expertise. Customers love the new design."
-                                 data-ar="موقعنا الإلكتروني أصبح أسرع وأكثر تفاعلية بفضل خبرة SantaDevX. العملاء يحبون التصميم الجديد.">
-                                "Our website became faster and more interactive thanks to SantaDevX's expertise. Customers love the new design."
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-name lang-content" data-en="Mohammed Ali" data-ar="محمد علي">Mohammed Ali</div>
-                                <div class="author-title lang-content" data-en="Founder - ULTRA SHOP Smart Electronics Store" data-ar="مؤسس - متجر الإلكترونيات الذكية ULTRA SHOP">Founder - ULTRA SHOP Smart Electronics Store</div>
-                                <div class="testimonial-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-    <style>
-        /* ===== ADDITIONAL ENHANCED STYLES ===== */
-        
-        /* Experience Timeline */
-        .experience-timeline {
-            position: relative;
-            margin-top: 2rem;
-            padding-left: 2rem;
-        }
-
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 15px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, var(--primary), var(--luxury-gold));
-            box-shadow: 0 0 15px rgba(0, 255, 157, 0.5);
-            border-radius: 2px;
-        }
-
-        .experience-item {
-            position: relative;
-            margin-bottom: 3rem;
-            margin-left: 3rem;
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            left: -4.5rem;
-            top: 1rem;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--luxury-gold);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-            z-index: 2;
-            border: 3px solid var(--terminal-bg);
-        }
-
-        .experience-date {
-            color: var(--luxury-gold);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            text-shadow: var(--glow-gold);
-            font-family: var(--font-heading);
-        }
-
-        .experience-title {
-            color: var(--primary);
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: var(--glow);
-            font-family: var(--font-heading);
-        }
-
-        .experience-company {
-            color: var(--accent);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            text-shadow: var(--glow-blue);
-        }
-
-        .experience-description {
-            color: var(--text-dark);
-            line-height: 1.8;
-            font-size: 1rem;
-            font-family: var(--font-heading);
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
-        }
-
-        .service-card {
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 
-                0 20px 45px rgba(255, 215, 0, 0.3),
-                inset 0 0 30px rgba(0, 255, 157, 0.1);
-        }
-
-        .service-icon {
-            font-size: 3.5rem;
-            color: var(--luxury-gold);
-            margin-bottom: 1.5rem;
-            text-shadow: var(--glow-gold);
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover .service-icon {
-            transform: scale(1.1) rotate(5deg);
-            color: var(--primary);
-            text-shadow: var(--glow);
-        }
-
-        .service-title {
-            color: var(--primary);
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            font-family: var(--font-heading);
-            text-shadow: var(--glow);
-        }
-
-        .service-description {
-            color: var(--text-dark);
-            line-height: 1.8;
-            font-size: 1rem;
-            font-family: var(--font-heading);
-        }
-
-        /* Testimonials Grid */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
-        }
-
-        .testimonial-card {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 
-                0 20px 40px rgba(138, 43, 226, 0.3),
-                inset 0 0 30px rgba(255, 215, 0, 0.1);
-        }
-
-        .testimonial-content {
-            color: var(--text-dark);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            font-style: italic;
-            position: relative;
-            font-family: var(--font-heading);
-        }
-
-        .testimonial-content::before {
-            content: '"';
-            font-size: 4rem;
-            color: var(--luxury-gold);
-            position: absolute;
-            top: -20px;
-            left: -10px;
-            opacity: 0.3;
-            font-family: serif;
-        }
-
-        .testimonial-author {
-            border-top: 2px solid var(--glass-border);
-            padding-top: 1.5rem;
-        }
-
-        .author-name {
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            font-family: var(--font-heading);
-            text-shadow: var(--glow);
-        }
-
-        .author-title {
-            color: var(--text-light);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            font-family: var(--font-heading);
-        }
-
-        .testimonial-rating {
-            color: var(--luxury-gold);
-            font-size: 1.2rem;
-            text-shadow: var(--glow-gold);
-        }
-
-        /* Contact Grid */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            text-align: center;
-            transition: all 0.4s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 
-                0 15px 35px rgba(0, 255, 157, 0.3),
-                inset 0 0 25px rgba(255, 215, 0, 0.1);
-        }
-
-        .contact-icon {
-            font-size: 2.5rem;
-            color: var(--luxury-gold);
-            margin-bottom: 1rem;
-            text-shadow: var(--glow-gold);
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover .contact-icon {
-            transform: scale(1.1);
-            color: var(--primary);
-            text-shadow: var(--glow);
-        }
-
-        .contact-title {
-            color: var(--primary);
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            font-family: var(--font-heading);
-            text-shadow: var(--glow);
-        }
-
-        .contact-info {
-            color: var(--text-dark);
-            font-size: 1rem;
-            font-family: var(--font-heading);
-        }
-
-        .contact-link {
-            color: var(--accent);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .contact-link:hover {
-            color: var(--luxury-gold);
-            text-shadow: var(--glow-gold);
-            text-decoration: underline;
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat-card {
-            text-align: center;
-            transition: all 0.4s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 
-                0 15px 35px rgba(255, 215, 0, 0.3),
-                inset 0 0 25px rgba(0, 255, 157, 0.1);
-        }
-
-        .stat-number {
-            color: var(--luxury-gold);
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            text-shadow: var(--glow-gold);
-            font-family: var(--font-heading);
-        }
-
-        .stat-label {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            font-weight: 600;
-            font-family: var(--font-heading);
-        }
-
-        /* Enhanced responsive design for new sections */
-        @media (max-width: 768px) {
-            .experience-timeline {
-                padding-left: 1rem;
-            }
-
-            .experience-timeline::before {
-                left: 8px;
-            }
-
-            .experience-item {
-                margin-left: 2rem;
-            }
-
-            .experience-item::before {
-                left: -3rem;
-                width: 15px;
-                height: 15px;
-            }
-
-            .services-grid,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
-
-            .stat-number {
-                font-size: 2.5rem;
-            }
-
-            .service-icon {
-                font-size: 3rem;
-            }
-
-            .contact-icon {
-                font-size: 2rem;
-            }
-        }
-
-        /* Enhanced loading animations */
-        .loading {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .loading.loaded {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Staggered animation delays */
-        .loading:nth-child(1) { transition-delay: 0.1s; }
-        .loading:nth-child(2) { transition-delay: 0.2s; }
-        .loading:nth-child(3) { transition-delay: 0.3s; }
-        .loading:nth-child(4) { transition-delay: 0.4s; }
-        .loading:nth-child(5) { transition-delay: 0.5s; }
-        .loading:nth-child(6) { transition-delay: 0.6s; }
-
-        /* Enhanced glassmorphism effects */
-        .glass-card {
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        body.light-mode .glass-card {
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.05),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
-
-        /* Enhanced hover effects */
-        .glass-card:hover {
-            border-color: var(--luxury-gold);
-            box-shadow: 
-                0 20px 40px rgba(255, 215, 0, 0.2),
-                inset 0 1px 0 rgba(255, 215, 0, 0.2);
-        }
-
-        /* Improved text shadows for better readability */
-        .section-header h2,
-        .profile-name,
-        .profile-title {
-            text-shadow: 
-                0 0 10px currentColor,
-                0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Enhanced button styles */
-        .language-toggle,
-        .theme-toggle {
-            box-shadow: 
-                0 4px 15px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .language-toggle:hover,
-        .theme-toggle:hover {
-            box-shadow: 
-                0 6px 20px rgba(255, 215, 0, 0.3),
-                inset 0 1px 0 rgba(255, 215, 0, 0.2);
-        }
-    </style>
 
