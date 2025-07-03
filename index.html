@@ -156,6 +156,31 @@
             color: var(--color-white);
             transform: translateY(-1px);
         }
+
+        /* Music Player Button */
+        #musicToggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            background: var(--color-gray-100);
+            color: var(--color-black);
+            transition: all var(--transition-fast);
+        }
+
+        #musicToggle:hover {
+            background: var(--color-blue);
+            color: var(--color-white);
+            transform: scale(1.1);
+        }
+
+        #musicToggle.playing {
+            background: var(--color-green);
+            color: var(--color-white);
+        }
         
         /* Main Content */
         .main {
@@ -632,6 +657,9 @@
                     <button class="btn btn-secondary" id="themeToggle" aria-label="Toggle Theme">
                         <span id="themeIcon">🌙</span>
                     </button>
+                    <button class="btn btn-secondary" id="musicToggle" aria-label="Toggle Music">
+                        <span id="musicIcon">🎵</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -964,6 +992,12 @@
         </div>
     </footer>
 
+    <!-- Hidden Audio Element for Music -->
+    <audio id="backgroundMusic" loop preload="none">
+        <source src="song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <!-- Minimal JavaScript for functionality -->
     <script>
         // Performance-optimized JavaScript
@@ -980,6 +1014,12 @@
             const themeToggle = document.getElementById('themeToggle');
             const themeIcon = document.getElementById('themeIcon');
             
+            // Music management
+            const musicToggle = document.getElementById('musicToggle');
+            const musicIcon = document.getElementById('musicIcon');
+            const backgroundMusic = document.getElementById('backgroundMusic');
+            let isPlaying = false;
+            
             // Initialize from localStorage
             function initializePreferences() {
                 // Load saved language
@@ -992,6 +1032,13 @@
                 const savedTheme = localStorage.getItem('theme');
                 if (savedTheme === 'dark') {
                     toggleTheme();
+                }
+                
+                // Load saved music preference
+                const savedMusic = localStorage.getItem('musicPlaying');
+                if (savedMusic === 'true') {
+                    // Don't auto-play, just set the visual state
+                    updateMusicButton(true);
                 }
             }
             
@@ -1036,6 +1083,39 @@
                 localStorage.setItem('theme', isDark ? 'dark' : 'light');
             }
             
+            // Music toggle function
+            function toggleMusic() {
+                if (isPlaying) {
+                    backgroundMusic.pause();
+                    isPlaying = false;
+                    updateMusicButton(false);
+                } else {
+                    // Use user interaction to play music (required by browsers)
+                    backgroundMusic.play().then(() => {
+                        isPlaying = true;
+                        updateMusicButton(true);
+                    }).catch(error => {
+                        console.log('Music play failed:', error);
+                        // Fallback: just update visual state
+                        updateMusicButton(false);
+                    });
+                }
+                localStorage.setItem('musicPlaying', isPlaying.toString());
+            }
+            
+            // Update music button appearance
+            function updateMusicButton(playing) {
+                if (playing) {
+                    musicIcon.textContent = '🎵';
+                    musicToggle.classList.add('playing');
+                    musicToggle.setAttribute('aria-label', 'Pause Music');
+                } else {
+                    musicIcon.textContent = '🎵';
+                    musicToggle.classList.remove('playing');
+                    musicToggle.setAttribute('aria-label', 'Play Music');
+                }
+            }
+            
             // Skill bar animation
             function animateSkillBars() {
                 const skillBars = document.querySelectorAll('.skill-progress');
@@ -1076,6 +1156,7 @@
             // Event listeners
             langToggle.addEventListener('click', toggleLanguage);
             themeToggle.addEventListener('click', toggleTheme);
+            musicToggle.addEventListener('click', toggleMusic);
             
             // Initialize everything when DOM is ready
             document.addEventListener('DOMContentLoaded', function() {
