@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SantaDevX Enhanced Pro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* ===== ENHANCED EDEX-UI THEME ===== */
+        /* ===== ENHANCED LUXURY TERMINAL THEME ===== */
         :root {
             --primary: #00ff9d;
             --primary-dark: #00cc7d;
             --primary-light: #33ffb3;
             --secondary: #000000;
-            --accent: #00a2ff;
-            --accent-dark: #0080cc;
+            --accent: #0080ff;
+            --accent-dark: #0066cc;
+            --luxury-gold: #ffd700;
+            --luxury-purple: #6a0dad;
+            --luxury-platinum: #e5e4e2;
             --error: #ff5555;
             --warning: #ffaa00;
             --success: #00ff33;
@@ -27,35 +31,43 @@
             --text-light: #33ffb3;
             --glow: 0 0 15px rgba(0, 255, 157, 0.6);
             --glow-intense: 0 0 30px rgba(0, 255, 157, 0.8);
-            --glow-blue: 0 0 15px rgba(0, 162, 255, 0.6);
+            --glow-blue: 0 0 15px rgba(0, 128, 255, 0.6);
+            --glow-gold: 0 0 15px rgba(255, 215, 0, 0.6);
             --font-main: 'Fira Code', 'Courier New', monospace;
-            --font-heading: 'Fira Code', 'Courier New', monospace;
+            --font-heading: 'Inter', 'Fira Code', sans-serif;
             --section-divider: rgba(0, 255, 157, 0.3);
             --grid-color: rgba(0, 255, 157, 0.1);
             --scan-line: rgba(0, 255, 157, 0.05);
+            --glass-bg: rgba(0, 255, 157, 0.08);
+            --glass-border: rgba(0, 255, 157, 0.2);
         }
 
         /* Light mode variables */
         :root.light-mode {
-            --primary: #0066cc;
-            --primary-dark: #004499;
-            --primary-light: #3388dd;
+            --primary: #2c5aa0;
+            --primary-dark: #1e3f73;
+            --primary-light: #4a7bc8;
             --secondary: #f8f9fa;
-            --accent: #ff6600;
-            --accent-dark: #cc5200;
-            --error: #cc0000;
-            --warning: #ff9900;
-            --success: #00aa00;
-            --info: #0066cc;
+            --accent: #ff6b35;
+            --accent-dark: #e55a2b;
+            --luxury-gold: #8b4513;
+            --luxury-purple: #4b0082;
+            --luxury-platinum: #2c3e50;
+            --error: #dc3545;
+            --warning: #ffc107;
+            --success: #28a745;
+            --info: #17a2b8;
             --terminal-bg: rgba(248, 249, 250, 0.98);
-            --terminal-border: rgba(0, 102, 204, 0.4);
+            --terminal-border: rgba(44, 90, 160, 0.4);
             --text: #2c3e50;
             --text-dark: #34495e;
             --text-darker: #7f8c8d;
             --text-light: #3498db;
-            --section-divider: rgba(0, 102, 204, 0.3);
-            --grid-color: rgba(0, 102, 204, 0.1);
-            --scan-line: rgba(0, 102, 204, 0.05);
+            --section-divider: rgba(44, 90, 160, 0.3);
+            --grid-color: rgba(44, 90, 160, 0.1);
+            --scan-line: rgba(44, 90, 160, 0.05);
+            --glass-bg: rgba(44, 90, 160, 0.08);
+            --glass-border: rgba(44, 90, 160, 0.2);
         }
 
         * {
@@ -67,11 +79,15 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
+            overflow-x: hidden;
             transition: all 0.5s ease;
         }
 
@@ -79,13 +95,13 @@
             background-color: var(--secondary);
             color: var(--text);
             background-image: 
-                /* Grid pattern */
+                /* Enhanced grid pattern */
                 linear-gradient(rgba(0, 255, 157, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 255, 157, 0.03) 1px, transparent 1px),
-                /* Radial gradients */
+                /* Luxury gradients */
                 radial-gradient(circle at 15% 25%, rgba(0, 255, 157, 0.08) 0%, transparent 30%),
-                radial-gradient(circle at 85% 75%, rgba(0, 162, 255, 0.08) 0%, transparent 30%),
-                radial-gradient(circle at 50% 50%, rgba(0, 255, 157, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 85% 75%, rgba(255, 215, 0, 0.06) 0%, transparent 30%),
+                radial-gradient(circle at 50% 50%, rgba(106, 13, 173, 0.04) 0%, transparent 50%),
                 /* Base gradient */
                 linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 5, 15, 0.98));
             background-size: 
@@ -97,20 +113,19 @@
                 100% 100%;
             min-height: 100vh;
             position: relative;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><rect width="2" height="16" fill="%2300ff9d" opacity="0.8"/></svg>') 1 8, auto;
         }
 
         body.light-mode {
             background-image: 
-                linear-gradient(rgba(0, 102, 204, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 102, 204, 0.03) 1px, transparent 1px),
-                radial-gradient(circle at 15% 25%, rgba(0, 102, 204, 0.08) 0%, transparent 30%),
-                radial-gradient(circle at 85% 75%, rgba(255, 102, 0, 0.08) 0%, transparent 30%),
-                radial-gradient(circle at 50% 50%, rgba(0, 102, 204, 0.02) 0%, transparent 50%),
+                linear-gradient(rgba(44, 90, 160, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(44, 90, 160, 0.03) 1px, transparent 1px),
+                radial-gradient(circle at 15% 25%, rgba(44, 90, 160, 0.08) 0%, transparent 30%),
+                radial-gradient(circle at 85% 75%, rgba(255, 107, 53, 0.06) 0%, transparent 30%),
+                radial-gradient(circle at 50% 50%, rgba(75, 0, 130, 0.04) 0%, transparent 50%),
                 linear-gradient(135deg, rgba(248, 249, 250, 0.95), rgba(240, 245, 250, 0.98));
         }
 
-        /* Scan line effect */
+        /* Enhanced scan line effect */
         body::before {
             content: '';
             position: fixed;
@@ -118,13 +133,13 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            animation: scanLine 3s linear infinite;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--luxury-gold), transparent);
+            animation: scanLine 4s linear infinite;
             z-index: 1000;
             pointer-events: none;
         }
 
-        /* CRT flicker effect */
+        /* Subtle CRT effect */
         body::after {
             content: '';
             position: fixed;
@@ -142,9 +157,10 @@
             pointer-events: none;
             z-index: 999;
             animation: flicker 0.15s infinite linear alternate;
+            opacity: 0.3;
         }
 
-        /* ===== TERMINAL WINDOW ===== */
+        /* ===== ENHANCED TERMINAL WINDOW ===== */
         .terminal-container {
             position: fixed;
             top: 0;
@@ -163,7 +179,7 @@
             height: 100%;
             background: var(--terminal-bg);
             border: 2px solid var(--terminal-border);
-            border-radius: 0;
+            border-radius: 8px;
             box-shadow: 
                 0 0 50px rgba(0, 255, 157, 0.4),
                 inset 0 0 30px rgba(0, 255, 157, 0.1),
@@ -172,14 +188,14 @@
             display: flex;
             flex-direction: column;
             transition: all 0.5s ease;
-            backdrop-filter: blur(2px);
+            backdrop-filter: blur(10px);
         }
 
         body.light-mode .terminal {
             box-shadow: 
-                0 0 50px rgba(0, 102, 204, 0.4),
-                inset 0 0 30px rgba(0, 102, 204, 0.1),
-                0 0 100px rgba(0, 102, 204, 0.2);
+                0 0 50px rgba(44, 90, 160, 0.4),
+                inset 0 0 30px rgba(44, 90, 160, 0.1),
+                0 0 100px rgba(44, 90, 160, 0.2);
         }
 
         .terminal::before {
@@ -191,7 +207,7 @@
             bottom: 0;
             background: 
                 radial-gradient(circle at 30% 20%, rgba(0, 255, 157, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(0, 162, 255, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 70% 80%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
             pointer-events: none;
             z-index: 1;
         }
@@ -200,18 +216,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.8rem 1.5rem;
+            padding: 1rem 1.5rem;
             background: rgba(0, 10, 20, 0.9);
             border-bottom: 2px solid rgba(0, 255, 157, 0.3);
             font-family: var(--font-heading);
             font-size: 0.9rem;
             position: relative;
             z-index: 2;
+            backdrop-filter: blur(10px);
         }
 
         body.light-mode .terminal-header {
             background: rgba(240, 245, 250, 0.9);
-            border-bottom: 2px solid rgba(0, 102, 204, 0.3);
+            border-bottom: 2px solid rgba(44, 90, 160, 0.3);
         }
 
         .terminal-header::before {
@@ -221,14 +238,15 @@
             bottom: 0;
             width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            background: linear-gradient(90deg, transparent, var(--primary), var(--luxury-gold), transparent);
             animation: pulse 2s ease-in-out infinite alternate;
         }
 
         .terminal-title {
             color: var(--primary);
             font-family: var(--font-heading);
-            font-weight: 600;
+            font-size: 1.1rem;
+            font-weight: 700;
             letter-spacing: 1px;
             display: flex;
             align-items: center;
@@ -239,15 +257,15 @@
             content: '>';
             margin-right: 10px;
             color: var(--accent);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             animation: blink 1.5s infinite;
         }
 
         .verified-badge {
-            color: var(--accent);
+            color: var(--luxury-gold);
             margin-left: 12px;
             font-size: 0.8rem;
-            text-shadow: var(--glow-blue);
+            text-shadow: var(--glow-gold);
         }
 
         .terminal-controls {
@@ -303,19 +321,62 @@
         }
         .maximize::before { background: radial-gradient(circle, #00ff33, transparent); }
 
-        /* Theme toggle button */
-        .theme-toggle {
-            background: transparent;
-            border: 2px solid var(--primary);
+        /* Enhanced language toggle button */
+        .language-toggle {
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
             color: var(--text);
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
             margin-left: 20px;
-            padding: 8px 12px;
-            border-radius: 3px;
+            padding: 8px 16px;
+            border-radius: 6px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .language-toggle:hover {
+            color: var(--luxury-gold);
+            border-color: var(--luxury-gold);
+            box-shadow: var(--glow-gold);
+            transform: scale(1.05);
+        }
+
+        .language-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .language-toggle:hover::before {
+            left: 100%;
+        }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
+            color: var(--text);
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-left: 15px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .theme-toggle:hover {
@@ -332,7 +393,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 128, 255, 0.2), transparent);
             transition: left 0.5s ease;
         }
 
@@ -341,7 +402,7 @@
         }
 
         .terminal-body {
-            padding: 1.5rem;
+            padding: 2rem;
             height: 100%;
             overflow-y: auto;
             scrollbar-width: thin;
@@ -362,13 +423,13 @@
         }
 
         .terminal-body::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--primary), var(--accent));
+            background: linear-gradient(180deg, var(--primary), var(--luxury-gold));
             border-radius: 4px;
             box-shadow: inset 0 0 5px rgba(0, 255, 157, 0.5);
         }
 
         .terminal-body::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, var(--primary-light), var(--accent));
+            background: linear-gradient(180deg, var(--primary-light), var(--luxury-gold));
         }
 
         /* ===== ENHANCED TERMINAL ELEMENTS ===== */
@@ -397,16 +458,12 @@
         }
 
         .output {
-            margin: 0.8rem 0;
+            margin: 1rem 0;
             padding-left: 1.5rem;
-            border-left: 2px solid rgba(0, 255, 157, 0.4);
+            border-left: 2px solid var(--glass-border);
             font-size: 0.95rem;
             line-height: 1.6;
             position: relative;
-        }
-
-        body.light-mode .output {
-            border-left: 2px solid rgba(0, 102, 204, 0.4);
         }
 
         .output::before {
@@ -416,7 +473,7 @@
             top: 0;
             width: 2px;
             height: 100%;
-            background: linear-gradient(180deg, var(--primary), transparent);
+            background: linear-gradient(180deg, var(--primary), var(--luxury-gold));
             animation: pulse 3s ease-in-out infinite alternate;
         }
 
@@ -441,11 +498,14 @@
         .section-header {
             display: flex;
             align-items: center;
-            margin: 2rem 0 1.5rem;
-            padding: 1rem 0;
+            margin: 3rem 0 2rem;
+            padding: 1.5rem 0;
             border-bottom: 2px solid var(--section-divider);
             position: relative;
-            background: linear-gradient(90deg, rgba(0, 255, 157, 0.05), transparent);
+            background: var(--glass-bg);
+            border-radius: 8px;
+            padding-left: 1.5rem;
+            backdrop-filter: blur(10px);
         }
 
         .section-header::before {
@@ -455,16 +515,24 @@
             bottom: -2px;
             width: 0;
             height: 2px;
-            background: var(--primary);
+            background: linear-gradient(90deg, var(--primary), var(--luxury-gold));
             animation: expandLine 2s ease-out forwards;
         }
 
         .section-icon {
             margin-right: 15px;
-            color: var(--accent);
-            font-size: 1.4rem;
-            text-shadow: var(--glow-blue);
+            color: var(--luxury-gold);
+            font-size: 1.5rem;
+            text-shadow: var(--glow-gold);
             animation: iconPulse 2s ease-in-out infinite alternate;
+        }
+
+        .section-header h2 {
+            color: var(--primary);
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-shadow: var(--glow);
         }
 
         /* ===== ENHANCED PROFILE SECTION ===== */
@@ -474,15 +542,11 @@
             gap: 3rem;
             margin-bottom: 3rem;
             position: relative;
-            padding: 2rem;
-            background: rgba(0, 255, 157, 0.02);
-            border: 1px solid rgba(0, 255, 157, 0.1);
-            border-radius: 5px;
-        }
-
-        body.light-mode .profile-container {
-            background: rgba(0, 102, 204, 0.02);
-            border: 1px solid rgba(0, 102, 204, 0.1);
+            padding: 3rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            backdrop-filter: blur(15px);
         }
 
         .profile-img-container {
@@ -497,8 +561,8 @@
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--primary);
@@ -509,20 +573,13 @@
             transition: all 0.4s ease;
         }
 
-        body.light-mode .profile-img {
-            box-shadow: 
-                0 0 30px rgba(0, 102, 204, 0.6),
-                inset 0 0 20px rgba(0, 102, 204, 0.3),
-                0 0 60px rgba(0, 102, 204, 0.4);
-        }
-
         .profile-img-container::before {
             content: '';
             position: absolute;
-            width: 170px;
-            height: 170px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            background: radial-gradient(circle, var(--primary), transparent 70%);
+            background: radial-gradient(circle, var(--luxury-gold), transparent 70%);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -534,9 +591,9 @@
         .profile-img-container::after {
             content: '';
             position: absolute;
-            width: 160px;
-            height: 160px;
-            border: 2px dashed var(--primary);
+            width: 190px;
+            height: 190px;
+            border: 2px dashed var(--luxury-gold);
             border-radius: 50%;
             top: 50%;
             left: 50%;
@@ -551,13 +608,13 @@
             bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--luxury-gold));
             color: var(--secondary);
             border: none;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.4rem;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -572,12 +629,12 @@
         .music-player-btn:hover {
             transform: translateX(-50%) scale(1.2);
             box-shadow: 
-                0 0 30px rgba(0, 255, 157, 1),
+                0 0 30px rgba(255, 215, 0, 1),
                 inset 0 0 15px rgba(255, 255, 255, 0.3);
         }
 
         .music-player-btn.playing {
-            background: linear-gradient(135deg, var(--accent), var(--primary));
+            background: linear-gradient(135deg, var(--luxury-gold), var(--primary));
             animation: musicPulse 1s ease-in-out infinite alternate;
         }
 
@@ -588,8 +645,8 @@
         .profile-name {
             color: var(--primary);
             font-family: var(--font-heading);
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3rem;
+            font-weight: 800;
             margin-bottom: 0.5rem;
             line-height: 1;
             display: flex;
@@ -598,20 +655,21 @@
         }
 
         .profile-title {
-            color: var(--accent);
+            color: var(--luxury-gold);
             font-family: var(--font-heading);
-            font-size: 1.4rem;
-            font-weight: 500;
+            font-size: 1.6rem;
+            font-weight: 600;
             margin-bottom: 1.5rem;
-            text-shadow: var(--glow-blue);
+            text-shadow: var(--glow-gold);
         }
 
         .profile-description {
             color: var(--text);
-            font-size: 1rem;
+            font-size: 1.1rem;
             line-height: 1.8;
             max-width: 900px;
             text-shadow: 0 0 5px rgba(0, 255, 157, 0.3);
+            font-family: var(--font-heading);
         }
 
         /* Enhanced watermark */
@@ -619,43 +677,74 @@
             position: absolute;
             right: 30px;
             top: 30px;
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             opacity: 0.6;
             cursor: pointer;
             transition: all 0.4s ease;
             z-index: 10;
             border-radius: 50%;
-            box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
         }
 
         .watermark:hover {
             opacity: 1;
             transform: rotate(360deg) scale(1.2);
-            box-shadow: 0 0 40px rgba(0, 255, 157, 0.6);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
         }
 
-        /* ===== ENHANCED SKILLS SECTION ===== */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .skill-item {
-            background: rgba(0, 255, 157, 0.08);
-            padding: 1.5rem;
-            border-radius: 5px;
-            border: 1px solid rgba(0, 255, 157, 0.3);
+        /* ===== GLASSMORPHISM CARDS ===== */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2rem;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
 
-        body.light-mode .skill-item {
-            background: rgba(0, 102, 204, 0.08);
-            border: 1px solid rgba(0, 102, 204, 0.3);
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 20px 40px rgba(0, 255, 157, 0.2),
+                inset 0 0 30px rgba(255, 215, 0, 0.1);
+            border-color: var(--luxury-gold);
+        }
+
+        /* ===== ENHANCED SKILLS SECTION ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            background: var(--glass-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
         }
 
         .skill-item::before {
@@ -674,83 +763,69 @@
         }
 
         .skill-item:hover {
-            background: rgba(0, 255, 157, 0.15);
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             box-shadow: 
-                0 10px 25px rgba(0, 255, 157, 0.2),
-                inset 0 0 20px rgba(0, 255, 157, 0.1);
+                0 15px 35px rgba(0, 255, 157, 0.3),
+                inset 0 0 25px rgba(255, 215, 0, 0.1);
             border-color: var(--primary);
-        }
-
-        body.light-mode .skill-item:hover {
-            background: rgba(0, 102, 204, 0.15);
-            box-shadow: 
-                0 10px 25px rgba(0, 102, 204, 0.2),
-                inset 0 0 20px rgba(0, 102, 204, 0.1);
         }
 
         .skill-name {
             display: flex;
             justify-content: space-between;
             margin-bottom: 15px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-light);
+            font-family: var(--font-heading);
         }
 
         .skill-level-container {
-            height: 8px;
+            height: 10px;
             background: rgba(0, 255, 157, 0.2);
-            border-radius: 4px;
+            border-radius: 5px;
             overflow: hidden;
             margin-top: 10px;
             position: relative;
         }
 
-        body.light-mode .skill-level-container {
-            background: rgba(0, 102, 204, 0.2);
-        }
-
         .skill-level {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--luxury-gold));
+            border-radius: 5px;
             position: relative;
             transition: width 2s ease;
-            box-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.5);
         }
 
         .skill-level::after {
             content: attr(data-level);
             position: absolute;
             right: 10px;
-            top: -25px;
-            font-size: 0.85rem;
-            color: var(--text);
-            font-weight: 600;
+            top: -30px;
+            font-size: 0.9rem;
+            color: var(--luxury-gold);
+            font-weight: 700;
+            text-shadow: var(--glow-gold);
         }
 
         /* ===== ENHANCED PROJECTS SECTION ===== */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
             margin-top: 2rem;
         }
 
         .project-card {
-            background: rgba(0, 162, 255, 0.08);
-            border: 1px solid rgba(0, 162, 255, 0.3);
-            border-radius: 5px;
-            padding: 2rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2.5rem;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-        }
-
-        body.light-mode .project-card {
-            background: rgba(255, 102, 0, 0.08);
-            border: 1px solid rgba(255, 102, 0, 0.3);
+            backdrop-filter: blur(15px);
         }
 
         .project-card::before {
@@ -770,56 +845,49 @@
         }
 
         .project-card:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-10px) scale(1.02);
             box-shadow: 
-                0 15px 35px rgba(0, 162, 255, 0.3),
-                inset 0 0 25px rgba(0, 162, 255, 0.1);
+                0 20px 45px rgba(0, 128, 255, 0.3),
+                inset 0 0 30px rgba(255, 215, 0, 0.1);
             border-color: var(--accent);
-        }
-
-        body.light-mode .project-card:hover {
-            box-shadow: 
-                0 15px 35px rgba(255, 102, 0, 0.3),
-                inset 0 0 25px rgba(255, 102, 0, 0.1);
         }
 
         .project-title {
             color: var(--accent);
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
             font-family: var(--font-heading);
-            font-weight: 600;
+            font-weight: 700;
             text-shadow: var(--glow-blue);
         }
 
         .project-description {
             color: var(--text-dark);
             margin-bottom: 1.5rem;
-            line-height: 1.7;
-            font-size: 0.95rem;
+            line-height: 1.8;
+            font-size: 1rem;
+            font-family: var(--font-heading);
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.8rem;
+            gap: 1rem;
             margin-top: 1.5rem;
         }
 
         .tech-tag {
-            background: rgba(0, 162, 255, 0.15);
+            background: rgba(0, 128, 255, 0.15);
             color: var(--text);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
             border: 1px solid var(--accent);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-        }
-
-        body.light-mode .tech-tag {
-            background: rgba(255, 102, 0, 0.15);
+            backdrop-filter: blur(10px);
+            font-weight: 500;
         }
 
         .tech-tag::before {
@@ -829,7 +897,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 162, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 128, 255, 0.3), transparent);
             transition: left 0.5s ease;
         }
 
@@ -838,320 +906,10 @@
         }
 
         .tech-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 162, 255, 0.3);
-        }
-
-        /* ===== NEW SECTIONS STYLES ===== */
-        
-        /* Experience Section */
-        .experience-timeline {
-            position: relative;
-            margin-top: 2rem;
-        }
-
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--primary), var(--accent));
-            box-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
-        }
-
-        .experience-item {
-            position: relative;
-            margin-bottom: 3rem;
-            padding-left: 80px;
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 10px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--primary);
-            box-shadow: 0 0 20px rgba(0, 255, 157, 0.8);
-            z-index: 2;
-        }
-
-        .experience-date {
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            text-shadow: var(--glow-blue);
-        }
-
-        .experience-title {
-            color: var(--primary);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            text-shadow: var(--glow);
-        }
-
-        .experience-company {
-            color: var(--text-light);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .experience-description {
-            color: var(--text-dark);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        /* Certifications Section */
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .certification-card {
-            background: rgba(255, 170, 0, 0.08);
-            border: 1px solid rgba(255, 170, 0, 0.3);
-            border-radius: 5px;
-            padding: 1.5rem;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .certification-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 170, 0, 0.2);
-            border-color: var(--warning);
-        }
-
-        .certification-title {
-            color: var(--warning);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .certification-issuer {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .certification-date {
-            color: var(--text-dark);
-            font-size: 0.85rem;
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .service-card {
-            background: rgba(255, 51, 153, 0.08);
-            border: 1px solid rgba(255, 51, 153, 0.3);
-            border-radius: 5px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(255, 51, 153, 0.3);
-            border-color: #ff3399;
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            color: #ff3399;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 20px rgba(255, 51, 153, 0.6);
-        }
-
-        .service-title {
-            color: var(--primary);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .service-description {
-            color: var(--text-dark);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        /* Blog Section */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .blog-card {
-            background: rgba(102, 255, 102, 0.08);
-            border: 1px solid rgba(102, 255, 102, 0.3);
-            border-radius: 5px;
-            padding: 2rem;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(102, 255, 102, 0.3);
-            border-color: #66ff66;
-        }
-
-        .blog-date {
-            color: #66ff66;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-        }
-
-        .blog-title {
-            color: var(--primary);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-shadow: var(--glow);
-        }
-
-        .blog-excerpt {
-            color: var(--text-dark);
-            line-height: 1.7;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .blog-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .blog-tag {
-            background: rgba(102, 255, 102, 0.15);
-            color: #66ff66;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid #66ff66;
-        }
-
-        /* Statistics Section */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat-card {
-            background: rgba(255, 102, 255, 0.08);
-            border: 1px solid rgba(255, 102, 255, 0.3);
-            border-radius: 5px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 102, 255, 0.3);
-            border-color: #ff66ff;
-        }
-
-        .stat-number {
-            color: #ff66ff;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 20px rgba(255, 102, 255, 0.6);
-        }
-
-        .stat-label {
-            color: var(--text-light);
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            background: rgba(0, 255, 157, 0.08);
-            padding: 1.5rem;
-            border-radius: 5px;
-            border: 1px solid rgba(0, 255, 157, 0.3);
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        body.light-mode .contact-item {
-            background: rgba(0, 102, 204, 0.08);
-            border: 1px solid rgba(0, 102, 204, 0.3);
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 255, 157, 0.2);
-            border-color: var(--primary);
-        }
-
-        .contact-icon {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            text-shadow: var(--glow-blue);
-        }
-
-        .contact-title {
-            color: var(--primary);
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-info {
-            color: var(--text-dark);
-            font-size: 0.9rem;
-        }
-
-        .contact-link {
-            color: var(--accent);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .contact-link:hover {
-            color: var(--primary);
-            text-shadow: var(--glow);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 128, 255, 0.4);
+            border-color: var(--luxury-gold);
+            color: var(--luxury-gold);
         }
 
         /* ===== ENHANCED ANIMATIONS ===== */
@@ -1204,6 +962,21 @@
             100% { transform: translate(0); }
         }
 
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
             .terminal-container {
@@ -1211,26 +984,29 @@
             }
             
             .terminal-header {
-                padding: 0.6rem 1rem;
+                padding: 0.8rem 1rem;
                 font-size: 0.8rem;
+                flex-wrap: wrap;
+                gap: 10px;
             }
             
             .terminal-body {
-                padding: 1rem;
+                padding: 1.5rem;
             }
             
             .profile-container {
                 flex-direction: column;
                 text-align: center;
                 gap: 2rem;
+                padding: 2rem;
             }
             
             .profile-name {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             .profile-title {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
             
             .skills-grid {
@@ -1242,23 +1018,91 @@
             }
             
             .watermark {
-                width: 60px;
-                height: 60px;
+                width: 80px;
+                height: 80px;
                 right: 15px;
                 top: 15px;
             }
 
-            .experience-item {
-                padding-left: 60px;
+            .language-toggle,
+            .theme-toggle {
+                padding: 6px 10px;
+                font-size: 0.9rem;
+                margin-left: 10px;
             }
 
-            .experience-timeline::before {
-                left: 20px;
+            .section-header h2 {
+                font-size: 1.5rem;
             }
 
-            .experience-item::before {
-                left: 10px;
+            .profile-img {
+                width: 150px;
+                height: 150px;
             }
+
+            .profile-img-container::before {
+                width: 170px;
+                height: 170px;
+            }
+
+            .profile-img-container::after {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        /* ===== LANGUAGE SPECIFIC STYLES ===== */
+        [dir="rtl"] {
+            text-align: right;
+        }
+
+        [dir="rtl"] .terminal-title::before {
+            content: '<';
+            margin-left: 10px;
+            margin-right: 0;
+        }
+
+        [dir="rtl"] .section-icon {
+            margin-left: 15px;
+            margin-right: 0;
+        }
+
+        [dir="rtl"] .output {
+            padding-right: 1.5rem;
+            padding-left: 0;
+            border-right: 2px solid var(--glass-border);
+            border-left: none;
+        }
+
+        [dir="rtl"] .output::before {
+            right: -2px;
+            left: auto;
+        }
+
+        [dir="rtl"] .prompt {
+            margin-left: 10px;
+            margin-right: 0;
+        }
+
+        /* ===== HIDDEN CONTENT FOR LANGUAGE SWITCHING ===== */
+        .lang-content {
+            display: block;
+        }
+
+        .lang-content.hidden {
+            display: none;
+        }
+
+        /* ===== LOADING ANIMATION ===== */
+        .loading {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .loading.loaded {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -1267,15 +1111,20 @@
         <div class="terminal">
             <div class="terminal-header">
                 <div class="terminal-title">
-                    SantaDevX  v3.0.0 Pro
+                    <span class="lang-content" data-en="SantaDevX v3.0.0 Pro" data-ar="SantaDevX v3.0.0 Pro">SantaDevX v3.0.0 Pro</span>
                     <span class="verified-badge">
-                        <i class="fas fa-check-circle"></i> Verified Pro
+                        <i class="fas fa-crown"></i> 
+                        <span class="lang-content" data-en="Verified Pro" data-ar="محترف معتمد">Verified Pro</span>
                     </span>
                 </div>
                 <div class="terminal-controls">
                     <div class="control-btn close"></div>
                     <div class="control-btn minimize"></div>
                     <div class="control-btn maximize"></div>
+                    <button class="language-toggle" onclick="toggleLanguage()">
+                        <i class="fas fa-globe"></i>
+                        <span id="langText">العربية</span>
+                    </button>
                     <button class="theme-toggle" onclick="toggleTheme()">
                         <i class="fas fa-adjust"></i>
                     </button>
@@ -1286,13 +1135,13 @@
                 <!-- Command prompt -->
                 <div>
                     <span class="prompt">$</span>
-                    <span class="command">cat profile.info --extended</span>
+                    <span class="command lang-content" data-en="cat profile.info --extended" data-ar="cat profile.info --extended">cat profile.info --extended</span>
                     <span class="cursor"></span>
                 </div>
                 
                 <!-- Profile Section -->
                 <div class="output">
-                    <div class="profile-container">
+                    <div class="profile-container glass-card loading">
                         <div class="profile-img-container">
                             <img src="santa.png" alt="SantaDevX Profile" class="profile-img">
                             <button class="music-player-btn" onclick="toggleMusic()">
@@ -1306,12 +1155,15 @@
                                     <i class="fas fa-crown"></i>
                                 </span>
                             </h1>
-                            <h2 class="profile-title">Senior Full Stack Developer & AI Specialist</h2>
-                            <p class="profile-description">
-                                مطور ويب متخصص في تطوير التطبيقات الحديثة باستخدام أحدث التقنيات والذكاء الاصطناعي. 
-                                أركز على إنشاء تجارب مستخدم استثنائية وحلول تقنية مبتكرة تدمج بين التصميم الجذاب والأداء العالي. 
-                                خبرة واسعة في تطوير الواجهات الأمامية والخلفية، وتصميم واجهات المستخدم، وتطبيقات الذكاء الاصطناعي.
-                                متخصص في تقنيات الويب الحديثة مثل React، Vue.js، Node.js، Python، وتقنيات الذكاء الاصطناعي.
+                            <h2 class="profile-title lang-content" 
+                                data-en="Senior Full Stack Developer & AI Specialist" 
+                                data-ar="مطور ويب متقدم ومتخصص في الذكاء الاصطناعي">
+                                Senior Full Stack Developer & AI Specialist
+                            </h2>
+                            <p class="profile-description lang-content" 
+                               data-en="Passionate web developer specializing in cutting-edge applications using the latest technologies and artificial intelligence. I focus on creating exceptional user experiences and innovative technical solutions that blend attractive design with high performance. Extensive experience in frontend and backend development, UI/UX design, and AI applications. Expert in modern web technologies like React, Vue.js, Node.js, Python, and artificial intelligence technologies."
+                               data-ar="مطور ويب متخصص في تطوير التطبيقات الحديثة باستخدام أحدث التقنيات والذكاء الاصطناعي. أركز على إنشاء تجارب مستخدم استثنائية وحلول تقنية مبتكرة تدمج بين التصميم الجذاب والأداء العالي. خبرة واسعة في تطوير الواجهات الأمامية والخلفية، وتصميم واجهات المستخدم، وتطبيقات الذكاء الاصطناعي. متخصص في تقنيات الويب الحديثة مثل React، Vue.js، Node.js، Python، وتقنيات الذكاء الاصطناعي.">
+                                Passionate web developer specializing in cutting-edge applications using the latest technologies and artificial intelligence. I focus on creating exceptional user experiences and innovative technical solutions that blend attractive design with high performance. Extensive experience in frontend and backend development, UI/UX design, and AI applications. Expert in modern web technologies like React, Vue.js, Node.js, Python, and artificial intelligence technologies.
                             </p>
                         </div>
                         <img src="santa.png" alt="Watermark" class="watermark">
@@ -1319,47 +1171,47 @@
                 </div>
 
                 <!-- Statistics Section -->
-                <div class="section-header">
+                <div class="section-header loading">
                     <i class="fas fa-chart-bar section-icon"></i>
-                    <h2>Professional Statistics</h2>
+                    <h2 class="lang-content" data-en="Professional Statistics" data-ar="الإحصائيات المهنية">Professional Statistics</h2>
                 </div>
                 <div class="output">
                     <div class="stats-grid">
-                        <div class="stat-card">
+                        <div class="glass-card loading">
                             <div class="stat-number">150+</div>
-                            <div class="stat-label">مشروع مكتمل</div>
+                            <div class="stat-label lang-content" data-en="Completed Projects" data-ar="مشروع مكتمل">Completed Projects</div>
                         </div>
-                        <div class="stat-card">
+                        <div class="glass-card loading">
                             <div class="stat-number">50+</div>
-                            <div class="stat-label">عميل راضي</div>
+                            <div class="stat-label lang-content" data-en="Satisfied Clients" data-ar="عميل راضي">Satisfied Clients</div>
                         </div>
-                        <div class="stat-card">
+                        <div class="glass-card loading">
                             <div class="stat-number">4+</div>
-                            <div class="stat-label">سنوات خبرة</div>
+                            <div class="stat-label lang-content" data-en="Years Experience" data-ar="سنوات خبرة">Years Experience</div>
                         </div>
-                        <div class="stat-card">
+                        <div class="glass-card loading">
                             <div class="stat-number">25+</div>
-                            <div class="stat-label">تقنية متقنة</div>
+                            <div class="stat-label lang-content" data-en="Technologies Mastered" data-ar="تقنية متقنة">Technologies Mastered</div>
                         </div>
-                        <div class="stat-card">
+                        <div class="glass-card loading">
                             <div class="stat-number">99%</div>
-                            <div class="stat-label">معدل النجاح</div>
+                            <div class="stat-label lang-content" data-en="Success Rate" data-ar="معدل النجاح">Success Rate</div>
                         </div>
-                        <div class="stat-card">
+                        <div class="glass-card loading">
                             <div class="stat-number">24/7</div>
-                            <div class="stat-label">دعم فني</div>
+                            <div class="stat-label lang-content" data-en="Technical Support" data-ar="دعم فني">Technical Support</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Skills Section -->
-                <div class="section-header">
+                <div class="section-header loading">
                     <i class="fas fa-code section-icon"></i>
-                    <h2>Technical Skills & Expertise</h2>
+                    <h2 class="lang-content" data-en="Technical Skills & Expertise" data-ar="المهارات التقنية والخبرات">Technical Skills & Expertise</h2>
                 </div>
                 <div class="output">
                     <div class="skills-grid">
-                        <div class="skill-item">
+                        <div class="skill-item loading">
                             <div class="skill-name">
                                 <span>JavaScript/TypeScript</span>
                                 <span>98%</span>
@@ -1368,7 +1220,7 @@
                                 <div class="skill-level" data-level="98%" style="width: 98%;"></div>
                             </div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item loading">
                             <div class="skill-name">
                                 <span>React.js/Next.js</span>
                                 <span>95%</span>
@@ -1377,7 +1229,7 @@
                                 <div class="skill-level" data-level="95%" style="width: 95%;"></div>
                             </div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item loading">
                             <div class="skill-name">
                                 <span>Vue.js/Nuxt.js</span>
                                 <span>92%</span>
@@ -1386,7 +1238,7 @@
                                 <div class="skill-level" data-level="92%" style="width: 92%;"></div>
                             </div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item loading">
                             <div class="skill-name">
                                 <span>Node.js/Express</span>
                                 <span>94%</span>
@@ -1395,7 +1247,7 @@
                                 <div class="skill-level" data-level="94%" style="width: 94%;"></div>
                             </div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item loading">
                             <div class="skill-name">
                                 <span>Python/Django/FastAPI</span>
                                 <span>90%</span>
@@ -1404,7 +1256,7 @@
                                 <div class="skill-level" data-level="90%" style="width: 90%;"></div>
                             </div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item loading">
                             <div class="skill-name">
                                 <span>AI/Machine Learning</span>
                                 <span>88%</span>
@@ -1413,7 +1265,7 @@
                                 <div class="skill-level" data-level="88%" style="width: 88%;"></div>
                             </div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item loading">
                             <div class="skill-name">
                                 <span>UI/UX Design</span>
                                 <span>93%</span>
@@ -1422,7 +1274,7 @@
                                 <div class="skill-level" data-level="93%" style="width: 93%;"></div>
                             </div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item loading">
                             <div class="skill-name">
                                 <span>Database Management</span>
                                 <span>87%</span>
@@ -1431,7 +1283,7 @@
                                 <div class="skill-level" data-level="87%" style="width: 87%;"></div>
                             </div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item loading">
                             <div class="skill-name">
                                 <span>DevOps/Cloud Computing</span>
                                 <span>85%</span>
@@ -1440,7 +1292,7 @@
                                 <div class="skill-level" data-level="85%" style="width: 85%;"></div>
                             </div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item loading">
                             <div class="skill-name">
                                 <span>Mobile Development</span>
                                 <span>82%</span>
@@ -1449,7 +1301,7 @@
                                 <div class="skill-level" data-level="82%" style="width: 82%;"></div>
                             </div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item loading">
                             <div class="skill-name">
                                 <span>Blockchain Development</span>
                                 <span>78%</span>
@@ -1458,7 +1310,7 @@
                                 <div class="skill-level" data-level="78%" style="width: 78%;"></div>
                             </div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item loading">
                             <div class="skill-name">
                                 <span>Cybersecurity</span>
                                 <span>80%</span>
@@ -1470,67 +1322,23 @@
                     </div>
                 </div>
 
-                <!-- Experience Section -->
-                <div class="section-header">
-                    <i class="fas fa-briefcase section-icon"></i>
-                    <h2>Professional Experience</h2>
-                </div>
-                <div class="output">
-                    <div class="experience-timeline">
-                        <div class="experience-item">
-                            <div class="experience-date">2023 - الحاضر</div>
-                            <div class="experience-title">Senior Full Stack Developer & AI Specialist</div>
-                            <div class="experience-company">TechInnovate Solutions</div>
-                            <div class="experience-description">
-                                قيادة فريق تطوير متخصص في بناء تطبيقات ويب متقدمة تدمج تقنيات الذكاء الاصطناعي. 
-                                تطوير حلول مبتكرة للشركات الكبرى باستخدام React، Node.js، Python، وتقنيات التعلم الآلي.
-                                إدارة مشاريع معقدة وتوجيه المطورين الجدد في أفضل الممارسات التقنية.
-                            </div>
-                        </div>
-                        <div class="experience-item">
-                            <div class="experience-date">2021 - 2023</div>
-                            <div class="experience-title">Full Stack Developer</div>
-                            <div class="experience-company">Digital Dynamics Corp</div>
-                            <div class="experience-description">
-                                تطوير تطبيقات ويب شاملة للعملاء في مختلف القطاعات. العمل مع فرق متعددة التخصصات
-                                لتقديم حلول تقنية متطورة. تخصص في تطوير واجهات المستخدم التفاعلية وأنظمة الخلفية القوية.
-                            </div>
-                        </div>
-                        <div class="experience-item">
-                            <div class="experience-date">2022 - 2024</div>
-                            <div class="experience-title">Frontend Developer</div>
-                            <div class="experience-company">WebCraft Studio</div>
-                            <div class="experience-description">
-                                التركيز على تطوير واجهات المستخدم الحديثة باستخدام React و Vue.js. 
-                                تحسين أداء التطبيقات وضمان التوافق مع جميع المتصفحات والأجهزة.
-                                التعاون مع مصممي UX/UI لتحويل التصاميم إلى كود فعال.
-                            </div>
-                        </div>
-                        <div class="experience-item">
-                            <div class="experience-date">2021 - 2024</div>
-                            <div class="experience-title">Junior Web Developer</div>
-                            <div class="experience-company">StartupTech Hub</div>
-                            <div class="experience-description">
-                                بداية المسيرة المهنية في تطوير الويب. تعلم أساسيات التطوير الحديث
-                                والمساهمة في مشاريع متنوعة. اكتساب خبرة في HTML، CSS، JavaScript، وأطر العمل الحديثة.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Projects Section -->
-                <div class="section-header">
+                <div class="section-header loading">
                     <i class="fas fa-project-diagram section-icon"></i>
-                    <h2>Featured Projects & Portfolio</h2>
+                    <h2 class="lang-content" data-en="Featured Projects & Portfolio" data-ar="المشاريع المميزة والمعرض">Featured Projects & Portfolio</h2>
                 </div>
                 <div class="output">
                     <div class="projects-grid">
-                        <div class="project-card">
-                            <h3 class="project-title">AI-Powered E-Commerce Platform</h3>
-                            <p class="project-description">
-                                منصة تجارة إلكترونية متطورة تستخدم الذكاء الاصطناعي لتخصيص تجربة التسوق.
-                                تتضمن نظام توصيات ذكي، تحليل سلوك المستخدمين، ونظام إدارة مخزون تلقائي.
-                                دعم للدفع الإلكتروني المتعدد والتكامل مع أنظمة الشحن العالمية.
+                        <div class="project-card loading">
+                            <h3 class="project-title lang-content" 
+                                data-en="AI-Powered E-Commerce Platform" 
+                                data-ar="منصة تجارة إلكترونية مدعومة بالذكاء الاصطناعي">
+                                AI-Powered E-Commerce Platform
+                            </h3>
+                            <p class="project-description lang-content" 
+                               data-en="Advanced e-commerce platform using artificial intelligence to personalize shopping experience. Features intelligent recommendation system, user behavior analysis, and automatic inventory management. Supports multiple payment methods and integrates with global shipping systems."
+                               data-ar="منصة تجارة إلكترونية متطورة تستخدم الذكاء الاصطناعي لتخصيص تجربة التسوق. تتضمن نظام توصيات ذكي، تحليل سلوك المستخدمين، ونظام إدارة مخزون تلقائي. دعم للدفع الإلكتروني المتعدد والتكامل مع أنظمة الشحن العالمية.">
+                                Advanced e-commerce platform using artificial intelligence to personalize shopping experience. Features intelligent recommendation system, user behavior analysis, and automatic inventory management. Supports multiple payment methods and integrates with global shipping systems.
                             </p>
                             <div class="project-tech">
                                 <span class="tech-tag">React</span>
@@ -1542,12 +1350,16 @@
                                 <span class="tech-tag">AWS</span>
                             </div>
                         </div>
-                        <div class="project-card">
-                            <h3 class="project-title">Smart Task Management System</h3>
-                            <p class="project-description">
-                                نظام إدارة مهام ذكي مع ميزات التعاون الجماعي والتتبع المتقدم.
-                                يستخدم خوارزميات التعلم الآلي لتحسين توزيع المهام وتقدير أوقات الإنجاز.
-                                واجهة مستخدم متقدمة مع إشعارات فورية ولوحات تحكم تفاعلية.
+                        <div class="project-card loading">
+                            <h3 class="project-title lang-content" 
+                                data-en="Smart Task Management System" 
+                                data-ar="نظام إدارة المهام الذكي">
+                                Smart Task Management System
+                            </h3>
+                            <p class="project-description lang-content" 
+                               data-en="Intelligent task management system with team collaboration and advanced tracking features. Uses machine learning algorithms to optimize task distribution and estimate completion times. Advanced user interface with real-time notifications and interactive dashboards."
+                               data-ar="نظام إدارة مهام ذكي مع ميزات التعاون الجماعي والتتبع المتقدم. يستخدم خوارزميات التعلم الآلي لتحسين توزيع المهام وتقدير أوقات الإنجاز. واجهة مستخدم متقدمة مع إشعارات فورية ولوحات تحكم تفاعلية.">
+                                Intelligent task management system with team collaboration and advanced tracking features. Uses machine learning algorithms to optimize task distribution and estimate completion times. Advanced user interface with real-time notifications and interactive dashboards.
                             </p>
                             <div class="project-tech">
                                 <span class="tech-tag">Vue.js</span>
@@ -1558,12 +1370,16 @@
                                 <span class="tech-tag">Docker</span>
                             </div>
                         </div>
-                        <div class="project-card">
-                            <h3 class="project-title">Advanced AI Analytics Dashboard</h3>
-                            <p class="project-description">
-                                لوحة تحكم ذكية متطورة تستخدم الذكاء الاصطناعي لتحليل البيانات الضخمة.
-                                تقدم رؤى تحليلية عميقة مع تصورات بيانات تفاعلية وتقارير آلية.
-                                دعم للتنبؤات المستقبلية وتحليل الاتجاهات باستخدام خوارزميات متقدمة.
+                        <div class="project-card loading">
+                            <h3 class="project-title lang-content" 
+                                data-en="Advanced AI Analytics Dashboard" 
+                                data-ar="لوحة تحليلات الذكاء الاصطناعي المتقدمة">
+                                Advanced AI Analytics Dashboard
+                            </h3>
+                            <p class="project-description lang-content" 
+                               data-en="Sophisticated AI-powered dashboard for big data analysis. Provides deep analytical insights with interactive data visualizations and automated reports. Supports future predictions and trend analysis using advanced algorithms."
+                               data-ar="لوحة تحكم ذكية متطورة تستخدم الذكاء الاصطناعي لتحليل البيانات الضخمة. تقدم رؤى تحليلية عميقة مع تصورات بيانات تفاعلية وتقارير آلية. دعم للتنبؤات المستقبلية وتحليل الاتجاهات باستخدام خوارزميات متقدمة.">
+                                Sophisticated AI-powered dashboard for big data analysis. Provides deep analytical insights with interactive data visualizations and automated reports. Supports future predictions and trend analysis using advanced algorithms.
                             </p>
                             <div class="project-tech">
                                 <span class="tech-tag">Python</span>
@@ -1574,286 +1390,26 @@
                                 <span class="tech-tag">Elasticsearch</span>
                             </div>
                         </div>
-                        <div class="project-card">
-                            <h3 class="project-title">Blockchain-Based Supply Chain</h3>
-                            <p class="project-description">
-                                نظام تتبع سلسلة التوريد باستخدام تقنية البلوك تشين لضمان الشفافية والأمان.
-                                يوفر تتبعاً كاملاً للمنتجات من المصدر إلى المستهلك النهائي.
-                                واجهة ويب متقدمة لإدارة العمليات ومراقبة الحالة في الوقت الفعلي.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Solidity</span>
-                                <span class="tech-tag">Web3.js</span>
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">Ethereum</span>
-                                <span class="tech-tag">IPFS</span>
-                            </div>
-                        </div>
-                        <div class="project-card">
-                            <h3 class="project-title">Real-time Chat Application</h3>
-                            <p class="project-description">
-                                تطبيق دردشة متقدم يدعم المحادثات الجماعية والفردية مع ميزات متطورة.
-                                يتضمن مشاركة الملفات، المكالمات الصوتية والمرئية، والترجمة الفورية.
-                                أمان عالي مع تشفير end-to-end وحماية  SSL للبيانات الشخصية.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">React Native</span>
-                                <span class="tech-tag">Socket.io</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">WebRTC</span>
-                                <span class="tech-tag">MongoDB</span>
-                                <span class="tech-tag">Firebase</span>
-                            </div>
-                        </div>
-                        <div class="project-card">
-                            <h3 class="project-title">IoT Smart Home System</h3>
-                            <p class="project-description">
-                                نظام منزل ذكي شامل يربط جميع الأجهزة المنزلية في شبكة واحدة.
-                                تحكم كامل عبر تطبيق الهاتف المحمول مع ميزات الأتمتة والذكاء الاصطناعي.
-                                مراقبة استهلاك الطاقة وتحسين الكفاءة تلقائياً.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">React Native</span>
-                                <span class="tech-tag">Arduino</span>
-                                <span class="tech-tag">Raspberry Pi</span>
-                                <span class="tech-tag">MQTT</span>
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">InfluxDB</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Services Section -->
-                <div class="section-header">
-                    <i class="fas fa-cogs section-icon"></i>
-                    <h2>Professional Services</h2>
-                </div>
-                <div class="output">
-                    <div class="services-grid">
-                        <div class="service-card">
-                            <i class="fas fa-laptop-code service-icon"></i>
-                            <h3 class="service-title">تطوير تطبيقات الويب</h3>
-                            <p class="service-description">
-                                تطوير تطبيقات ويب متطورة وسريعة الاستجابة باستخدام أحدث التقنيات.
-                                من المواقع البسيطة إلى التطبيقات المعقدة متعددة المستخدمين.
-                            </p>
-                        </div>
-                        <div class="service-card">
-                            <i class="fas fa-mobile-alt service-icon"></i>
-                            <h3 class="service-title">تطوير تطبيقات الهاتف</h3>
-                            <p class="service-description">
-                                إنشاء تطبيقات هاتف ذكي أصلية ومتعددة المنصات بتصميم عصري
-                                وأداء عالي لنظامي iOS و Android.
-                            </p>
-                        </div>
-                        <div class="service-card">
-                            <i class="fas fa-brain service-icon"></i>
-                            <h3 class="service-title">حلول الذكاء الاصطناعي</h3>
-                            <p class="service-description">
-                                تطوير وتطبيق حلول الذكاء الاصطناعي والتعلم الآلي
-                                لتحسين العمليات التجارية وأتمتة المهام المعقدة.
-                            </p>
-                        </div>
-                        <div class="service-card">
-                            <i class="fas fa-paint-brush service-icon"></i>
-                            <h3 class="service-title">تصميم واجهات المستخدم</h3>
-                            <p class="service-description">
-                                تصميم واجهات مستخدم جذابة وسهلة الاستخدام تركز على
-                                تجربة المستخدم وتحقق أهداف العمل بكفاءة.
-                            </p>
-                        </div>
-                        <div class="service-card">
-                            <i class="fas fa-database service-icon"></i>
-                            <h3 class="service-title">إدارة قواعد البيانات</h3>
-                            <p class="service-description">
-                                تصميم وإدارة قواعد بيانات قوية وآمنة مع تحسين الأداء
-                                وضمان سلامة البيانات واستمرارية العمل.
-                            </p>
-                        </div>
-                        <div class="service-card">
-                            <i class="fas fa-shield-alt service-icon"></i>
-                            <h3 class="service-title">الأمن السيبراني</h3>
-                            <p class="service-description">
-                                تأمين التطبيقات والأنظمة ضد التهديدات السيبرانية
-                                مع تطبيق أفضل ممارسات الأمان والحماية.
-                            </p>
-                        </div>
-                        <div class="service-card">
-                            <i class="fas fa-cloud service-icon"></i>
-                            <h3 class="service-title">الحوسبة السحابية</h3>
-                            <p class="service-description">
-                                نشر وإدارة التطبيقات على المنصات السحابية مع ضمان
-                                القابلية للتوسع والأداء العالي والتوفر المستمر.
-                            </p>
-                        </div>
-                        <div class="service-card">
-                            <i class="fas fa-chart-line service-icon"></i>
-                            <h3 class="service-title">تحليل البيانات</h3>
-                            <p class="service-description">
-                                تحليل البيانات الضخمة واستخراج الرؤى القيمة
-                                لاتخاذ قرارات مدروسة وتحسين الأداء التجاري.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Certifications Section -->
-                <div class="section-header">
-                    <i class="fas fa-certificate section-icon"></i>
-                    <h2>Certifications & Achievements</h2>
-                </div>
-                <div class="output">
-                    <div class="certifications-grid">
-                        <div class="certification-card">
-                            <h3 class="certification-title">AWS Certified Solutions Architect</h3>
-                            <div class="certification-issuer">Amazon Web Services</div>
-                            <div class="certification-date">2023</div>
-                        </div>
-                        <div class="certification-card">
-                            <h3 class="certification-title">Google Cloud Professional Developer</h3>
-                            <div class="certification-issuer">Google Cloud Platform</div>
-                            <div class="certification-date">2023</div>
-                        </div>
-                        <div class="certification-card">
-                            <h3 class="certification-title">Microsoft Azure AI Engineer</h3>
-                            <div class="certification-issuer">Microsoft</div>
-                            <div class="certification-date">2022</div>
-                        </div>
-                        <div class="certification-card">
-                            <h3 class="certification-title">Certified Kubernetes Administrator</h3>
-                            <div class="certification-issuer">Cloud Native Computing Foundation</div>
-                            <div class="certification-date">2022</div>
-                        </div>
-                        <div class="certification-card">
-                            <h3 class="certification-title">TensorFlow Developer Certificate</h3>
-                            <div class="certification-issuer">TensorFlow</div>
-                            <div class="certification-date">2021</div>
-                        </div>
-                        <div class="certification-card">
-                            <h3 class="certification-title">React Advanced Certification</h3>
-                            <div class="certification-issuer">Meta (Facebook)</div>
-                            <div class="certification-date">2021</div>
-                        </div>
-                        <div class="certification-card">
-                            <h3 class="certification-title">Certified Ethical Hacker (CEH)</h3>
-                            <div class="certification-issuer">EC-Council</div>
-                            <div class="certification-date">2022</div>
-                        </div>
-                        <div class="certification-card">
-                            <h3 class="certification-title">MongoDB Certified Developer</h3>
-                            <div class="certification-issuer">MongoDB University</div>
-                            <div class="certification-date">2023</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Blog Section -->
-                <div class="section-header">
-                    <i class="fas fa-blog section-icon"></i>
-                    <h2>Latest Blog Posts & Articles</h2>
-                </div>
-                <div class="output">
-                    <div class="blog-grid">
-                        <div class="blog-card">
-                            <div class="blog-date">15 ديسمبر 2024</div>
-                            <h3 class="blog-title">مستقبل الذكاء الاصطناعي في تطوير الويب</h3>
-                            <p class="blog-excerpt">
-                                استكشاف كيف تغير تقنيات الذكاء الاصطناعي من طريقة تطوير تطبيقات الويب
-                                والتحديات والفرص الجديدة التي تطرحها هذه التقنيات المتطورة...
-                            </p>
-                            <div class="blog-tags">
-                                <span class="blog-tag">AI</span>
-                                <span class="blog-tag">Web Development</span>
-                                <span class="blog-tag">Future Tech</span>
-                            </div>
-                        </div>
-                        <div class="blog-card">
-                            <div class="blog-date">8 ديسمبر 2024</div>
-                            <h3 class="blog-title">أفضل ممارسات الأمان في تطبيقات React</h3>
-                            <p class="blog-excerpt">
-                                دليل شامل لتأمين تطبيقات React ضد التهديدات الشائعة مع أمثلة عملية
-                                وأدوات متقدمة لضمان أمان التطبيقات في بيئة الإنتاج...
-                            </p>
-                            <div class="blog-tags">
-                                <span class="blog-tag">React</span>
-                                <span class="blog-tag">Security</span>
-                                <span class="blog-tag">Best Practices</span>
-                            </div>
-                        </div>
-                        <div class="blog-card">
-                            <div class="blog-date">1 ديسمبر 2024</div>
-                            <h3 class="blog-title">تحسين أداء تطبيقات Node.js للإنتاج</h3>
-                            <p class="blog-excerpt">
-                                تقنيات متقدمة لتحسين أداء تطبيقات Node.js وتقليل زمن الاستجابة
-                                مع استراتيجيات التخزين المؤقت وإدارة الذاكرة بكفاءة...
-                            </p>
-                            <div class="blog-tags">
-                                <span class="blog-tag">Node.js</span>
-                                <span class="blog-tag">Performance</span>
-                                <span class="blog-tag">Optimization</span>
-                            </div>
-                        </div>
-                        <div class="blog-card">
-                            <div class="blog-date">25 نوفمبر 2024</div>
-                            <h3 class="blog-title">دليل المطور لتقنيات البلوك تشين</h3>
-                            <p class="blog-excerpt">
-                                مقدمة شاملة لتطوير التطبيقات اللامركزية باستخدام تقنيات البلوك تشين
-                                مع أمثلة عملية لبناء عقود ذكية وتطبيقات Web3...
-                            </p>
-                            <div class="blog-tags">
-                                <span class="blog-tag">Blockchain</span>
-                                <span class="blog-tag">Web3</span>
-                                <span class="blog-tag">Smart Contracts</span>
-                            </div>
-                        </div>
-                        <div class="blog-card">
-                            <div class="blog-date">18 نوفمبر 2024</div>
-                            <h3 class="blog-title">تصميم واجهات المستخدم المتجاوبة</h3>
-                            <p class="blog-excerpt">
-                                أسرار تصميم واجهات مستخدم تتكيف مع جميع الأجهزة والشاشات
-                                باستخدام CSS Grid وFlexbox وتقنيات التصميم الحديثة...
-                            </p>
-                            <div class="blog-tags">
-                                <span class="blog-tag">UI/UX</span>
-                                <span class="blog-tag">Responsive Design</span>
-                                <span class="blog-tag">CSS</span>
-                            </div>
-                        </div>
-                        <div class="blog-card">
-                            <div class="blog-date">10 نوفمبر 2024</div>
-                            <h3 class="blog-title">إنترنت الأشياء والتطبيقات الذكية</h3>
-                            <p class="blog-excerpt">
-                                كيفية ربط الأجهزة الذكية بتطبيقات الويب لإنشاء حلول IoT متكاملة
-                                مع أمثلة عملية لمشاريع المنازل والمدن الذكية...
-                            </p>
-                            <div class="blog-tags">
-                                <span class="blog-tag">IoT</span>
-                                <span class="blog-tag">Smart Devices</span>
-                                <span class="blog-tag">Integration</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <!-- Contact Section -->
-                <div class="section-header">
+                <div class="section-header loading">
                     <i class="fas fa-envelope section-icon"></i>
-                    <h2>Contact Information & Social Links</h2>
+                    <h2 class="lang-content" data-en="Contact Information & Social Links" data-ar="معلومات التواصل والروابط الاجتماعية">Contact Information & Social Links</h2>
                 </div>
                 <div class="output">
                     <div class="contact-grid">
-                        <div class="contact-item">
+                        <div class="glass-card loading">
                             <i class="fas fa-envelope contact-icon"></i>
-                            <div class="contact-title">Email</div>
+                            <div class="contact-title lang-content" data-en="Email" data-ar="البريد الإلكتروني">Email</div>
                             <div class="contact-info">
                                 <a href="mailto:saiffikry2008@gmail.com" class="contact-link">
                                     saiffikry2008@gmail.com
                                 </a>
                             </div>
                         </div>
-                        <div class="contact-item">
+                        <div class="glass-card loading">
                             <i class="fab fa-github contact-icon"></i>
                             <div class="contact-title">GitHub</div>
                             <div class="contact-info">
@@ -1862,7 +1418,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="contact-item">
+                        <div class="glass-card loading">
                             <i class="fab fa-linkedin contact-icon"></i>
                             <div class="contact-title">LinkedIn</div>
                             <div class="contact-info">
@@ -1871,43 +1427,25 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="contact-item">
+                        <div class="glass-card loading">
                             <i class="fas fa-globe contact-icon"></i>
-                            <div class="contact-title">Portfolio</div>
+                            <div class="contact-title lang-content" data-en="Portfolio" data-ar="المعرض">Portfolio</div>
                             <div class="contact-info">
                                 <a href="https://santadevx.dev" class="contact-link">
                                     santadevx.dev
                                 </a>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fab fa-twitter contact-icon"></i>
-                            <div class="contact-title">Twitter</div>
-                            <div class="contact-info">
-                                <a href="https://twitter.com/santadevx7" class="contact-link">
-                                    @santadevx7
-                                </a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
+                        <div class="glass-card loading">
                             <i class="fab fa-discord contact-icon"></i>
                             <div class="contact-title">Discord</div>
                             <div class="contact-info">
                                 <span class="contact-link">https://discord.gg/RjpyFdkG</span>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fab fa-telegram contact-icon"></i>
-                            <div class="contact-title">Telegram</div>
-                            <div class="contact-info">
-                                <a href="https://t.me/santadevx7" class="contact-link">
-                                    @santadevx7
-                                </a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
+                        <div class="glass-card loading">
                             <i class="fas fa-phone contact-icon"></i>
-                            <div class="contact-title">Phone</div>
+                            <div class="contact-title lang-content" data-en="Phone" data-ar="الهاتف">Phone</div>
                             <div class="contact-info">
                                 <span class="contact-link">+201500461923</span>
                             </div>
@@ -1918,13 +1456,13 @@
                 <!-- Terminal prompt at bottom -->
                 <div style="margin-top: 3rem;">
                     <span class="prompt">$</span>
-                    <span class="command">system --status</span>
+                    <span class="command lang-content" data-en="system --status" data-ar="system --status">system --status</span>
                 </div>
                 <div class="output success">
-                    <div>✓ All systems operational</div>
-                    <div>✓ Profile loaded successfully</div>
-                    <div>✓ Enhanced features activated</div>
-                    <div>✓ Ready for new connections</div>
+                    <div class="lang-content" data-en="✓ All systems operational" data-ar="✓ جميع الأنظمة تعمل بشكل طبيعي">✓ All systems operational</div>
+                    <div class="lang-content" data-en="✓ Profile loaded successfully" data-ar="✓ تم تحميل الملف الشخصي بنجاح">✓ Profile loaded successfully</div>
+                    <div class="lang-content" data-en="✓ Enhanced features activated" data-ar="✓ تم تفعيل الميزات المحسنة">✓ Enhanced features activated</div>
+                    <div class="lang-content" data-en="✓ Ready for new connections" data-ar="✓ جاهز لاتصالات جديدة">✓ Ready for new connections</div>
                 </div>
                 <div style="margin-top: 1rem;">
                     <span class="prompt">$</span>
@@ -1938,6 +1476,44 @@
     <audio id="backgroundMusic" src="song.mp3" loop></audio>
 
     <script>
+        // Language management
+        let currentLanguage = 'en';
+
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const langText = document.getElementById('langText');
+            const langContents = document.querySelectorAll('.lang-content');
+            
+            if (currentLanguage === 'en') {
+                currentLanguage = 'ar';
+                html.setAttribute('lang', 'ar');
+                html.setAttribute('dir', 'rtl');
+                langText.textContent = 'English';
+                
+                langContents.forEach(element => {
+                    const arabicText = element.getAttribute('data-ar');
+                    if (arabicText) {
+                        element.textContent = arabicText;
+                    }
+                });
+            } else {
+                currentLanguage = 'en';
+                html.setAttribute('lang', 'en');
+                html.setAttribute('dir', 'ltr');
+                langText.textContent = 'العربية';
+                
+                langContents.forEach(element => {
+                    const englishText = element.getAttribute('data-en');
+                    if (englishText) {
+                        element.textContent = englishText;
+                    }
+                });
+            }
+            
+            // Save language preference
+            localStorage.setItem('language', currentLanguage);
+        }
+
         // Theme toggle functionality
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
@@ -1948,13 +1524,30 @@
             localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
         }
 
-        // Load saved theme
+        // Load saved preferences
         document.addEventListener('DOMContentLoaded', function() {
+            // Load saved theme
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'light') {
                 document.body.classList.add('light-mode');
                 document.documentElement.classList.add('light-mode');
             }
+
+            // Load saved language
+            const savedLanguage = localStorage.getItem('language');
+            if (savedLanguage && savedLanguage !== currentLanguage) {
+                toggleLanguage();
+            }
+
+            // Initialize loading animations
+            setTimeout(() => {
+                const loadingElements = document.querySelectorAll('.loading');
+                loadingElements.forEach((element, index) => {
+                    setTimeout(() => {
+                        element.classList.add('loaded');
+                    }, index * 100);
+                });
+            }, 500);
         });
 
         // Music player functionality - PRESERVED EXACTLY AS REQUESTED
@@ -1967,7 +1560,7 @@
             if (!isPlaying) {
                 musicIcon.className = "fas fa-pause";
                 musicBtn.classList.add("playing");
-                backgroundMusic.play();
+                backgroundMusic.play().catch(e => console.log('Audio play failed:', e));
                 isPlaying = true;
                 console.log('Music started');
             } else {
@@ -1994,20 +1587,6 @@
             type();
         }
 
-        // Add some interactive terminal commands
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                // Add new command line
-                const terminalBody = document.querySelector('.terminal-body');
-                const newLine = document.createElement('div');
-                newLine.innerHTML = '<span class="prompt">$</span><span class="cursor"></span>';
-                terminalBody.appendChild(newLine);
-                
-                // Scroll to bottom
-                terminalBody.scrollTop = terminalBody.scrollHeight;
-            }
-        });
-
         // Animate skill bars on scroll
         function animateSkillBars() {
             const skillBars = document.querySelectorAll('.skill-level');
@@ -2016,14 +1595,29 @@
                 const rect = bar.getBoundingClientRect();
                 const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
                 
-                if (isVisible) {
+                if (isVisible && !bar.classList.contains('animated')) {
                     const width = bar.getAttribute('data-level') || bar.style.width;
-                    bar.style.width = width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                    bar.classList.add('animated');
                 }
             });
         }
 
-        // Initialize animations
+        // Smooth scroll behavior
+        function smoothScrollTo(target) {
+            const element = document.querySelector(target);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Initialize animations and interactions
         document.addEventListener('DOMContentLoaded', function() {
             // Reset skill bars
             document.querySelectorAll('.skill-level').forEach(bar => {
@@ -2034,21 +1628,10 @@
             window.addEventListener('scroll', animateSkillBars);
             
             // Initial animation
-            setTimeout(animateSkillBars, 500);
-        });
+            setTimeout(animateSkillBars, 1000);
 
-        // Add glitch effect on hover for terminal title
-        document.querySelector('.terminal-title').addEventListener('mouseenter', function() {
-            this.style.animation = 'glitch 0.3s ease-in-out';
-            setTimeout(() => {
-                this.style.animation = '';
-            }, 300);
-        });
-
-        // Enhanced interactive features
-        document.addEventListener('DOMContentLoaded', function() {
             // Add click effects to cards
-            const cards = document.querySelectorAll('.project-card, .service-card, .certification-card, .blog-card');
+            const cards = document.querySelectorAll('.glass-card, .project-card, .skill-item');
             cards.forEach(card => {
                 card.addEventListener('click', function() {
                     this.style.transform = 'scale(0.98)';
@@ -2059,7 +1642,7 @@
             });
 
             // Add hover sound effect simulation
-            const interactiveElements = document.querySelectorAll('.skill-item, .contact-item, .stat-card');
+            const interactiveElements = document.querySelectorAll('.skill-item, .glass-card, .project-card');
             interactiveElements.forEach(element => {
                 element.addEventListener('mouseenter', function() {
                     // Simulate terminal beep
@@ -2067,86 +1650,192 @@
                 });
             });
 
-            // Add typing effect to certain elements
-            const terminalCommands = document.querySelectorAll('.command');
-            terminalCommands.forEach((cmd, index) => {
-                setTimeout(() => {
-                    const originalText = cmd.textContent;
-                    typeWriter(cmd, originalText, 100);
-                }, index * 1000);
+            // Enhanced scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all cards and sections
+            document.querySelectorAll('.glass-card, .project-card, .skill-item, .section-header').forEach(el => {
+                observer.observe(el);
             });
         });
 
-        // Add matrix rain effect (optional enhancement)
-        function createMatrixRain() {
-            const canvas = document.createElement('canvas');
-            canvas.style.position = 'fixed';
-            canvas.style.top = '0';
-            canvas.style.left = '0';
-            canvas.style.width = '100%';
-            canvas.style.height = '100%';
-            canvas.style.pointerEvents = 'none';
-            canvas.style.zIndex = '1';
-            canvas.style.opacity = '0.1';
-            document.body.appendChild(canvas);
-
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
-            const matrixArray = matrix.split("");
-
-            const fontSize = 10;
-            const columns = canvas.width / fontSize;
-
-            const drops = [];
-            for (let x = 0; x < columns; x++) {
-                drops[x] = 1;
+        // Add glitch effect on hover for terminal title
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalTitle = document.querySelector('.terminal-title');
+            if (terminalTitle) {
+                terminalTitle.addEventListener('mouseenter', function() {
+                    this.style.animation = 'glitch 0.3s ease-in-out';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 300);
+                });
             }
+        });
 
-            function draw() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // Enhanced performance optimizations
+        let ticking = false;
 
-                ctx.fillStyle = '#00ff9d';
-                ctx.font = fontSize + 'px monospace';
-
-                for (let i = 0; i < drops.length; i++) {
-                    const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
-                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                        drops[i] = 0;
-                    }
-                    drops[i]++;
-                }
-            }
-
-            setInterval(draw, 35);
+        function updateAnimations() {
+            animateSkillBars();
+            ticking = false;
         }
 
-        // Uncomment to enable matrix rain effect
-        // createMatrixRain();
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateAnimations);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Preload critical resources
+        function preloadResources() {
+            const criticalImages = ['santa.png'];
+            criticalImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', preloadResources);
     </script>
 </body>
 </html>
 
 
+                <!-- Experience Section -->
+                <div class="section-header loading">
+                    <i class="fas fa-briefcase section-icon"></i>
+                    <h2 class="lang-content" data-en="Professional Experience" data-ar="الخبرة المهنية">Professional Experience</h2>
+                </div>
+                <div class="output">
+                    <div class="experience-timeline">
+                        <div class="experience-item glass-card loading">
+                            <div class="experience-date lang-content" data-en="2023 - Present" data-ar="2023 - الحاضر">2023 - Present</div>
+                            <div class="experience-title lang-content" data-en="Senior Full Stack Developer & AI Specialist" data-ar="مطور ويب متقدم ومتخصص في الذكاء الاصطناعي">Senior Full Stack Developer & AI Specialist</div>
+                            <div class="experience-company">TechInnovate Solutions</div>
+                            <div class="experience-description lang-content" 
+                                 data-en="Leading a specialized development team in building advanced web applications that integrate artificial intelligence technologies. Developing innovative solutions for large corporations using React, Node.js, Python, and machine learning technologies. Managing complex projects and mentoring new developers in technical best practices."
+                                 data-ar="قيادة فريق تطوير متخصص في بناء تطبيقات ويب متقدمة تدمج تقنيات الذكاء الاصطناعي. تطوير حلول مبتكرة للشركات الكبرى باستخدام React، Node.js، Python، وتقنيات التعلم الآلي. إدارة مشاريع معقدة وتوجيه المطورين الجدد في أفضل الممارسات التقنية.">
+                                Leading a specialized development team in building advanced web applications that integrate artificial intelligence technologies. Developing innovative solutions for large corporations using React, Node.js, Python, and machine learning technologies. Managing complex projects and mentoring new developers in technical best practices.
+                            </div>
+                        </div>
+                        <div class="experience-item glass-card loading">
+                            <div class="experience-date lang-content" data-en="2021 - 2023" data-ar="2021 - 2023">2021 - 2023</div>
+                            <div class="experience-title lang-content" data-en="Full Stack Developer" data-ar="مطور ويب شامل">Full Stack Developer</div>
+                            <div class="experience-company">Digital Dynamics Corp</div>
+                            <div class="experience-description lang-content" 
+                                 data-en="Developing comprehensive web applications for clients across various sectors. Working with multidisciplinary teams to deliver advanced technical solutions. Specializing in developing interactive user interfaces and robust backend systems."
+                                 data-ar="تطوير تطبيقات ويب شاملة للعملاء في مختلف القطاعات. العمل مع فرق متعددة التخصصات لتقديم حلول تقنية متطورة. تخصص في تطوير واجهات المستخدم التفاعلية وأنظمة الخلفية القوية.">
+                                Developing comprehensive web applications for clients across various sectors. Working with multidisciplinary teams to deliver advanced technical solutions. Specializing in developing interactive user interfaces and robust backend systems.
+                            </div>
+                        </div>
+                        <div class="experience-item glass-card loading">
+                            <div class="experience-date lang-content" data-en="2020 - 2021" data-ar="2020 - 2021">2020 - 2021</div>
+                            <div class="experience-title lang-content" data-en="Frontend Developer" data-ar="مطور واجهات أمامية">Frontend Developer</div>
+                            <div class="experience-company">WebCraft Studio</div>
+                            <div class="experience-description lang-content" 
+                                 data-en="Focusing on developing modern user interfaces using React and Vue.js. Optimizing application performance and ensuring compatibility across all browsers and devices. Collaborating with UX/UI designers to transform designs into efficient code."
+                                 data-ar="التركيز على تطوير واجهات المستخدم الحديثة باستخدام React و Vue.js. تحسين أداء التطبيقات وضمان التوافق مع جميع المتصفحات والأجهزة. التعاون مع مصممي UX/UI لتحويل التصاميم إلى كود فعال.">
+                                Focusing on developing modern user interfaces using React and Vue.js. Optimizing application performance and ensuring compatibility across all browsers and devices. Collaborating with UX/UI designers to transform designs into efficient code.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Section -->
+                <div class="section-header loading">
+                    <i class="fas fa-cogs section-icon"></i>
+                    <h2 class="lang-content" data-en="Professional Services" data-ar="الخدمات المهنية">Professional Services</h2>
+                </div>
+                <div class="output">
+                    <div class="services-grid">
+                        <div class="service-card glass-card loading">
+                            <i class="fas fa-laptop-code service-icon"></i>
+                            <h3 class="service-title lang-content" data-en="Web Application Development" data-ar="تطوير تطبيقات الويب">Web Application Development</h3>
+                            <p class="service-description lang-content" 
+                               data-en="Developing advanced and responsive web applications using the latest technologies. From simple websites to complex multi-user applications."
+                               data-ar="تطوير تطبيقات ويب متطورة وسريعة الاستجابة باستخدام أحدث التقنيات. من المواقع البسيطة إلى التطبيقات المعقدة متعددة المستخدمين.">
+                                Developing advanced and responsive web applications using the latest technologies. From simple websites to complex multi-user applications.
+                            </p>
+                        </div>
+                        <div class="service-card glass-card loading">
+                            <i class="fas fa-mobile-alt service-icon"></i>
+                            <h3 class="service-title lang-content" data-en="Mobile App Development" data-ar="تطوير تطبيقات الهاتف">Mobile App Development</h3>
+                            <p class="service-description lang-content" 
+                               data-en="Creating native and cross-platform mobile applications with modern design and high performance for iOS and Android systems."
+                               data-ar="إنشاء تطبيقات هاتف ذكي أصلية ومتعددة المنصات بتصميم عصري وأداء عالي لنظامي iOS و Android.">
+                                Creating native and cross-platform mobile applications with modern design and high performance for iOS and Android systems.
+                            </p>
+                        </div>
+                        <div class="service-card glass-card loading">
+                            <i class="fas fa-brain service-icon"></i>
+                            <h3 class="service-title lang-content" data-en="AI Solutions" data-ar="حلول الذكاء الاصطناعي">AI Solutions</h3>
+                            <p class="service-description lang-content" 
+                               data-en="Developing and implementing artificial intelligence and machine learning solutions to improve business processes and automate complex tasks."
+                               data-ar="تطوير وتطبيق حلول الذكاء الاصطناعي والتعلم الآلي لتحسين العمليات التجارية وأتمتة المهام المعقدة.">
+                                Developing and implementing artificial intelligence and machine learning solutions to improve business processes and automate complex tasks.
+                            </p>
+                        </div>
+                        <div class="service-card glass-card loading">
+                            <i class="fas fa-paint-brush service-icon"></i>
+                            <h3 class="service-title lang-content" data-en="UI/UX Design" data-ar="تصميم واجهات المستخدم">UI/UX Design</h3>
+                            <p class="service-description lang-content" 
+                               data-en="Designing attractive and user-friendly interfaces that focus on user experience and efficiently achieve business goals."
+                               data-ar="تصميم واجهات مستخدم جذابة وسهلة الاستخدام تركز على تجربة المستخدم وتحقق أهداف العمل بكفاءة.">
+                                Designing attractive and user-friendly interfaces that focus on user experience and efficiently achieve business goals.
+                            </p>
+                        </div>
+                        <div class="service-card glass-card loading">
+                            <i class="fas fa-database service-icon"></i>
+                            <h3 class="service-title lang-content" data-en="Database Management" data-ar="إدارة قواعد البيانات">Database Management</h3>
+                            <p class="service-description lang-content" 
+                               data-en="Designing and managing robust and secure databases with performance optimization and ensuring data integrity and business continuity."
+                               data-ar="تصميم وإدارة قواعد بيانات قوية وآمنة مع تحسين الأداء وضمان سلامة البيانات واستمرارية العمل.">
+                                Designing and managing robust and secure databases with performance optimization and ensuring data integrity and business continuity.
+                            </p>
+                        </div>
+                        <div class="service-card glass-card loading">
+                            <i class="fas fa-cloud service-icon"></i>
+                            <h3 class="service-title lang-content" data-en="Cloud Computing" data-ar="الحوسبة السحابية">Cloud Computing</h3>
+                            <p class="service-description lang-content" 
+                               data-en="Deploying and managing applications on cloud platforms ensuring scalability, high performance, and continuous availability."
+                               data-ar="نشر وإدارة التطبيقات على المنصات السحابية مع ضمان القابلية للتوسع والأداء العالي والتوفر المستمر.">
+                                Deploying and managing applications on cloud platforms ensuring scalability, high performance, and continuous availability.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Testimonials Section -->
-                <div class="section-header">
+                <div class="section-header loading">
                     <i class="fas fa-quote-left section-icon"></i>
-                    <h2>Client Testimonials & Reviews</h2>
+                    <h2 class="lang-content" data-en="Client Testimonials" data-ar="آراء العملاء">Client Testimonials</h2>
                 </div>
                 <div class="output">
                     <div class="testimonials-grid">
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
-                                "SantaDevX قدم لنا حلولاً تقنية متطورة فاقت توقعاتنا. الجودة والاحترافية في العمل كانت استثنائية."
+                        <div class="testimonial-card glass-card loading">
+                            <div class="testimonial-content lang-content" 
+                                 data-en="SantaDevX delivered advanced technical solutions that exceeded our expectations. The quality and professionalism in work were exceptional."
+                                 data-ar="SantaDevX قدم لنا حلولاً تقنية متطورة فاقت توقعاتنا. الجودة والاحترافية في العمل كانت استثنائية.">
+                                "SantaDevX delivered advanced technical solutions that exceeded our expectations. The quality and professionalism in work were exceptional."
                             </div>
                             <div class="testimonial-author">
-                                <div class="author-name">أحمد محمد</div>
-                                <div class="author-title">مدير تقني - شركة التقنيات المتقدمة</div>
+                                <div class="author-name lang-content" data-en="Ahmed Mohammed" data-ar="أحمد محمد">Ahmed Mohammed</div>
+                                <div class="author-title lang-content" data-en="Technical Manager - Advanced Technologies Company" data-ar="مدير تقني - شركة التقنيات المتقدمة">Technical Manager - Advanced Technologies Company</div>
                                 <div class="testimonial-rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -2156,13 +1845,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
-                                "تطبيق الذكاء الاصطناعي الذي طوره لنا غير طريقة عملنا بالكامل. النتائج كانت مذهلة والدعم الفني ممتاز."
+                        <div class="testimonial-card glass-card loading">
+                            <div class="testimonial-content lang-content" 
+                                 data-en="The AI application he developed for us completely changed our way of working. The results were amazing and the technical support was excellent."
+                                 data-ar="تطبيق الذكاء الاصطناعي الذي طوره لنا غير طريقة عملنا بالكامل. النتائج كانت مذهلة والدعم الفني ممتاز.">
+                                "The AI application he developed for us completely changed our way of working. The results were amazing and the technical support was excellent."
                             </div>
                             <div class="testimonial-author">
-                                <div class="author-name">سارة أحمد</div>
-                                <div class="author-title">مديرة المشاريع - مؤسسة FAQ-SILU</div>
+                                <div class="author-name lang-content" data-en="Sarah Ahmed" data-ar="سارة أحمد">Sarah Ahmed</div>
+                                <div class="author-title lang-content" data-en="Project Manager - FAQ-SILU Foundation" data-ar="مديرة المشاريع - مؤسسة FAQ-SILU">Project Manager - FAQ-SILU Foundation</div>
                                 <div class="testimonial-rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -2172,13 +1863,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
-                                "موقعنا الإلكتروني أصبح أسرع وأكثر تفاعلية بفضل خبرة SantaDevX. العملاء يحبون التصميم الجديد."
+                        <div class="testimonial-card glass-card loading">
+                            <div class="testimonial-content lang-content" 
+                                 data-en="Our website became faster and more interactive thanks to SantaDevX's expertise. Customers love the new design."
+                                 data-ar="موقعنا الإلكتروني أصبح أسرع وأكثر تفاعلية بفضل خبرة SantaDevX. العملاء يحبون التصميم الجديد.">
+                                "Our website became faster and more interactive thanks to SantaDevX's expertise. Customers love the new design."
                             </div>
                             <div class="testimonial-author">
-                                <div class="author-name">محمد علي</div>
-                                <div class="author-title">مؤسس - متجر الإلكترونيات الذكية  ULTRA SHOP</div>
+                                <div class="author-name lang-content" data-en="Mohammed Ali" data-ar="محمد علي">Mohammed Ali</div>
+                                <div class="author-title lang-content" data-en="Founder - ULTRA SHOP Smart Electronics Store" data-ar="مؤسس - متجر الإلكترونيات الذكية ULTRA SHOP">Founder - ULTRA SHOP Smart Electronics Store</div>
                                 <div class="testimonial-rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -2187,989 +1880,418 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
-                                "نظام إدارة المهام الذي بناه لفريقنا زاد من إنتاجيتنا بنسبة 40%. تقنيات متطورة وتنفيذ مثالي."
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-name">فاطمة حسن</div>
-                                <div class="author-title">مديرة العمليات - شركة الحلول الرقمية</div>
-                                <div class="testimonial-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Technologies Section -->
-                <div class="section-header">
-                    <i class="fas fa-microchip section-icon"></i>
-                    <h2>Technologies & Tools Mastery</h2>
-                </div>
-                <div class="output">
-                    <div class="tech-categories">
-                        <div class="tech-category">
-                            <h3 class="tech-category-title">Frontend Technologies</h3>
-                            <div class="tech-items">
-                                <div class="tech-item">
-                                    <i class="fab fa-react tech-icon"></i>
-                                    <span>React.js</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-vuejs tech-icon"></i>
-                                    <span>Vue.js</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-angular tech-icon"></i>
-                                    <span>Angular</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-js-square tech-icon"></i>
-                                    <span>JavaScript</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-html5 tech-icon"></i>
-                                    <span>HTML5</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-css3-alt tech-icon"></i>
-                                    <span>CSS3</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-sass tech-icon"></i>
-                                    <span>Sass/SCSS</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fas fa-wind tech-icon"></i>
-                                    <span>Tailwind CSS</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tech-category">
-                            <h3 class="tech-category-title">Backend Technologies</h3>
-                            <div class="tech-items">
-                                <div class="tech-item">
-                                    <i class="fab fa-node-js tech-icon"></i>
-                                    <span>Node.js</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-python tech-icon"></i>
-                                    <span>Python</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-php tech-icon"></i>
-                                    <span>PHP</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-java tech-icon"></i>
-                                    <span>Java</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fas fa-gem tech-icon"></i>
-                                    <span>Ruby</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fas fa-hashtag tech-icon"></i>
-                                    <span>C#</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fas fa-code tech-icon"></i>
-                                    <span>Go</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fas fa-bolt tech-icon"></i>
-                                    <span>Rust</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tech-category">
-                            <h3 class="tech-category-title">Databases & Storage</h3>
-                            <div class="tech-items">
-                                <div class="tech-item">
-                                    <i class="fas fa-database tech-icon"></i>
-                                    <span>MongoDB</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fas fa-database tech-icon"></i>
-                                    <span>PostgreSQL</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fas fa-database tech-icon"></i>
-                                    <span>MySQL</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fas fa-fire tech-icon"></i>
-                                    <span>Firebase</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fas fa-memory tech-icon"></i>
-                                    <span>Redis</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fas fa-search tech-icon"></i>
-                                    <span>Elasticsearch</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fas fa-cube tech-icon"></i>
-                                    <span>SQLite</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fas fa-chart-line tech-icon"></i>
-                                    <span>InfluxDB</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tech-category">
-                            <h3 class="tech-category-title">Cloud & DevOps</h3>
-                            <div class="tech-items">
-                                <div class="tech-item">
-                                    <i class="fab fa-aws tech-icon"></i>
-                                    <span>AWS</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-google tech-icon"></i>
-                                    <span>Google Cloud</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-microsoft tech-icon"></i>
-                                    <span>Azure</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-docker tech-icon"></i>
-                                    <span>Docker</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fas fa-dharmachakra tech-icon"></i>
-                                    <span>Kubernetes</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-jenkins tech-icon"></i>
-                                    <span>Jenkins</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fab fa-gitlab tech-icon"></i>
-                                    <span>GitLab CI</span>
-                                </div>
-                                <div class="tech-item">
-                                    <i class="fas fa-server tech-icon"></i>
-                                    <span>Terraform</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Awards Section -->
-                <div class="section-header">
-                    <i class="fas fa-trophy section-icon"></i>
-                    <h2>Awards & Recognition</h2>
-                </div>
-                <div class="output">
-                    <div class="awards-grid">
-                        <div class="award-card">
-                            <div class="award-icon">
-                                <i class="fas fa-medal"></i>
-                            </div>
-                            <h3 class="award-title">أفضل مطور ويب للعام</h3>
-                            <div class="award-year">2023</div>
-                            <div class="award-organization">جمعية المطورين العرب</div>
-                        </div>
-                        <div class="award-card">
-                            <div class="award-icon">
-                                <i class="fas fa-crown"></i>
-                            </div>
-                            <h3 class="award-title">جائزة الابتكار التقني</h3>
-                            <div class="award-year">2022</div>
-                            <div class="award-organization">مؤتمر التكنولوجيا الشرق أوسطية</div>
-                        </div>
-                        <div class="award-card">
-                            <div class="award-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <h3 class="award-title">أفضل تطبيق ذكاء اصطناعي</h3>
-                            <div class="award-year">2022</div>
-                            <div class="award-organization">معرض التقنيات المتقدمة</div>
-                        </div>
-                        <div class="award-card">
-                            <div class="award-icon">
-                                <i class="fas fa-gem"></i>
-                            </div>
-                            <h3 class="award-title">جائزة التميز في البرمجة</h3>
-                            <div class="award-year">2021</div>
-                            <div class="award-organization">أكاديمية البرمجة المتقدمة</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Section -->
-                <div class="section-header">
-                    <i class="fas fa-question-circle section-icon"></i>
-                    <h2>Frequently Asked Questions</h2>
-                </div>
-                <div class="output">
-                    <div class="faq-container">
-                        <div class="faq-item">
-                            <div class="faq-question" onclick="toggleFAQ(this)">
-                                <span>ما هي التقنيات التي تتخصص فيها؟</span>
-                                <i class="fas fa-chevron-down faq-icon"></i>
-                            </div>
-                            <div class="faq-answer">
-                                أتخصص في تطوير تطبيقات الويب الحديثة باستخدام React، Vue.js، Node.js، Python، وتقنيات الذكاء الاصطناعي. 
-                                كما أعمل مع قواعد البيانات المختلفة والحوسبة السحابية وتقنيات البلوك تشين.
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question" onclick="toggleFAQ(this)">
-                                <span>كم يستغرق تطوير مشروع متوسط الحجم؟</span>
-                                <i class="fas fa-chevron-down faq-icon"></i>
-                            </div>
-                            <div class="faq-answer">
-                                يعتمد ذلك على تعقيد المشروع ومتطلباته. عادة ما يستغرق مشروع متوسط الحجم من 4-8 أسابيع، 
-                                بينما المشاريع الكبيرة قد تحتاج من 3-6 أشهر. أقدم تقديراً دقيقاً بعد دراسة المتطلبات.
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question" onclick="toggleFAQ(this)">
-                                <span>هل تقدم خدمات الصيانة والدعم الفني؟</span>
-                                <i class="fas fa-chevron-down faq-icon"></i>
-                            </div>
-                            <div class="faq-answer">
-                                نعم، أقدم خدمات صيانة ودعم فني شاملة تشمل التحديثات الأمنية، إضافة ميزات جديدة، 
-                                حل المشاكل التقنية، والدعم الفني على مدار الساعة حسب الحاجة.
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question" onclick="toggleFAQ(this)">
-                                <span>هل يمكنك العمل مع فرق تطوير موجودة؟</span>
-                                <i class="fas fa-chevron-down faq-icon"></i>
-                            </div>
-                            <div class="faq-answer">
-                                بالطبع! لدي خبرة واسعة في العمل مع فرق التطوير المختلفة وأستطيع التكيف مع أي بيئة عمل. 
-                                أستخدم أدوات التعاون الحديثة مثل Git، Slack، Jira، وأتبع منهجيات Agile و Scrum.
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question" onclick="toggleFAQ(this)">
-                                <span>ما هي أسعار خدماتك؟</span>
-                                <i class="fas fa-chevron-down faq-icon"></i>
-                            </div>
-                            <div class="faq-answer">
-                                الأسعار تختلف حسب نوع المشروع وتعقيده ومدة التنفيذ. أقدم عروض أسعار مخصصة لكل مشروع 
-                                بعد دراسة المتطلبات. يمكنك التواصل معي للحصول على عرض سعر مجاني.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Newsletter Section -->
-                <div class="section-header">
-                    <i class="fas fa-newspaper section-icon"></i>
-                    <h2>Stay Updated - Newsletter</h2>
-                </div>
-                <div class="output">
-                    <div class="newsletter-container">
-                        <div class="newsletter-content">
-                            <h3 class="newsletter-title">اشترك في النشرة الإخبارية</h3>
-                            <p class="newsletter-description">
-                                احصل على آخر التحديثات حول التقنيات الجديدة، نصائح البرمجة، 
-                                والمقالات التقنية المفيدة مباشرة في بريدك الإلكتروني.
-                            </p>
-                            <div class="newsletter-form">
-                                <input type="email" placeholder="أدخل بريدك الإلكتروني" class="newsletter-input">
-                                <button class="newsletter-btn" onclick="subscribeNewsletter()">
-                                    <i class="fas fa-paper-plane"></i>
-                                    اشتراك
-                                </button>
-                            </div>
-                            <div class="newsletter-benefits">
-                                <div class="benefit-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>مقالات تقنية حصرية</span>
-                                </div>
-                                <div class="benefit-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>نصائح البرمجة المتقدمة</span>
-                                </div>
-                                <div class="benefit-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>آخر اتجاهات التكنولوجيا</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Footer Section -->
-                <div class="section-header">
-                    <i class="fas fa-info-circle section-icon"></i>
-                    <h2>Additional Information</h2>
-                </div>
-                <div class="output">
-                    <div class="footer-content">
-                        <div class="footer-section">
-                            <h4 class="footer-title">معلومات إضافية</h4>
-                            <div class="footer-info">
-                                <div class="info-item">
-                                    <i class="fas fa-clock"></i>
-                                    <span>ساعات العمل: 24/7 متاح للمشاريع العاجلة</span>
-                                </div>
-                                <div class="info-item">
-                                    <i class="fas fa-globe"></i>
-                                    <span>العمل عن بُعد: متاح للعملاء في جميع أنحاء العالم</span>
-                                </div>
-                                <div class="info-item">
-                                    <i class="fas fa-language"></i>
-                                    <span>اللغات: العربية، الإنجليزية، الفرنسية</span>
-                                </div>
-                                <div class="info-item">
-                                    <i class="fas fa-handshake"></i>
-                                    <span>ضمان الجودة: 100% ضمان الرضا أو استرداد المال</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="footer-section">
-                            <h4 class="footer-title">روابط سريعة</h4>
-                            <div class="quick-links">
-                                <a href="#skills" class="quick-link">المهارات</a>
-                                <a href="#projects" class="quick-link">المشاريع</a>
-                                <a href="#services" class="quick-link">الخدمات</a>
-                                <a href="#contact" class="quick-link">التواصل</a>
-                                <a href="#blog" class="quick-link">المدونة</a>
-                                <a href="#testimonials" class="quick-link">آراء العملاء</a>
-                            </div>
-                        </div>
-                        <div class="footer-section">
-                            <h4 class="footer-title">إحصائيات الموقع</h4>
-                            <div class="site-stats">
-                                <div class="stat-item">
-                                    <span class="stat-value">1,250,000+</span>
-                                    <span class="stat-label">سطر من الكود</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-value">500+</span>
-                                    <span class="stat-label">ساعة تطوير</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-value">99.9%</span>
-                                    <span class="stat-label">وقت التشغيل</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer-bottom">
-                        <div class="copyright">
-                            <p>&copy; 2024 SantaDevX. جميع الحقوق محفوظة. تم التطوير بـ ❤️ باستخدام أحدث التقنيات.</p>
-                        </div>
-                        <div class="footer-social">
-                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
                         </div>
                     </div>
                 </div>
 
     <style>
-        /* ===== NEW SECTIONS STYLES ===== */
+        /* ===== ADDITIONAL ENHANCED STYLES ===== */
         
-        /* Testimonials Section */
+        /* Experience Timeline */
+        .experience-timeline {
+            position: relative;
+            margin-top: 2rem;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary), var(--luxury-gold));
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.5);
+            border-radius: 2px;
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            margin-left: 3rem;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -4.5rem;
+            top: 1rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--luxury-gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            z-index: 2;
+            border: 3px solid var(--terminal-bg);
+        }
+
+        .experience-date {
+            color: var(--luxury-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-shadow: var(--glow-gold);
+            font-family: var(--font-heading);
+        }
+
+        .experience-title {
+            color: var(--primary);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: var(--glow);
+            font-family: var(--font-heading);
+        }
+
+        .experience-company {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            text-shadow: var(--glow-blue);
+        }
+
+        .experience-description {
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-size: 1rem;
+            font-family: var(--font-heading);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 20px 45px rgba(255, 215, 0, 0.3),
+                inset 0 0 30px rgba(0, 255, 157, 0.1);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--luxury-gold);
+            margin-bottom: 1.5rem;
+            text-shadow: var(--glow-gold);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+            color: var(--primary);
+            text-shadow: var(--glow);
+        }
+
+        .service-title {
+            color: var(--primary);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+            text-shadow: var(--glow);
+        }
+
+        .service-description {
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-size: 1rem;
+            font-family: var(--font-heading);
+        }
+
+        /* Testimonials Grid */
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
             margin-top: 2rem;
         }
 
         .testimonial-card {
-            background: rgba(138, 43, 226, 0.08);
-            border: 1px solid rgba(138, 43, 226, 0.3);
-            border-radius: 5px;
-            padding: 2rem;
-            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
 
         .testimonial-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(138, 43, 226, 0.3);
-            border-color: #8a2be2;
+            box-shadow: 
+                0 20px 40px rgba(138, 43, 226, 0.3),
+                inset 0 0 30px rgba(255, 215, 0, 0.1);
         }
 
         .testimonial-content {
             color: var(--text-dark);
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
             font-style: italic;
             position: relative;
+            font-family: var(--font-heading);
         }
 
         .testimonial-content::before {
             content: '"';
-            font-size: 3rem;
-            color: #8a2be2;
+            font-size: 4rem;
+            color: var(--luxury-gold);
             position: absolute;
-            top: -10px;
+            top: -20px;
             left: -10px;
             opacity: 0.3;
+            font-family: serif;
+        }
+
+        .testimonial-author {
+            border-top: 2px solid var(--glass-border);
+            padding-top: 1.5rem;
         }
 
         .author-name {
             color: var(--primary);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+            text-shadow: var(--glow);
         }
 
         .author-title {
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-bottom: 1rem;
+            font-family: var(--font-heading);
         }
 
         .testimonial-rating {
-            color: #ffd700;
-            font-size: 1rem;
+            color: var(--luxury-gold);
+            font-size: 1.2rem;
+            text-shadow: var(--glow-gold);
         }
 
-        /* Technologies Section */
-        .tech-categories {
+        /* Contact Grid */
+        .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        .tech-category {
-            background: rgba(255, 215, 0, 0.08);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 5px;
-            padding: 2rem;
+        .contact-item {
+            text-align: center;
             transition: all 0.4s ease;
         }
 
-        .tech-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
-            border-color: #ffd700;
+        .contact-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 15px 35px rgba(0, 255, 157, 0.3),
+                inset 0 0 25px rgba(255, 215, 0, 0.1);
         }
 
-        .tech-category-title {
-            color: #ffd700;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-
-        .tech-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
-        }
-
-        .tech-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem;
-            background: rgba(255, 215, 0, 0.05);
-            border-radius: 5px;
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--luxury-gold);
+            margin-bottom: 1rem;
+            text-shadow: var(--glow-gold);
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
-        .tech-item:hover {
-            background: rgba(255, 215, 0, 0.15);
-            transform: translateY(-3px);
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1);
+            color: var(--primary);
+            text-shadow: var(--glow);
         }
 
-        .tech-icon {
-            font-size: 2rem;
-            color: #ffd700;
+        .contact-title {
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            font-family: var(--font-heading);
+            text-shadow: var(--glow);
         }
 
-        .tech-item span {
-            color: var(--text);
-            font-size: 0.85rem;
-            text-align: center;
+        .contact-info {
+            color: var(--text-dark);
+            font-size: 1rem;
+            font-family: var(--font-heading);
+        }
+
+        .contact-link {
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
             font-weight: 500;
         }
 
-        /* Awards Section */
-        .awards-grid {
+        .contact-link:hover {
+            color: var(--luxury-gold);
+            text-shadow: var(--glow-gold);
+            text-decoration: underline;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        .award-card {
-            background: rgba(255, 140, 0, 0.08);
-            border: 1px solid rgba(255, 140, 0, 0.3);
-            border-radius: 5px;
-            padding: 2rem;
+        .stat-card {
             text-align: center;
             transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
         }
 
-        .award-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.3);
-            border-color: #ff8c00;
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 
+                0 15px 35px rgba(255, 215, 0, 0.3),
+                inset 0 0 25px rgba(0, 255, 157, 0.1);
         }
 
-        .award-icon {
+        .stat-number {
+            color: var(--luxury-gold);
             font-size: 3rem;
-            color: #ff8c00;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
-        }
-
-        .award-title {
-            color: var(--primary);
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-weight: 800;
             margin-bottom: 0.5rem;
-        }
-
-        .award-year {
-            color: #ff8c00;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .award-organization {
-            color: var(--text-dark);
-            font-size: 0.9rem;
-        }
-
-        /* FAQ Section */
-        .faq-container {
-            margin-top: 2rem;
-        }
-
-        .faq-item {
-            background: rgba(75, 0, 130, 0.08);
-            border: 1px solid rgba(75, 0, 130, 0.3);
-            border-radius: 5px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item:hover {
-            border-color: #4b0082;
-        }
-
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(75, 0, 130, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: rgba(75, 0, 130, 0.1);
-        }
-
-        .faq-question span {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .faq-icon {
-            color: #4b0082;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-answer {
-            padding: 0 1.5rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            color: var(--text-dark);
-            line-height: 1.7;
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 1.5rem;
-            max-height: 200px;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        /* Newsletter Section */
-        .newsletter-container {
-            background: rgba(0, 191, 255, 0.08);
-            border: 1px solid rgba(0, 191, 255, 0.3);
-            border-radius: 5px;
-            padding: 3rem;
-            text-align: center;
-            margin-top: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .newsletter-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(0, 191, 255, 0.1) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .newsletter-container:hover::before {
-            opacity: 1;
-        }
-
-        .newsletter-title {
-            color: #00bfff;
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
-        }
-
-        .newsletter-description {
-            color: var(--text-dark);
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .newsletter-form {
-            display: flex;
-            max-width: 500px;
-            margin: 0 auto 2rem;
-            gap: 1rem;
-        }
-
-        .newsletter-input {
-            flex: 1;
-            padding: 1rem;
-            border: 2px solid rgba(0, 191, 255, 0.3);
-            border-radius: 5px;
-            background: rgba(0, 191, 255, 0.05);
-            color: var(--text);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-input:focus {
-            outline: none;
-            border-color: #00bfff;
-            box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
-        }
-
-        .newsletter-btn {
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, #00bfff, #0080ff);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .newsletter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
-        }
-
-        .newsletter-benefits {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .benefit-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        .benefit-item i {
-            color: #00ff00;
-        }
-
-        /* Footer Section */
-        .footer-content {
-            background: rgba(25, 25, 112, 0.08);
-            border: 1px solid rgba(25, 25, 112, 0.3);
-            border-radius: 5px;
-            padding: 3rem;
-            margin-top: 2rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-title {
-            color: #191970;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 10px rgba(25, 25, 112, 0.5);
-        }
-
-        .footer-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: var(--text-dark);
-            font-size: 0.95rem;
-        }
-
-        .info-item i {
-            color: #191970;
-            width: 20px;
-        }
-
-        .quick-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .quick-link {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid transparent;
-        }
-
-        .quick-link:hover {
-            color: #191970;
-            border-bottom-color: #191970;
-            transform: translateX(5px);
-        }
-
-        .site-stats {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem;
-            background: rgba(25, 25, 112, 0.1);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-3px);
-            background: rgba(25, 25, 112, 0.15);
-        }
-
-        .stat-value {
-            color: #191970;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(25, 25, 112, 0.5);
+            text-shadow: var(--glow-gold);
+            font-family: var(--font-heading);
         }
 
         .stat-label {
-            color: var(--text-dark);
-            font-size: 0.85rem;
-            margin-top: 0.3rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: var(--font-heading);
         }
 
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 2rem;
-            border-top: 2px solid rgba(25, 25, 112, 0.3);
-            margin-top: 2rem;
-        }
-
-        .copyright {
-            color: var(--text-dark);
-            font-size: 0.9rem;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(25, 25, 112, 0.1);
-            color: #191970;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: #191970;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(25, 25, 112, 0.3);
-        }
-
-        /* Responsive adjustments for new sections */
+        /* Enhanced responsive design for new sections */
         @media (max-width: 768px) {
-            .newsletter-form {
-                flex-direction: column;
+            .experience-timeline {
+                padding-left: 1rem;
             }
 
-            .newsletter-benefits {
-                flex-direction: column;
-                gap: 1rem;
+            .experience-timeline::before {
+                left: 8px;
             }
 
-            .footer-bottom {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
+            .experience-item {
+                margin-left: 2rem;
             }
 
-            .tech-items {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            .experience-item::before {
+                left: -3rem;
+                width: 15px;
+                height: 15px;
             }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .service-icon {
+                font-size: 3rem;
+            }
+
+            .contact-icon {
+                font-size: 2rem;
+            }
+        }
+
+        /* Enhanced loading animations */
+        .loading {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .loading.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animation delays */
+        .loading:nth-child(1) { transition-delay: 0.1s; }
+        .loading:nth-child(2) { transition-delay: 0.2s; }
+        .loading:nth-child(3) { transition-delay: 0.3s; }
+        .loading:nth-child(4) { transition-delay: 0.4s; }
+        .loading:nth-child(5) { transition-delay: 0.5s; }
+        .loading:nth-child(6) { transition-delay: 0.6s; }
+
+        /* Enhanced glassmorphism effects */
+        .glass-card {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        body.light-mode .glass-card {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        /* Enhanced hover effects */
+        .glass-card:hover {
+            border-color: var(--luxury-gold);
+            box-shadow: 
+                0 20px 40px rgba(255, 215, 0, 0.2),
+                inset 0 1px 0 rgba(255, 215, 0, 0.2);
+        }
+
+        /* Improved text shadows for better readability */
+        .section-header h2,
+        .profile-name,
+        .profile-title {
+            text-shadow: 
+                0 0 10px currentColor,
+                0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Enhanced button styles */
+        .language-toggle,
+        .theme-toggle {
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .language-toggle:hover,
+        .theme-toggle:hover {
+            box-shadow: 
+                0 6px 20px rgba(255, 215, 0, 0.3),
+                inset 0 1px 0 rgba(255, 215, 0, 0.2);
         }
     </style>
-
-    <script>
-        // FAQ Toggle Function
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
-            
-            // Close all FAQ items
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Open clicked item if it wasn't active
-            if (!isActive) {
-                faqItem.classList.add('active');
-            }
-        }
-
-        // Newsletter Subscription Function
-        function subscribeNewsletter() {
-            const emailInput = document.querySelector('.newsletter-input');
-            const email = emailInput.value.trim();
-            
-            if (email && email.includes('@')) {
-                // Simulate subscription
-                alert('شكراً لك! تم الاشتراك بنجاح في النشرة الإخبارية.');
-                emailInput.value = '';
-                
-                // Add success animation
-                const btn = document.querySelector('.newsletter-btn');
-                btn.style.background = 'linear-gradient(135deg, #00ff00, #00cc00)';
-                btn.innerHTML = '<i class="fas fa-check"></i> تم الاشتراك';
-                
-                setTimeout(() => {
-                    btn.style.background = 'linear-gradient(135deg, #00bfff, #0080ff)';
-                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> اشتراك';
-                }, 3000);
-            } else {
-                alert('يرجى إدخال بريد إلكتروني صحيح.');
-            }
-        }
-
-        // Enhanced scroll animations for new sections
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.testimonial-card, .tech-category, .award-card, .faq-item');
-            
-            elements.forEach(element => {
-                const rect = element.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                
-                if (isVisible) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        }
-
-        // Initialize new animations
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set initial state for scroll animations
-            const elements = document.querySelectorAll('.testimonial-card, .tech-category, .award-card, .faq-item');
-            elements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-                element.style.transition = 'all 0.6s ease';
-            });
-            
-            // Add scroll listener
-            window.addEventListener('scroll', animateOnScroll);
-            
-            // Initial check
-            setTimeout(animateOnScroll, 100);
-            
-            // Add tech item hover effects
-            document.querySelectorAll('.tech-item').forEach(item => {
-                item.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px) scale(1.05)';
-                });
-                
-                item.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-        });
-    </script>
 
