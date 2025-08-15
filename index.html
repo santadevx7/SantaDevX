@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="𝐒𝐚𝐧𝐭𝐚𝐃𝐞𝐯𝐗 - طالب في الصف الثالث الثانوي ومطور مواقع ومبرمج">
+    <meta name="description" content="𝐒𝐚𝐧𝐭𝐚𝐃𝐞𝐯𝐗 - طالب في الصف الثالث الثانوي ومطور مواقع ومبرمج  ">
     <meta name="keywords" content="𝐒𝐚𝐧𝐭𝐚𝐃𝐞𝐯𝐗, مطور مواقع, مبرمج, الصف الثالث الثانوي, web developer, programmer">
     <meta name="author" content="Saif Fikry">
-    <title>𝐒𝐚𝐧𝐭𝐚𝐃𝐞𝐯𝐗 | Developer</title>
+    <title>𝐒𝐚𝐧𝐭𝐚𝐃𝐞𝐯𝐗 - Saif Fikry | Elite Developer Portfolio</title>
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="./manifest.json">
     
     <!-- Performance Optimizations -->
     <meta name="format-detection" content="telephone=no">
@@ -59,9 +59,21 @@
             loadScript('https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js');
             loadScript('https://unpkg.com/aos@2.3.1/dist/aos.js');
             loadScript('https://cdn.jsdelivr.net/npm/typed.js@2.0.12');
-            loadScript('script.js');
+            loadScript(
+                window.location.pathname + 
+                (window.location.pathname.endsWith(
+                    "/"
+                ) ? "" : "/") + 
+                "script.js"
+            );
             loadCSS('https://unpkg.com/aos@2.3.1/dist/aos.css');
-            loadCSS('style.css');
+            loadCSS(
+                window.location.pathname + 
+                (window.location.pathname.endsWith(
+                    "/"
+                ) ? "" : "/") + 
+                "style.css"
+            );
         });
     </script>
     
@@ -1075,12 +1087,12 @@
         </div>
         <div class="hero-content" data-aos="fade-up">
             <div class="hero-image">
-                <img src="https://via.placeholder.com/200x200/00d4ff/ffffff?text=SF" alt="سيف فكري" id="profileImage">
+                <img src="https://via.placeholder.com/200x200/00d4ff/ffffff?text=SF" alt="𝐒𝐚𝐧𝐭𝐚𝐃𝐞𝐯𝐗" id="profileImage">
             </div>
-            <h1 class="hero-title glow">أوفـــــــا  /  𝗢𝗙𝗔𝗔</h1>
+            <h1 class="hero-title glow">𝐒𝐚𝐧𝐭𝐚𝐃𝐞𝐯𝐗</h1>
             <h2 class="hero-subtitle">Saif Fikry</h2>
             <p class="hero-description">
-                طالب في <span class="typed-text">الصف الثالث الثانوي</span> ومطور مواقع ومبرمج<br>
+                طالب في <span class="typed-text">الصف الثالث الثانوي</span> ومطور مواقع ومبرمج  <br>
                 <span class="typed-text">High School Senior Student</span> & Elite Web Developer
             </p>
             <div id="typed-strings">
@@ -1325,7 +1337,7 @@
                         <h3 class="project-title">تطبيق ذكاء اصطناعي</h3>
                         <p class="project-description">
                             تطبيق ويب يستخدم تقنيات الذكاء الاصطناعي لتحليل البيانات وتقديم توصيات ذكية. 
-                            يتضمن واجهة مستخدم تفاعلية ونظام تعلم آلي متقدم.
+                            يتضمن واجهة مستخدم تفاعلية ونظام تعلم آلي  .
                         </p>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
@@ -1347,7 +1359,7 @@
                     <div class="project-content">
                         <h3 class="project-title">تطبيق موبايل تفاعلي</h3>
                         <p class="project-description">
-                            تطبيق موبايل متعدد المنصات مع واجهة مستخدم حديثة ومميزات متقدمة. 
+                            تطبيق موبايل متعدد المنصات مع واجهة مستخدم حديثة ومميزات  ة. 
                             يدعم الإشعارات الفورية والمزامنة السحابية.
                         </p>
                         <div class="project-tech">
@@ -1393,7 +1405,7 @@
                     <div class="project-content">
                         <h3 class="project-title">لعبة ويب تفاعلية</h3>
                         <p class="project-description">
-                            لعبة ويب ثلاثية الأبعاد مع فيزياء متقدمة وجرافيك عالي الجودة. 
+                            لعبة ويب ثلاثية الأبعاد مع فيزياء  ة وجرافيك عالي الجودة. 
                             تدعم اللعب الجماعي والمنافسات الفورية.
                         </p>
                         <div class="project-tech">
@@ -1416,7 +1428,7 @@
                     <div class="project-content">
                         <h3 class="project-title">منصة سحابية</h3>
                         <p class="project-description">
-                            منصة سحابية لإدارة الملفات والمشاريع مع نظام أمان متقدم ومشاركة الملفات. 
+                            منصة سحابية لإدارة الملفات والمشاريع مع نظام أمان  ومشاركة الملفات. 
                             تدعم التعاون الجماعي والنسخ الاحتياطي التلقائي.
                         </p>
                         <div class="project-tech">
@@ -1447,7 +1459,7 @@
                         </div>
                         <div class="contact-details">
                             <h4>البريد الإلكتروني</h4>
-                            <p>saif.fikry2008@gmail.com</p>
+                            <p>saif.fikry@example.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1474,7 +1486,7 @@
                         </div>
                         <div class="contact-details">
                             <h4>الموقع</h4>
-                            <p>مصر، دمياط</p>
+                            <p>مصر، القاهرة</p>
                         </div>
                     </div>
                 </div>
@@ -1523,7 +1535,7 @@
                     </a>
                 </div>
                 <p class="footer-text">
-                    © 2024 𝐒𝐚𝐧𝐭𝐚𝐃𝐞𝐯𝐗 - Saif Fikry. جميع الحقوق محفوظة. | أوفـــــــا  /  𝗢𝗙𝗔𝗔
+                    © 2024 𝐒𝐚𝐧𝐭𝐚𝐃𝐞𝐯𝐗 جميع الحقوق محفوظة. 
                 </p>
             </div>
         </div>
@@ -1950,7 +1962,7 @@
         // Register Service Worker for PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
+                navigator.serviceWorker.register('./sw.js')
                     .then((registration) => {
                         console.log('SW registered: ', registration);
                     })

@@ -6,12 +6,23 @@ const STATIC_CACHE = 'static-cache-v1';
 const DYNAMIC_CACHE = 'dynamic-cache-v1';
 
 // Files to cache
+const BASE_PATH = 
+    location.pathname.substring(0, location.pathname.lastIndexOf(
+        '/'
+    ) + 1);
+
+// Files to cache
 const STATIC_FILES = [
+    BASE_PATH + 
     '/',
-    '/index.html',
-    '/style.css',
-    '/script.js',
-    '/manifest.json',
+    BASE_PATH + 
+    'index.html',
+    BASE_PATH + 
+    'style.css',
+    BASE_PATH + 
+    'script.js',
+    BASE_PATH + 
+    'manifest.json',
     'https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Fira+Code:wght@300;400;500;600;700&display=swap',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
     'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js',
@@ -112,7 +123,7 @@ self.addEventListener('fetch', (event) => {
                         
                         // Return offline page for navigation requests
                         if (request.destination === 'document') {
-                            return caches.match('/index.html');
+                            return caches.match(BASE_PATH + 'index.html');
                         }
                         
                         // Return placeholder for images

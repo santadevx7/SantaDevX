@@ -60,7 +60,7 @@ class PortfolioManager {
 
     showWelcomeMessage() {
         const messages = [
-            'مرحباً بك في عالم سيف فكري الرقمي! 🚀',
+            'مرحباً بك في عالم 𝐒𝐚𝐧𝐭𝐚𝐃𝐞𝐯𝐗 الرقمي! 🚀',
             'Welcome to Saif Fikry\'s Digital Universe! 🌟',
             'استعد لتجربة تقنية مذهلة! ⚡',
             'Get ready for an amazing tech experience! 💻'
@@ -166,7 +166,7 @@ class PortfolioManager {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}سيف فكري";
+        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}𝐒𝐚𝐧𝐭𝐚𝐃𝐞𝐯𝐗";
         const matrixArray = matrix.split("");
         const fontSize = this.isMobile() ? 8 : 10;
         const columns = canvas.width / fontSize;
@@ -1167,7 +1167,7 @@ class PortfolioManager {
             }
         };
         
-        console.log('🚀 مرحباً بك في موقع سيف فكري!');
+        console.log('🚀 مرحباً بك في موقع 𝐒𝐚𝐧𝐭𝐚𝐃𝐞𝐯𝐗!');
         console.log('💻 جرب الأوامر التالية:');
         console.log('saifDev.showAchievements() - عرض الإنجازات');
         console.log('saifDev.activateGodMode() - تفعيل وضع الإله');

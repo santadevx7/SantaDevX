@@ -1,8 +1,8 @@
-# 🚀 سيف فكري - Saif Fikry Portfolio
+# 🚀 𝐒𝐚𝐧𝐭𝐚𝐃𝐞𝐯𝐗 - Saif Fikry Portfolio
 
 ## نظرة عامة | Overview
 
-موقع تعريفي متطور لسيف فكري، طالب في الصف الثالث الثانوي ومطور مواقع ومبرمج متقدم. الموقع مصمم بأحدث التقنيات ويتضمن مميزات تفاعلية متقدمة وتأثيرات بصرية مذهلة.
+موقع تعريفي متطور 𝐒𝐚𝐧𝐭𝐚𝐃𝐞𝐯𝐗، طالب في الصف الثالث الثانوي ومطور مواقع ومبرمج الموقع مصمم بأحدث التقنيات ويتضمن مميزات تفاعلية متقدمة وتأثيرات بصرية مذهلة.
 
 An advanced portfolio website for Saif Fikry, a high school senior student and elite web developer. Built with cutting-edge technologies featuring advanced interactive elements and stunning visual effects.
 
@@ -192,10 +192,9 @@ const newProject = {
 
 <div align="center">
 
-**صُنع بـ ❤️ في مصر**  
-**Made with ❤️ in Egypt**
+**Made with Team DevX**
 
-**© 2024 سيف فكري - Saif Fikry. جميع الحقوق محفوظة.**
+**© 2024 𝐒𝐚𝐧𝐭𝐚𝐃𝐞𝐯𝐗 جميع الحقوق محفوظة.**
 
 </div>
 
